@@ -9,8 +9,10 @@ use BitskiWPTheme\assets\AssetsManager;
  *
  * @since 0.1.0
  */
-class ThemeHooks {
-    public static function init() {
+class ThemeHooks
+{
+    public static function init()
+    {
         //add_action('init', [Assets::class, 'customCallback'], 0);
     }
 }

@@ -7,29 +7,33 @@ namespace BitskiWPTheme\assets;
  *
  * @since 0.1.0
  */
-class AssetsManager {
-	public static function init() {
-		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueueAssets' ], 0 );
-	}
+class AssetsManager
+{
+    public static function init()
+    {
+        add_action('wp_enqueue_scripts', [ __CLASS__, 'enqueueAssets' ], 0);
+    }
 
-	public static function enqueueAssets() {
-		$theme_version = wp_get_theme()->get('Version');
-		$theme_uri = get_template_directory_uri();
+    public static function enqueueAssets()
+    {
+        $theme_version = wp_get_theme()->get('Version');
+        $theme_uri = get_template_directory_uri();
 
-		// CSS
-		wp_enqueue_style(
-			'bitski-theme-style',
-			$theme_uri . '/assets/css/style.css',
-			[],
-			$theme_version
-		);
+        // CSS
+        wp_enqueue_style(
+            'bitski-theme-style',
+            $theme_uri . '/assets/css/style.css',
+            [],
+            $theme_version
+        );
 
-		// JS
-		wp_enqueue_script(
-			'bitski-theme-main',
-			$theme_uri . '/assets/js/main.js',
-			[],
-			$theme_version,
-			true
-		);	}
+        // JS
+        wp_enqueue_script(
+            'bitski-theme-main',
+            $theme_uri . '/assets/js/main.js',
+            [],
+            $theme_version,
+            true
+        );    
+    }
 }

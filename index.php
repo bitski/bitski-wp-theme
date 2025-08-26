@@ -12,7 +12,7 @@
 echo '<div style="text-align: center;">Moin, Minchen!</div>';
 
 while( have_posts() ) {;
-	the_post();
-	echo '<h1>' . get_the_title() . '</h1>';
-	echo '<div>' . get_the_content() . '</div>';
+    the_post();
+    echo '<h1>' . get_the_title() . '</h1>';
+    echo '<div>' . get_the_content() . '</div>';
 }

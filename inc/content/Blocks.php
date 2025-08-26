@@ -7,6 +7,7 @@ namespace BitskiWPTheme\content;
  *
  * @since 0.1.0
  */
-class Blocks {
+class Blocks
+{
 
 }
