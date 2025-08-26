@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Theme setup class
+ *
+ * @since 0.1.0
+ */
 namespace BitskiWPTheme\theme;
 
 class ThemeSetup
@@ -15,7 +19,16 @@ class ThemeSetup
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
         add_theme_support('menus');
-        add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
+        add_theme_support(
+            'html5',
+            [
+                'caption',
+                'comment-form',
+                'comment-list',
+                'gallery',
+                'search-form'
+            ]
+        );
         add_theme_support('wp-block-styles');
         add_theme_support('editor-styles');
     }

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Theme hooks manager.
+ *
+ * @since 0.1.0
+ */
 namespace BitskiWPTheme\theme;
 
 use BitskiWPTheme\assets\AssetsManager;

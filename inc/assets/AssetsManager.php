@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Manages theme assets.
+ *
+ * @since 0.1.0
+ */
 namespace BitskiWPTheme\assets;
 
 /**
