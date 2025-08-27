@@ -15,7 +15,7 @@ use BitskiWPTheme\assets\AssetsManager;
  */
 class ThemeHooks
 {
-    public static function init()
+    public function init()
     {
         //add_action('init', [Assets::class, 'customCallback'], 0);
     }

@@ -7,11 +7,12 @@
  * @package Bitski_WP_Theme
  * @since   0.1.0
  */
+?>
 
-echo '<div style="text-align: center;">Moin, Minchen!</div>';
+<?php get_header(); ?>
 
-while ( have_posts() ) {;
-    the_post();
-    echo '<h1>' . get_the_title() . '</h1>';
-    echo '<div>' . get_the_content() . '</div>';
-}
+<main id="main-content">
+Moin
+</main>
+
+<?php get_footer(); ?>

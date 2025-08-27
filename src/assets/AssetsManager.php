@@ -13,12 +13,12 @@ namespace BitskiWPTheme\assets;
  */
 class AssetsManager
 {
-    public static function init()
+    public function init()
     {
-        add_action('wp_enqueue_scripts', [ __CLASS__, 'enqueueAssets' ], 0);
+        add_action('wp_enqueue_scripts', [ $this, 'enqueueAssets' ], 0);
     }
 
-    public static function enqueueAssets()
+    public function enqueueAssets()
     {
         $theme_version = wp_get_theme()->get('Version');
         $theme_uri = get_template_directory_uri();

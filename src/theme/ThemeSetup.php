@@ -8,13 +8,13 @@ namespace BitskiWPTheme\theme;
 
 class ThemeSetup
 {
-    public static function init()
+    public function init()
     {
-        add_action('after_setup_theme', [__CLASS__, 'themeSupport']);
-        add_action('after_setup_theme', [__CLASS__, 'loadTextdomain']);
+        add_action('after_setup_theme', [$this, 'themeSupport']);
+        add_action('after_setup_theme', [$this, 'loadTextdomain']);
     }
 
-    public static function themeSupport()
+    public function themeSupport()
     {
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
@@ -33,7 +33,7 @@ class ThemeSetup
         add_theme_support('editor-styles');
     }
 
-    public static function loadTextdomain()
+    public function loadTextdomain()
     {
         load_theme_textdomain('bitski-wp-theme', get_template_directory() . '/languages');
     }

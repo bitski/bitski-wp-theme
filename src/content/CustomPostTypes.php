@@ -13,11 +13,11 @@ namespace BitskiWPTheme\content;
  */
 class CustomPostTypes
 {
-    public static function init()
+    public function init()
     {
-        add_action('init', [ __CLASS__, 'registerCustomPostTypes' ], 0);;
+        add_action('init', [ $this, 'registerCustomPostTypes' ], 0);;
     }
-    public static function registerCustomPostTypes()
+    public function registerCustomPostTypes()
     {
         register_post_type(
             'beispiel', [

@@ -4,3 +4,8 @@
  *
  * @since 0.1.0
  */
+?>
+<footer>
+	<p>Footer</p>
+</footer>
+</body>
