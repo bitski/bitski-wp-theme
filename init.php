@@ -1,4 +1,8 @@
 <?php
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Theme bootstrap and class initialization.
  *
@@ -14,7 +18,7 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     error_log('Autoloader not found: ' . __DIR__ . '/vendor/autoload.php');
 }
 
-// Array of core theme classes to  to be initialized automatically, can be extended or modified as needed.
+// Array of core theme classes to be initialized automatically, can be extended or modified as needed.
 $classes = [
     \BitskiWPTheme\theme\ThemeSetup::class,
     \BitskiWPTheme\assets\AssetsManager::class,

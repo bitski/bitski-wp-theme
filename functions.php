@@ -1,4 +1,8 @@
 <?php
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * The functions file for the Bitski WordPress Theme
  *
