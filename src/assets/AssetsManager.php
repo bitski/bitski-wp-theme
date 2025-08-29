@@ -23,6 +23,14 @@ class AssetsManager
         $theme_version = wp_get_theme()->get('Version');
         $theme_uri = get_template_directory_uri();
 
+		//
+	    wp_enqueue_style(
+//		    'bootstrap',
+//		    $theme_uri . '/assets/js/style.css',
+//		    [],
+//		    $theme_version
+	    );
+
         // CSS
         wp_enqueue_style(
             'bitski-theme-style',
@@ -31,8 +39,17 @@ class AssetsManager
             $theme_version
         );
 
-        // JS
-        wp_enqueue_script(
+        // Bootstrap JS
+	    wp_enqueue_script(
+		    'bootstrap',
+		    $theme_uri . '/assets/js/lib/bootstrap.bundle.min.js',
+		    [],
+		    $theme_version,
+		    true
+	    );
+
+
+	    wp_enqueue_script(
             'bitski-theme-main',
             $theme_uri . '/assets/js/main.js',
             [],

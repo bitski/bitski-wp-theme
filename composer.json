@@ -3,5 +3,8 @@
     "psr-4": {
       "BitskiWPTheme\\": "src/"
     }
+  },
+  "require": {
+    "twbs/bootstrap": ">=5.3, <5.4"
   }
 }
