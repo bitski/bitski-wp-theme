@@ -20,8 +20,11 @@
 # Configuration
 wp-config.php
 
-# Example themes
+# Themes
 /wp-content/themes/twenty*/
+/wp-content/themes/bitski-wp-theme/assets/css/
+/wp-content/themes/bitski-wp-theme/assets/scss/vendors/
+!/wp-content/themes/bitski-wp-theme/assets/scss/vendors/bootstrap/_bootstrap-configuration*.scss
 
 # Example plugin
 /wp-content/plugins/hello.php
