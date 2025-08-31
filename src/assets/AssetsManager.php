@@ -40,7 +40,6 @@ class AssetsManager
 		    true
 	    );
 
-
 	    wp_enqueue_script(
             'bitski-wp-theme-script',
             $theme_uri . '/assets/js/main.js',
