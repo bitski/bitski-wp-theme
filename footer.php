@@ -5,9 +5,10 @@
  * @since 0.1.0
  */
 ?>
-<footer>
+<footer id="footer">
     <p>Footer</p>
 </footer>
-<?php
-wp_footer(); ?>
+
+<?php wp_footer(); ?>
+
 </body>

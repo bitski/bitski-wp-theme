@@ -12,7 +12,9 @@
 <?php get_header(); ?>
 
 <main id="main-content">
-Moin
+    <div id="content">
+        Main
+    </div>
 </main>
 
 <?php get_footer(); ?>
