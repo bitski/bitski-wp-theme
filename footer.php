@@ -5,7 +5,7 @@
  * @since 0.1.0
  */
 ?>
-<footer id="footer">
+<footer id="footer" class="footer">
     <p>Footer</p>
 </footer>
 

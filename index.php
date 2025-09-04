@@ -11,10 +11,8 @@
 
 <?php get_header(); ?>
 
-<main id="main-content">
-    <div id="content">
-        Main
-    </div>
+<main id="content" class="content">
+        Main content
 </main>
 
 <?php get_footer(); ?>
