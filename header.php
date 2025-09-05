@@ -1,12 +1,14 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly.
-}
 /**
  * The template for displaying the header
  *
  * @since 0.1.0
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>

@@ -7,6 +7,11 @@
  * @package Bitski_WP_Theme
  * @since   0.1.0
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 ?>
 
 <?php get_header(); ?>
