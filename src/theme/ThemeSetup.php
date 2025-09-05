@@ -10,9 +10,16 @@ class ThemeSetup
 {
     public function init()
     {
-        add_action('after_setup_theme', [$this, 'themeSupport']);
+        $this->defineConstants();
+		add_action('after_setup_theme', [$this, 'themeSupport']);
         add_action('after_setup_theme', [$this, 'loadTextdomain']);
     }
+
+	public function defineConstants() {
+		if( !defined('BITSKI_WP_THEME_VERSION') ) {
+			define('BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT', 'navbar-expand-md');
+		}
+	}
 
     public function themeSupport()
     {

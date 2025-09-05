@@ -29,4 +29,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <header class="header">
     Header
+    <nav id="nav-main" class="navbar <?php apply_filters('bitski-wp-them/class/header/navbar/breakpoint', 'navbar-expand-lg'); ?>">
+        Navbar
+        <?php var_dump(BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT); ?>
+    </nav>
+    /Header
 </header>
