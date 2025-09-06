@@ -6,6 +6,7 @@
  */
 namespace BitskiWPTheme\theme;
 
+use BitskiWPTheme\theme\ThemeSetup;
 use BitskiWPTheme\assets\AssetsManager;
 
 /**
@@ -13,20 +14,32 @@ use BitskiWPTheme\assets\AssetsManager;
  *
  * @since 0.1.0
  */
-class ThemeHooks
-{
-    public function init()
-    {
-        $this->registerCssClassHooks();
-    }
-
-	protected function registerCssClassHooks() {
-		add_filter('bitski-wp-theme/class/header/navbar/breakpoint', [$this, 'navbarBreakpointClass']);
+class ThemeHooks {
+	// Initialize theme hooks.
+	public function init() {
+		$this->registerCssClassesHooks();
 	}
 
-	public function navbarBreakpointClass( $default ) {
-		return defined( 'BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT' )
-			? BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT
-			: $default;
+	// Getter for CSS classes by filter name.
+	// Returns a space-separated string of classes or default string if not found.
+	public function getClassesByFilter( string $filter, string $default = '' ): string {
+		if ( isset( ThemeSetup::$classes[ $filter ] ) ) {
+			$classes = ThemeSetup::$classes[ $filter ];
+
+			return is_array( $classes ) ? implode( ' ', $classes ) : (string) $classes;
+		}
+
+		return $default;
+	}
+
+	// Register hooks for CSS classes.
+	// Applies filters to return only classes without context.
+	protected function registerCssClassesHooks() {
+		foreach ( ThemeSetup::$classes as $filter => $defaultClasses ) {
+			add_filter( $filter, function ( $classes = '' ) use ( $filter, $defaultClasses ) {
+				// Returns default classes if none are provided, no context.
+				return $this->getClassesByFilter( $filter, $classes );
+			} );
+		}
 	}
 }

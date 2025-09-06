@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
     <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
             'navbar-expand-lg' ); ?>">
-        <div class= "<?php echo apply_filters( 'bitski-wp-theme/class/container','container', 'header'); ?>">
+        <div class= "<?php echo apply_filters( 'bitski-wp-theme/class/container','container'); ?>">
             Navbar
         </div>
     </nav>

@@ -8,20 +8,27 @@ namespace BitskiWPTheme\theme;
 
 class ThemeSetup
 {
-    public function init()
+	// Centralized array to manage CSS classes for various theme components
+	// Key: filter name, Value: array of default classes
+	// Usage: apply_filters('filter-name', 'default-classes')
+	public static array $classes = [
+		// Example: 'filter-name' => [ 'class1', 'class2' ]
+		'bitski-wp-theme/class/header'                   => [ ],
+		'bitski-wp-theme/class/header/navbar/breakpoint' => [ ],
+		'bitski-wp-theme/class/container'                => [ ],
+		// Add more class name filters as needed
+	];
+
+	// Initialize theme setup
+	// Theme support features and textdomain loading
+	public function init()
     {
-        $this->defineConstants();
 		add_action('after_setup_theme', [$this, 'themeSupport']);
         add_action('after_setup_theme', [$this, 'loadTextdomain']);
     }
 
-	public function defineConstants() {
-//		if( !defined('BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT') ) {
-//			define('BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT', '');
-//		}
-	}
-
-    public function themeSupport()
+	// Add theme support features
+	public function themeSupport()
     {
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
@@ -40,6 +47,7 @@ class ThemeSetup
         add_theme_support('editor-styles');
     }
 
+	// Load theme textdomain for translations
     public function loadTextdomain()
     {
         load_theme_textdomain('bitski-wp-theme', get_template_directory() . '/languages');
