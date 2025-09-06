@@ -8,9 +8,11 @@ namespace BitskiWPTheme\theme;
 
 class ThemeSetup
 {
-	// Centralized array to manage CSS classes for various theme components
-	// Key: filter name, Value: array of default classes
-	// Usage: apply_filters('filter-name', 'default-classes')
+	/*
+	 * Centralized array to manage CSS classes for various theme components
+	 * Key: filter name, Value: array of default classes
+	 * Usage: apply_filters('filter-name', 'default-classes')
+	 */
 	public static array $classes = [
 		// Example: 'filter-name' => [ 'class1', 'class2' ]
 		'bitski-wp-theme/class/header'                   => [ ],
@@ -19,8 +21,10 @@ class ThemeSetup
 		// Add more class name filters as needed
 	];
 
-	// Initialize theme setup
-	// Theme support features and textdomain loading
+	/*
+	 * Initialize theme setup
+	 * Theme support features and textdomain loading
+	 */
 	public function init()
     {
 		add_action('after_setup_theme', [$this, 'themeSupport']);
