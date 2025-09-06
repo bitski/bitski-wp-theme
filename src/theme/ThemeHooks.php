@@ -18,14 +18,15 @@ class ThemeHooks
     public function init()
     {
         $this->registerCssClassHooks();
-		//add_action('init', [Assets::class, 'customCallback'], 0);
     }
 
 	protected function registerCssClassHooks() {
 		add_filter('bitski-wp-theme/class/header/navbar/breakpoint', [$this, 'navbarBreakpointClass']);
 	}
 
-	public function navbarBreakpointClass($default) {
-		return BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT;
+	public function navbarBreakpointClass( $default ) {
+		return defined( 'BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT' )
+			? BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT
+			: $default;
 	}
 }

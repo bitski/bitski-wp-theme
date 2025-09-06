@@ -16,9 +16,9 @@ class ThemeSetup
     }
 
 	public function defineConstants() {
-		if( !defined('BITSKI_WP_THEME_VERSION') ) {
-			define('BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT', 'navbar-expand-md');
-		}
+//		if( !defined('BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT') ) {
+//			define('BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT', '');
+//		}
 	}
 
     public function themeSupport()

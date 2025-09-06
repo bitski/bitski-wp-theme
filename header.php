@@ -27,11 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <a class="skip-link visually-hidden-focusable"
    href="#footer"><?php esc_html_e( 'Skip to footer', 'bitski-wp-theme' ); ?></a>
 
-<header class="header">
-    Header
-    <nav id="nav-main" class="navbar <?php apply_filters('bitski-wp-them/class/header/navbar/breakpoint', 'navbar-expand-lg'); ?>">
-        Navbar
-        <?php var_dump(BITSKI_WP_THEME_CLASS_HEADER_NAVBAR_BREAKPOINT); ?>
+<header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
+    <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
+            'navbar-expand-lg' ); ?>">
+        <div class= "<?php echo apply_filters( 'bitski-wp-theme/class/container','container', 'header'); ?>">
+            Navbar
+        </div>
     </nav>
-    /Header
 </header>
