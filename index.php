@@ -17,7 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php get_header(); ?>
 
 <main id="content" class="content">
+    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container' ); ?>">
         Main content
+    </div>
 </main>
 
 <?php get_footer(); ?>
