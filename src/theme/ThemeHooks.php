@@ -24,14 +24,14 @@ class ThemeHooks {
 	 * Getter for CSS classes by filter name.
 	 * Returns a space-separated string of classes or default string if not found.
 	 */
-	public function getClassesByFilter( string $filter, string $default = '' ): string {
-		if ( isset( ThemeSetup::$classes[ $filter ] ) ) {
-			$classes = ThemeSetup::$classes[ $filter ];
+	public function getClassesByFilter( string $filter, string $defaultClasses = '' ): string {
+		if ( isset( ThemeSetup::$classes[ $filter ] ) && !empty(ThemeSetup::$classes[ $filter ])) {
+			$setupClasses = ThemeSetup::$classes[ $filter ];
 
-			return is_array( $classes ) ? implode( ' ', $classes ) : (string) $classes;
+			return is_array( $setupClasses ) ? implode( ' ', $setupClasses ) : (string) $setupClasses;
 		}
 
-		return $default;
+		return $defaultClasses;
 	}
 
 	/*
@@ -39,10 +39,10 @@ class ThemeHooks {
 	 * Applies filters to return only classes without context.
 	 */
 	protected function registerCssClassesHooks() {
-		foreach ( ThemeSetup::$classes as $filter => $defaultClasses ) {
-			add_filter( $filter, function ( $classes = '' ) use ( $filter, $defaultClasses ) {
-				// Returns default classes if none are provided, no context.
-				return $this->getClassesByFilter( $filter, $classes );
+		foreach ( ThemeSetup::$classes as $filter => $setupClasses ) {
+			add_filter( $filter, function ( $defaultClasses = '' ) use ( $filter ) {
+				// Returns setup classes or default classes if none are set.
+				return $this->getClassesByFilter( $filter, $defaultClasses );
 			} );
 		}
 	}
