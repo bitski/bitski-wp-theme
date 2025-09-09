@@ -16,27 +16,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php get_header(); ?>
 
-<main id="content" class="content">
-    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container' ); ?>">
-        <!-- Content header -->
-        <header class="">
-            <h1 class="entry-title"><?php bloginfo( 'name' ); ?></h1>
-            <p class=""><?php bloginfo( 'description' ); ?></p>
-        </header>
+<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container' ); ?>">
+    <!-- Content header -->
+    <header class="">
+        <h1 class="entry-title"><?php bloginfo( 'name' ); ?></h1>
+        <p class=""><?php bloginfo( 'description' ); ?></p>
+    </header>
 
-        <!-- Post list -->
-        <?php if ( have_posts() ) { ?>
-            <section class="post-list">
-                <div class="">
-                    <?php while ( have_posts() ) {
-                        the_post(); ?>
-                        <article id="post-<?php the_ID(); ?>">
-                            Post <?php the_ID(); ?>
-                        </article>
-                    <?php } ?>
-                </div>
-            </section>
-        <?php } ?>
+    <!-- Post list -->
+    <?php if ( have_posts() ) { ?>
+        <section class="post-list">
+            <div class="">
+                <?php while ( have_posts() ) {
+                    the_post(); ?>
+                    <article id="post-<?php the_ID(); ?>">
+                        Post <?php the_ID(); ?>
+                    </article>
+                <?php } ?>
+            </div>
+        </section>
+    <?php } ?>
 </main>
 
 <?php get_footer(); ?>
