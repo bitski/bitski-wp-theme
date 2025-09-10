@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Nav Walker.
+ *
+ * @since 0.4.3
+ */
 namespace BitskiWPTheme\walkers;
 
 use Walker_Nav_Menu;

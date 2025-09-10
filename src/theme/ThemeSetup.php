@@ -29,6 +29,7 @@ class ThemeSetup
     {
 		add_action('after_setup_theme', [$this, 'themeSupport']);
         add_action('after_setup_theme', [$this, 'loadTextdomain']);
+		add_action('after_setup_theme', [$this, 'registerNavMenus']);
     }
 
 	// Add theme support features
@@ -56,4 +57,12 @@ class ThemeSetup
     {
         load_theme_textdomain('bitski-wp-theme', get_template_directory() . '/languages');
     }
+
+	// Register theme navigation menus
+	public function registerNavMenus()
+	{
+		register_nav_menus([
+			'main-menu' => __('Main menu', 'bitski-wp-theme'),
+		]);
+	}
 }
