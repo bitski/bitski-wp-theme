@@ -63,6 +63,7 @@ class ThemeSetup
 	{
 		register_nav_menus([
 			'main-menu' => __('Main menu', 'bitski-wp-theme'),
+			'footer-menu' => __('Footer menu', 'bitski-wp-theme'),
 		]);
 	}
 }
