@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Post Types
+ * Custom Post Types.
  *
  * @since 0.1.0
  */

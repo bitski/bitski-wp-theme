@@ -2,7 +2,7 @@
 /**
  * The main template file.
  *
- * This is the most generic template file in a WordPress theme
+ * This is the most generic template file in a WordPress theme.
  *
  * @package Bitski_WP_Theme
  * @since   0.1.0
@@ -12,9 +12,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-?>
 
-<?php get_header(); ?>
+get_header();
+?>
 
 <main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container' ); ?>">
     <!-- Content header -->

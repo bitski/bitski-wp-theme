@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme Helpers
+ * Theme Helpers.
  *
  * @since 0.1.0
  */
