@@ -1,6 +1,6 @@
 <?php
 /**
- * The template components for displaying the main navigation menu.
+ * The template component for displaying the main navigation menu.
  *
  * @since 0.4.3
  */
