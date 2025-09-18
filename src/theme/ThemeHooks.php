@@ -17,7 +17,10 @@ use BitskiWPTheme\assets\AssetsManager;
 class ThemeHooks {
 	// Initialize theme hooks.
 	public function init() {
-		$this->registerCssClassesHooks();
+		$this->registerBaseHooks();         // Base hooks, support.
+		$this->registerCssClassesHooks();   // CSS classes hooks.
+		$this->registerOptionHooks();       // Theme options hooks.
+		$this->registerFunctionalHooks();   // Functional hooks, e.g., JS events.
 	}
 
 	/*
@@ -35,6 +38,25 @@ class ThemeHooks {
 	}
 
 	/*
+     * Getter for theme options by filter name.
+     * Returns the option value or default value if not found.
+     */
+	public function getOptionByFilter( string $filter, string|bool $defaultOption = '' ): string|bool {
+		if ( isset( ThemeSetup::$options[ $filter ] ) && ThemeSetup::$options[ $filter ] !== '' ) {
+			$setupOption = ThemeSetup::$options[ $filter ];
+
+			return is_bool($setupOption) ? $setupOption : (string) $setupOption;
+		}
+
+		return $defaultOption;
+	}
+
+	/*
+	 * Registers base hooks.
+	 */
+	protected function registerBaseHooks() {}
+
+	/*
 	 * Registers hooks for CSS classes.
 	 * Applies filters to return only classes without context.
 	 */
@@ -46,4 +68,20 @@ class ThemeHooks {
 			} );
 		}
 	}
+
+	/*
+	 * Registers hooks for theme options.
+	 */
+	protected function registerOptionHooks() {
+		foreach (ThemeSetup::$options as $filter => $setupOption) {
+			add_filter($filter, function ($defaultOption = '') use ($filter) {
+				return $this->getOptionByFilter($filter, $defaultOption);
+			});
+		}
+	}
+
+	/*
+	 * Registers hooks for functionalities.
+	 */
+	protected function registerFunctionalHooks() {}
 }

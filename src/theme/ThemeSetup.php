@@ -6,8 +6,22 @@
  */
 namespace BitskiWPTheme\theme;
 
-class ThemeSetup
-{
+class ThemeSetup {
+	/*
+	 * Centralized array to manage theme options.
+	 * Key: option name, Value: option value
+	 * Usage: apply_filters('option-name', 'default-value')
+	 *
+	 * @var array{
+	 *   'bitski-wp-theme/option/load-fontawesome': bool,
+	 * }
+	 */
+	public static array $options = [
+		// Example: 'option-name' => 'default-value'
+		'bitski-wp-theme/option/load-fontawesome' => true,
+		// Add more option filters as needed
+	];
+
 	/*
 	 * Centralized array to manage CSS classes for various theme components
 	 * Key: filter name, Value: array of default classes

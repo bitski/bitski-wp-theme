@@ -13,13 +13,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="header-actions d-flex align-items-center" role="group"
      aria-label="<?php esc_attr_e( 'Header Actions', 'bitski-wp-theme' ); ?>">
-    <form class="d-flex" role="search">
+    <!-- Search form -->
+    <form class="d-flex me-1 me-md-2" role="search">
         <!--        <input class="form-control me-2" type="search" placeholder="Suche" aria-label="Suche">-->
         <button class="btn btn-outline-primary" type="submit">
             <i class="bi bi-search">Suche</i>
         </button>
     </form>
-    <a class="btn btn-sm btn-outline-primary me-2" href="<?php echo esc_url( wp_login_url() ); ?>">
+
+    <!-- Login button -->
+    <a class="btn btn-sm btn-outline-primary me-1 me-md-2" href="<?php echo esc_url( wp_login_url() ); ?>">
         <?php esc_html_e( 'Login', 'bitski-wp-theme' ); ?>
     </a>
 

@@ -30,11 +30,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
     <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
             'navbar-expand-lg' ); ?>">
-        <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container' ); ?>">
+        <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
-                <img src="" alt="<?php bloginfo( 'name' ); ?> Logo" class="d-td-none">
-                <img src="" alt="<?php bloginfo( 'name' ); ?> Logo" class="d-tl-none">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_50x50.svg" alt="<?php bloginfo( 'name' ); ?> Logo" class="d-td-none">
+<!--                <img src="" alt="--><?php //bloginfo( 'name' ); ?><!-- Logo" class="d-tl-none">-->
             </a>
 
             <!-- Offcanvas Navbar -->

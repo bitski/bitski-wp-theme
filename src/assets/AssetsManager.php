@@ -24,6 +24,8 @@ class AssetsManager
         $theme_uri = get_template_directory_uri();
 
         // CSS
+	    //
+	    // Theme main style
         wp_enqueue_style(
             'bitski-wp-theme-style',
             $theme_uri . '/assets/css/main.css',
@@ -31,15 +33,28 @@ class AssetsManager
             $theme_version
         );
 
+		// Fontawesome
+	    if ( apply_filters( 'bitski-wp-theme/option/load-fontawesome', true ) ) {
+		    wp_enqueue_style(
+			    'fontawesome',
+			    $theme_uri . '/assets/fonts/fontawesome/css/all.min.css',
+			    [],
+			    '7.0.1'
+		    );
+	    }
+
+		// Scripts
+	    //
         // Bootstrap JS
 	    wp_enqueue_script(
 		    'bootstrap',
 		    $theme_uri . '/assets/js/lib/bootstrap.bundle.min.js',
 		    [],
-		    $theme_version,
+		    '5.3.8',
 		    true
 	    );
 
+		// Theme main script
 	    wp_enqueue_script(
             'bitski-wp-theme-script',
             $theme_uri . '/assets/js/main.js',

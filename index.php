@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container' ); ?>">
+<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
     <!-- Content header -->
     <header class="">
         <h1 class="entry-title"><?php bloginfo( 'name' ); ?></h1>
