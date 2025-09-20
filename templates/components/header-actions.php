@@ -14,21 +14,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="header-actions d-flex align-items-center" role="group"
      aria-label="<?php esc_attr_e( 'Header Actions', 'bitski-wp-theme' ); ?>">
     <!-- Search form -->
-    <form class="d-flex me-1 me-md-2" role="search">
-        <!--        <input class="form-control me-2" type="search" placeholder="Suche" aria-label="Suche">-->
-        <button class="btn btn-outline-primary" type="submit">
-            <i class="bi bi-search">Suche</i>
+    <form class="search-form d-flex me-1 me-md-2" role="search">
+        <button class="search-toggler btn btn-outline-secondary" type="submit">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <span class="visually-hidden"><?php esc_html_e( 'Search', 'bitski-wp-theme' ); ?></span>
         </button>
     </form>
 
-    <!-- Login button -->
-    <a class="btn btn-sm btn-outline-primary me-1 me-md-2" href="<?php echo esc_url( wp_login_url() ); ?>">
-        <?php esc_html_e( 'Login', 'bitski-wp-theme' ); ?>
+    <!-- Login link -->
+    <a class="login-link btn btn-outline-secondary me-1 me-md-2" href="<?php echo esc_url( wp_login_url() ); ?>">
+        <i class="fa-solid fa-user" aria-hidden="true"></i>
+        <span class="visually-hidden"><?php esc_html_e( 'Login', 'bitski-wp-theme' ); ?></span>
     </a>
 
-    <!-- Navbar toggler -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+    <!-- Offcanvas navbar toggler -->
+    <button class="offcanvas-navbar-toggler btn btn-outline-primary" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <span class="visually-hidden"><?php esc_html_e( 'Menu', 'bitski-wp-theme' ); ?></span>
     </button>
 </div>
