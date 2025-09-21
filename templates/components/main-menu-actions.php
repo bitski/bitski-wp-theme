@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="main-menu-actions d-flex align-items-center" role="group" aria-label="<?php esc_attr_e( 'Header Actions', 'bitski-wp-theme' ); ?>">
+<div class="main-menu-actions py-3 py-lg-0 d-flex align-items-center" role="group" aria-label="<?php esc_attr_e( 'Header Actions', 'bitski-wp-theme' ); ?>">
     <!-- Color mode dropdown -->
     <div class="color-mode-dropdown dropdown">
         <button class="color-mode-toggler dropdown-toggle btn btn-outline-secondary me-lg-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">

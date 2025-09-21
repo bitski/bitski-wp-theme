@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body justify-content-lg-end">
+                <div class="offcanvas-body">
                     <!-- Main Menu -->
                     <?php get_template_part( 'templates/components/main-menu' ); ?>
 
