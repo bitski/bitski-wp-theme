@@ -12,5 +12,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="main-menu-actions d-flex align-items-center" role="group" aria-label="<?php esc_attr_e( 'Header Actions', 'bitski-wp-theme' ); ?>">
-	<button class="btn btn-primary btn-sm" type="button">Dark Mode</button>
+    <!-- Color mode dropdown -->
+    <div class="color-mode-dropdown dropdown">
+        <button class="color-mode-toggler dropdown-toggle btn btn-outline-secondary me-lg-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+            <span class="visually-hidden"><?php esc_html_e( 'Color mode toggler', 'bitski-wp-theme' ); ?></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <button class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
+                    <span class="color-mode-icon light"><i class="fa-solid fa-sun" aria-hidden="true"></i></span>
+                    <span class="color-mode-description">Light</span>
+                </button>
+            </li>
+            <li>
+                <button class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+                    <span class="color-mode-icon dark"><i class="fa-solid fa-moon" aria-hidden="true"></i></span>
+                    <span class="color-mode-description">Dark</span>
+                </button>
+            </li>
+            <li>
+                <button class="dropdown-item active" data-bs-theme-value="auto" aria-pressed="false">
+                    <span class="color-mode-icon auto"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></span>
+                    <span class="color-mode-description">Auto</span>
+                </button>
+            </li>
+        </ul>
+    </div>
 </div>
