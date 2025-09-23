@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="header-actions d-flex align-items-center" role="group"
-     aria-label="<?php esc_attr_e( 'Header Actions', 'bitski-wp-theme' ); ?>">
+     aria-label="<?php esc_attr_e( 'Header actions', 'bitski-wp-theme' ); ?>">
     <!-- Search form -->
     <form class="search-form d-flex me-1 me-md-2" role="search">
         <button class="search-toggler btn btn-outline-secondary" type="submit">

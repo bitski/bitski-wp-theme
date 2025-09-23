@@ -33,8 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_50x50.svg" alt="<?php bloginfo( 'name' ); ?> Logo" class="d-td-none">
-<!--                <img src="" alt="--><?php //bloginfo( 'name' ); ?><!-- Logo" class="d-tl-none">-->
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_50x50.svg"
+                     alt="<?php bloginfo( 'name' ); ?> Logo" class="d-td-none">
+                <!--                <img src="" alt="--><?php //bloginfo( 'name' ); ?><!-- Logo" class="d-tl-none">-->
             </a>
 
             <!-- Offcanvas Navbar -->
@@ -47,6 +48,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="offcanvas-body">
                     <!-- Main Menu -->
                     <?php get_template_part( 'templates/components/main-menu' ); ?>
+
+                    <!-- Main menu socials -->
+                    <?php get_template_part( 'templates/components/main-menu-socials' ); ?>
 
                     <!-- Main menu actions -->
                     <?php get_template_part( 'templates/components/main-menu-actions' ); ?>
