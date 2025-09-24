@@ -12,7 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <footer id="footer" class="footer">
     <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
-        Footer container
+        <!-- Footer columns -->
+        <?php get_template_part( 'templates/components/footer/columns' ); ?>
+
+        <!-- Footer infos -->
+        <?php get_template_part( 'templates/components/footer/info' ); ?>
     </div>
 </footer>
 

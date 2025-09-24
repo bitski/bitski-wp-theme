@@ -47,18 +47,18 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
                 <div class="offcanvas-body">
                     <!-- Main Menu -->
-                    <?php get_template_part( 'templates/components/main-menu' ); ?>
+                    <?php get_template_part( 'templates/components/header/main-menu/menu' ); ?>
 
                     <!-- Main menu socials -->
-                    <?php get_template_part( 'templates/components/main-menu-socials' ); ?>
+                    <?php get_template_part( 'templates/components/header/main-menu/socials' ); ?>
 
                     <!-- Main menu actions -->
-                    <?php get_template_part( 'templates/components/main-menu-actions' ); ?>
+                    <?php get_template_part( 'templates/components/header/main-menu/actions' ); ?>
                 </div>
             </div>
 
             <!-- Header actions -->
-            <?php get_template_part( 'templates/components/header-actions' ); ?>
+            <?php get_template_part( 'templates/components/header/actions' ); ?>
         </div>
     </nav>
 </header>

@@ -1,0 +1,20 @@
+<?php
+/**
+ * The template component for displaying footer info.
+ *
+ * @since 0.5.6
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
+
+<section class="footer-info row">
+    <div class="col-12">
+        <p class="text-center">
+            <small>&copy; 2025 &ndash; <?php echo date("Y"); ?> bitski wp theme</small>
+        </p>
+    </div>
+</section>
