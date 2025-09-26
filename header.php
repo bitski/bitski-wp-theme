@@ -51,9 +51,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     <!-- Main menu socials, labels hidden on screens >= lg -->
                     <?php
-                    if ( apply_filters( 'bitski-wp-theme/option/header/show-socials', true ) ) {
+                    if ( apply_filters( 'bitski-wp-theme/option/header/display-socials', true ) ) {
                         get_template_part( 'templates/components/socials', null,
-                                array( 'display_labels_lg' => false ) );
+                                array( 'template' => 'header' ) );
                     }
                     ?>
 

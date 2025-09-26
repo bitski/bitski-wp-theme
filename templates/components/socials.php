@@ -10,9 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+$template             = $args['template'] ?? '';
+$display_labels       = apply_filters( 'bitski-wp-theme/option/header/display-socials-labels', true );
 $class_display_labels = '';
-$display_labels_lg = $args['display_labels_lg'] ?? true;
-if ( ! $display_labels_lg ) {
+
+if ( $template === 'header' && $display_labels ) {
     $class_display_labels = 'd-lg-none';
 }
 ?>
@@ -24,7 +26,9 @@ if ( ! $display_labels_lg ) {
         <a class="github-link nav-link p-2 ps-0"
            href="<?php echo esc_url( wp_login_url() ); ?>">
             <i class="fa-brands fa-github" aria-hidden="true"></i>
-            <span class="<?php echo $class_display_labels; ?>"><?php esc_html_e( 'GitHub', 'bitski-wp-theme' ); ?></span>
+            <?php if ( $display_labels ) { ?>
+                <span class="<?php echo $class_display_labels; ?>"><?php esc_html_e( 'GitHub', 'bitski-wp-theme' ); ?></span>
+            <?php } ?>
             <span class="visually-hidden"><?php esc_html_e( 'GitHub', 'bitski-wp-theme' ); ?></span>
         </a>
     </li>
@@ -32,7 +36,9 @@ if ( ! $display_labels_lg ) {
         <a class="x-twitter-link nav-link p-2 ps-0"
            href="<?php echo esc_url( wp_login_url() ); ?>">
             <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-            <span class="<?php echo $class_display_labels; ?>"><?php esc_html_e( 'x.com', 'bitski-wp-theme' ); ?></span>
+            <?php if ( $display_labels ) { ?>
+                <span class="<?php echo $class_display_labels; ?>"><?php esc_html_e( 'x.com', 'bitski-wp-theme' ); ?></span>
+            <?php } ?>
             <span class="visually-hidden"><?php esc_html_e( 'x.com', 'bitski-wp-theme' ); ?></span>
         </a>
     </li>
@@ -40,7 +46,9 @@ if ( ! $display_labels_lg ) {
         <a class="instagram-link nav-link p-2 ps-0"
            href="<?php echo esc_url( wp_login_url() ); ?>">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            <span class="<?php echo $class_display_labels; ?>"><?php esc_html_e( 'Instagram', 'bitski-wp-theme' ); ?></span>
+            <?php if ( $display_labels ) { ?>
+                <span class="<?php echo $class_display_labels; ?>"><?php esc_html_e( 'Instagram', 'bitski-wp-theme' ); ?></span>
+            <?php } ?>
             <span class="visually-hidden"><?php esc_html_e( 'Instagram', 'bitski-wp-theme' ); ?></span>
         </a>
     </li>
