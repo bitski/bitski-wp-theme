@@ -49,10 +49,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <!-- Main Menu -->
                     <?php get_template_part( 'templates/components/header/main-menu/menu' ); ?>
 
-                    <!-- Main menu socials -->
+                    <!-- Main menu socials, labels hidden on screens >= lg -->
                     <?php
-                    if ( apply_filters('bitski-wp-theme/option/header/show-socials', true) ) {
-                        get_template_part( 'templates/components/socials' );
+                    if ( apply_filters( 'bitski-wp-theme/option/header/show-socials', true ) ) {
+                        get_template_part( 'templates/components/socials', null,
+                                array( 'display_labels_lg' => false ) );
                     }
                     ?>
 
