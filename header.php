@@ -50,7 +50,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php get_template_part( 'templates/components/header/main-menu/menu' ); ?>
 
                     <!-- Main menu socials -->
-                    <?php get_template_part( 'templates/components/header/main-menu/socials' ); ?>
+                    <?php
+                    if ( apply_filters('bitski-wp-theme/option/header/show-socials', true) ) {
+                        get_template_part( 'templates/components/socials' );
+                    }
+                    ?>
 
                     <!-- Main menu actions -->
                     <?php get_template_part( 'templates/components/header/main-menu/actions' ); ?>

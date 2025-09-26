@@ -1,8 +1,8 @@
 <?php
 /**
- * The template component for displaying main menu social icon links.
+ * The template component for displaying social icon links.
  *
- * @since 0.5.0
+ * @since 0.5.7
  */
 
 // Exit if accessed directly.
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<ul class="main-menu-socials list-unstyled me-lg-2 mb-0 py-2 py-lg-0 d-flex align-items-center" role="group"
+<ul class="socials list-unstyled me-lg-2 mb-0 py-2 py-lg-0 d-flex justify-content-lg-end align-items-center" role="group"
     aria-label="<?php esc_attr_e( 'Main menu socials', 'bitski-wp-theme' ); ?>">
     <li class="">
         <a class="github-link nav-link p-2 ps-0 ps-lg-2"

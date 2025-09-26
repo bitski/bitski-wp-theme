@@ -12,6 +12,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <footer id="footer" class="footer">
     <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+        <!-- Footer socials -->
+        <?php
+        if ( apply_filters( 'bitski-wp-theme/option/footer/show-socials', true ) ) { ?>
+            <section class="footer-socials row">
+                <div class="col-12">
+                    <?php get_template_part( 'templates/components/socials' ); ?>
+                </div>
+            </section>
+        <?php } ?>
+
         <!-- Footer columns -->
         <?php get_template_part( 'templates/components/footer/columns' ); ?>
 
