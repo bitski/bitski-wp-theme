@@ -32,7 +32,7 @@ class ThemeSetup {
 	 */
 	public static array $classes = [
 		// Example: 'filter-name' => [ 'class1', 'class2' ]
-		'bitski-wp-theme/class/header'                   => [ ],
+		'bitski-wp-theme/class/header'                   => [ 'sticky-top', 'bg-body-tertiary' ],
 		'bitski-wp-theme/class/header/navbar/breakpoint' => [ ],
 		'bitski-wp-theme/class/header/navbar/navbar-nav' => [ 'ms-auto', 'mb-2', 'mb-lg-0', 'me-lg-2' ],
 		'bitski-wp-theme/class/container'                => [ ],

@@ -10,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 ?>
-<footer id="footer" class="footer">
-    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+<footer id="footer" class="footer bg-body-tertiary">
         <!-- Footer branding -->
         <?php get_template_part( 'templates/components/footer/branding' ); ?>
 

@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<section class="footer-info row">
-    <div class="col-12">
-        <p class="text-center">
-            <small>&copy; 2025 &ndash; <?php echo date("Y"); ?> bitski wp theme</small>
+<section class="footer-info py-2 border-top">
+    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+        <p class="mb-0 text-center">
+            <small>&copy; 2025 &ndash; <?php echo date( "Y" ); ?> bitski wp theme</small>
         </p>
     </div>
 </section>
