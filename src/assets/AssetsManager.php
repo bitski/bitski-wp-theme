@@ -54,13 +54,22 @@ class AssetsManager
 		    true
 	    );
 
-		// Theme main script
+		// Theme core script
 	    wp_enqueue_script(
-            'bitski-wp-theme-script',
-            $theme_uri . '/assets/js/main.js',
-            [],
-            $theme_version,
-            true
-        );    
+		    'bitski-wp-theme-core-script',
+		    $theme_uri . '/assets/js/theme.js',
+		    [],
+		    $theme_version,
+		    true
+	    );
+
+	    // Theme main script
+	    wp_enqueue_script(
+		    'bitski-wp-theme-main-script',
+		    $theme_uri . '/assets/js/main.js',
+		    [ 'bitski-wp-theme-core-script' ],
+		    $theme_version,
+		    true
+	    );
     }
 }
