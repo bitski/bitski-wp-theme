@@ -30,19 +30,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 <header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
     <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
             'navbar-expand-lg' ); ?>">
-        <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+        <div class="<?php echo esc_attr(apply_filters( 'bitski-wp-theme/class/container', 'container-xl' )); ?>">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_30x30.svg"
-                     alt="<?php bloginfo( 'name' ); ?> Logo" class="d-td-none">
-                <!--                <img src="" alt="--><?php //bloginfo( 'name' ); ?><!-- Logo" class="d-tl-none">-->
+                     alt="<?php echo esc_attr( get_bloginfo( 'name' ) ) ?> Logo" width="30" height="30">
+                <span class="site-title visually-hidden"><?php echo esc_html(get_bloginfo( 'name' )); ?></span>
             </a>
 
             <!-- Offcanvas Navbar -->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                  aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php esc_html_e( 'Menu',
+                                'bitski-wp-theme' ); ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
