@@ -27,10 +27,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function setTheme(theme) {
-        if (theme === 'auto') {
-            document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-        } else {
-            document.documentElement.setAttribute('data-bs-theme', theme);
+        let appliedTheme = theme;
+        if (appliedTheme === 'auto') {
+            appliedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-bs-theme', appliedTheme);
+        setLogos(appliedTheme);
+    }
+
+    function setLogos(theme) {
+        const logosLight = document.querySelectorAll('.logo-light');
+        const logosDark = document.querySelectorAll('.logo-dark');
+
+        if (logosLight.length > 0 && logosDark.length > 0) {
+            logosLight.forEach(function (logo) {
+                logo.classList.toggle('d-none', theme === 'dark');
+            });
+            logosDark.forEach(function (logo) {
+                logo.classList.toggle('d-none', theme === 'light');
+            })
         }
     }
 
@@ -79,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    //
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
         const storedTheme = getStoredTheme()
         if (storedTheme !== 'light' && storedTheme !== 'dark') {

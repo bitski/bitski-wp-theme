@@ -33,7 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="<?php echo esc_attr(apply_filters( 'bitski-wp-theme/class/container', 'container-xl' )); ?>">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_30x30.svg"
+                <img class="logo logo-light" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_30x30.svg"
+                     alt="<?php echo esc_attr( get_bloginfo( 'name' ) ) ?> Logo" width="30" height="30">
+                <img class="logo logo-dark" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_30x30.svg"
                      alt="<?php echo esc_attr( get_bloginfo( 'name' ) ) ?> Logo" width="30" height="30">
                 <span class="site-title visually-hidden"><?php echo esc_html(get_bloginfo( 'name' )); ?></span>
             </a>

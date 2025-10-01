@@ -20,7 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <a class="footer-branding-logo d-block mb-2" href="<?php echo esc_url( home_url() ); ?>"
                    aria-label="<?php esc_attr_e( 'Home', 'bitski-wp-theme' ); ?>">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_50x50.svg"
-                         alt="<?php bloginfo( 'name' ); ?> Logo" class="d-inline-block align-middle">
+                         alt="<?php bloginfo( 'name' ); ?> Logo" class="logo logo-light d-inline-block align-middle">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_50x50.svg"
+                         alt="<?php bloginfo( 'name' ); ?> Logo" class="logo logo-dark d-inline-block align-middle">
                     <span class="visually-hidden"><?php bloginfo( 'name' ); ?></span>
                 </a>
                 <p class="footer-slogan mb-2">
