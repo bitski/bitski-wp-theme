@@ -18,13 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
             data-bs-target="#collapseSearchBar" aria-expanded="false" aria-controls="collapseSearchBar"
             aria-label="Toggle search bar">
         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-        <span class="visually-hidden"><?php esc_html_e( 'Search bar toggler', 'bitski-wp-theme' ); ?></span>
     </button>
 
     <!-- Login link -->
-    <a class="login-link btn btn-outline-secondary me-1 me-md-2 me-lg-0" href="<?php echo esc_url( wp_login_url() ); ?>">
+    <a class="login-link btn btn-outline-secondary me-1 me-md-2 me-lg-0" href="<?php echo esc_url( wp_login_url() ); ?>" aria-label="Login">
         <i class="fa-solid fa-user" aria-hidden="true"></i>
-        <span class="visually-hidden"><?php esc_html_e( 'Login', 'bitski-wp-theme' ); ?></span>
     </a>
 
     <!-- Offcanvas navbar toggler -->
@@ -32,6 +30,5 @@ if ( ! defined( 'ABSPATH' ) ) {
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        <span class="visually-hidden"><?php esc_html_e( 'Menu', 'bitski-wp-theme' ); ?></span>
     </button>
 </div>

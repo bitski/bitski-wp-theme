@@ -75,12 +75,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="collapse" id="collapseSearchBar">
         <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ) ); ?> py-2">
             <form role="search" method="get" class="search-form" action="https://wp-test.ddev.site/">
-				<label>
-					<span class="screen-reader-text">Suche nach:</span>
-					<input type="search" class="search-field" placeholder="Suchen&nbsp;…" value="" name="s">
-				</label>
-				<input type="submit" class="search-submit" value="Suchen">
-			</form>
+                <label for="search-bar-field" class="visually-hidden">Suche</label>
+                <div class="input-group">
+                    <input type="search" id="search-bar-field" class="search-bar-field form-control" placeholder="Suchen …" value="" name="s">
+                    <button type="submit" class="search-bar-submit btn btn-outline-secondary" aria-label="Suche absenden">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </header>
