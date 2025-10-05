@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="color-theme-dropdown dropdown">
         <button id="color-theme-switcher" class="color-theme-switcher dropdown-toggle btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle color theme', 'bitski-wp-theme' ); ?> ()">
             <i class="icon-active-theme fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+            <span class="visually-hidden"><?php esc_html_e( 'Toggle color theme', 'bitski-wp-theme' ); ?></span>
         </button>
         <ul class="dropdown-menu">
             <li>
