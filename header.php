@@ -28,6 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    href="#footer"><?php esc_html_e( 'Skip to footer', 'bitski-wp-theme' ); ?></a>
 
 <header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
+    <!-- Navbar -->
     <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
             'navbar-expand-lg' ); ?>">
         <div class="<?php echo esc_attr(apply_filters( 'bitski-wp-theme/class/container', 'container-xl' )); ?>">
@@ -69,4 +70,17 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php get_template_part( 'templates/components/header/actions' ); ?>
         </div>
     </nav>
+
+    <!-- Collapsed search bar -->
+    <div class="collapse" id="collapseSearchBar">
+        <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ) ); ?> py-2">
+            <form role="search" method="get" class="search-form" action="https://wp-test.ddev.site/">
+				<label>
+					<span class="screen-reader-text">Suche nach:</span>
+					<input type="search" class="search-field" placeholder="Suchen&nbsp;…" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Suchen">
+			</form>
+        </div>
+    </div>
 </header>
