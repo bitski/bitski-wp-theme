@@ -72,12 +72,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     </nav>
 
     <!-- Collapsed search bar -->
-    <div class="collapse" id="collapseSearchBar">
+    <div class="collapse search-bar" id="collapseSearchBar">
         <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ) ); ?> py-2">
             <form role="search" method="get" class="search-form" action="https://wp-test.ddev.site/">
-                <label for="search-bar-field" class="visually-hidden">Suche</label>
+                <label for="search-bar-input" class="visually-hidden">Suche</label>
                 <div class="input-group">
-                    <input type="search" id="search-bar-field" class="search-bar-field form-control" placeholder="Suchen …" value="" name="s">
+                    <input type="search" id="search-bar-input" class="search-bar-input form-control" placeholder="Suchen …" value="" name="s">
                     <button type="submit" class="search-bar-submit btn btn-outline-secondary" aria-label="Suche absenden">
                         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                     </button>

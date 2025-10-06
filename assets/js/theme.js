@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         activeThemeIcon.className += (activeThemeIcon.className ? ' ' : '') + activeButtonIconClasses;
 
-        const ThemeSwitcherHiddenText = themeSwitcher.querySelector('.visually-hidden'),
-            base = (ThemeSwitcherHiddenText.textContent.trim())
+        const themeSwitcherHiddenText = themeSwitcher.querySelector('.visually-hidden'),
+            base = (themeSwitcherHiddenText.textContent.trim())
                 || ((themeSwitcher.getAttribute('aria-label') || '').replace(/\s*\(.*\)\s*$/, ''))
                 || 'Toggle color theme';
         themeSwitcher.setAttribute('aria-label', `${base} (${theme})`);
@@ -115,4 +115,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 showActiveTheme(theme, true)
             })
         })
+
+
+    /**
+     * [02] Search
+     */
+    // Handle focus on search bar input and back to toggler button
+    const searchBarToggler = document.querySelector('.search-bar-toggler');
+    const searchBar = document.querySelector('.search-bar');
+    const searchBarInput = document.querySelector('.search-bar-input');
+
+    if (searchBarToggler && searchBar && searchBarInput) {
+        searchBar.addEventListener('shown.bs.collapse', function () {
+            searchBarInput.focus({preventScroll: true});
+        });
+
+        searchBar.addEventListener('hidden.bs.collapse', function () {
+            searchBarToggler.focus({preventScroll: true});
+        });
+    }
 });
