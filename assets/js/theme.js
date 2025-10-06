@@ -119,8 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * [02] Search
+     *
+     * Handle search bar toggler and input focus.
      */
-    // Handle focus on search bar input and back to toggler button
     const searchBarToggler = document.querySelector('.search-bar-toggler');
     const searchBar = document.querySelector('.search-bar');
     const searchBarInput = document.querySelector('.search-bar-input');
