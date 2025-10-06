@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const activeThemeIcon = themeSwitcher.querySelector('.icon-active-theme'),
-            activeButton = document.querySelector(`[data-bs-theme-value="${theme}"]`),
-            activeButtonIconClasses = activeButton.querySelector('i').className;
+        const activeThemeIcon = themeSwitcher.querySelector('.icon-active-theme');
+        const activeButton = document.querySelector(`[data-bs-theme-value="${theme}"]`);
+        const activeButtonIconClasses = activeButton.querySelector('i').className;
 
         document.querySelectorAll('[data-bs-theme-value]').forEach(function (element) {
             element.classList.remove('active');
