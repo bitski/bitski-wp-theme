@@ -49,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    setTheme(getStoredTheme());
-
     /**
      * Updates the UI to reflect the active theme and optionally focuses the theme switcher control.
      *
@@ -94,15 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Initialize theme
+    setTheme(getPreferredTheme());
+    showActiveTheme(getPreferredTheme());
+
+    // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-        const storedTheme = getStoredTheme()
+        const storedTheme = getStoredTheme();
         if (storedTheme !== 'light' && storedTheme !== 'dark') {
             setTheme(getPreferredTheme());
+            showActiveTheme(getPreferredTheme());
         }
     })
 
-    showActiveTheme(getPreferredTheme());
-
+    // Handle theme switcher clicks
     document.querySelectorAll('[data-bs-theme-value]')
         .forEach(function (toggle) {
             toggle.addEventListener('click', function () {
