@@ -81,10 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         activeThemeIcon.className += (activeThemeIcon.className ? ' ' : '') + activeButtonIconClasses;
 
-        const themeSwitcherHiddenText = themeSwitcher.querySelector('.visually-hidden'),
-            base = (themeSwitcherHiddenText.textContent.trim())
-                || ((themeSwitcher.getAttribute('aria-label') || '').replace(/\s*\(.*\)\s*$/, ''))
-                || 'Toggle color theme';
+        const themeSwitcherHiddenText = themeSwitcher.querySelector('.visually-hidden');
+        const base = (themeSwitcherHiddenText.textContent.trim())
+            || ((themeSwitcher.getAttribute('aria-label') || '').replace(/\s*\(.*\)\s*$/, ''))
+            || 'Toggle color theme';
         themeSwitcher.setAttribute('aria-label', `${base} (${theme})`);
 
         if (focus) {
