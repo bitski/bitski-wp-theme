@@ -21,6 +21,7 @@ class ThemeSetup {
 		'bitski-wp-theme/option/load-fontawesome' => true,
 		'bitski-wp-theme/option/header/display-socials' => true,
 		'bitski-wp-theme/option/header/display-socials-labels' => true,
+		'bitski-wp-theme/option/header/display-search' => true,
 		'bitski-wp-theme/option/footer/display-socials' => true,
 		// Add more option filters as needed
 	];

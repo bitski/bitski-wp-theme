@@ -72,17 +72,23 @@ if ( ! defined( 'ABSPATH' ) ) {
     </nav>
 
     <!-- Collapsed search bar -->
-    <div class="collapse search-bar" id="collapseSearchBar">
-        <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ) ); ?> py-2">
-            <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                <label for="search-bar-input" class="visually-hidden">Suche</label>
-                <div class="input-group">
-                    <input type="search" id="search-bar-input" class="search-bar-input form-control" placeholder="Suchen …" value="" name="s">
-                    <button type="submit" class="search-bar-submit btn btn-outline-secondary" aria-label="Suche absenden">
-                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </form>
+    <?php
+    if ( apply_filters( 'bitski-wp-theme/option/header/display-search', true ) ) { ?>
+        <div class="collapse search-bar" id="collapseSearchBar">
+            <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container',
+                    'container-xl' ) ); ?> py-2">
+                <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <label for="search-bar-input" class="visually-hidden">Suche</label>
+                    <div class="input-group">
+                        <input type="search" id="search-bar-input" class="search-bar-input form-control"
+                               placeholder="Suchen …" value="" name="s">
+                        <button type="submit" class="search-bar-submit btn btn-outline-secondary"
+                                aria-label="Suche absenden">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    <?php } ?>
 </header>

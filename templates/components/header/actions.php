@@ -14,11 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="header-actions d-flex align-items-center" role="group"
      aria-label="<?php esc_attr_e( 'Header actions', 'bitski-wp-theme' ); ?>">
     <!-- Search bar toggler -->
-    <button class="search-bar-toggler me-1 me-md-2 btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseSearchBar" aria-expanded="false" aria-controls="collapseSearchBar"
-            aria-label="Toggle search bar">
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-    </button>
+    <?php
+    if ( apply_filters( 'bitski-wp-theme/option/header/display-search', true ) ) { ?>
+        <button class="search-bar-toggler me-1 me-md-2 btn btn-outline-secondary" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSearchBar" aria-expanded="false" aria-controls="collapseSearchBar"
+                aria-label="Toggle search bar">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
+    <?php } ?>
 
     <!-- Login link -->
     <a class="login-link btn btn-outline-secondary me-1 me-md-2 me-lg-0" href="<?php echo esc_url( wp_login_url() ); ?>" aria-label="Login">
