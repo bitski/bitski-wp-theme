@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * [02] Search
      *
      * Handle search bar toggler and input focus.
+     * Closes search bar when clicking outside of it.
      */
     const searchBarToggler = document.querySelector('.search-bar-toggler');
     const searchBar = document.querySelector('.search-bar');
@@ -133,6 +134,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         searchBar.addEventListener('hidden.bs.collapse', function () {
             searchBarToggler.focus({preventScroll: true});
+        });
+
+        // Close search bar when clicking outside of it
+        document.addEventListener('click', function (event) {
+            if (!searchBar.contains(event.target) && !searchBarToggler.contains(event.target)) {
+                // Get Bootstrap API Collapse instance
+                const bsCollapse = bootstrap.Collapse.getInstance(searchBar);
+
+                if (bsCollapse && searchBar.classList.contains('show')) {
+                    bsCollapse.hide();
+                }
+            }
         });
     }
 });
