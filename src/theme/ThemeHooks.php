@@ -88,13 +88,16 @@ class ThemeHooks {
 	}
 
 	/*
-	 * Outputs SVG sprite in the footer.
+	 * Outputs Bootstrap icons SVG sprite in the footer.
+	 * Applies filter to disable sprite output if Font Awesome is not loaded.
 	 * Ensures the sprite file exists before outputting its content.
 	 */
-	public function outputSvgSprite() {
-		$spritePath = get_template_directory() . '/assets/svg/bootstrap-icons.svg';
-		if ( file_exists( $spritePath ) ) {
-			echo file_get_contents( $spritePath );
+	public function outputSvgSprite(): void {
+		if ( ! apply_filters( 'bitski-wp-theme/option/load-fontawesome', true ) ) {
+			$spritePath = get_template_directory() . '/assets/svg/bootstrap-icons.svg';
+			if ( file_exists( $spritePath ) ) {
+				echo file_get_contents( $spritePath );
+			}
 		}
 	}
 }

@@ -13,13 +13,16 @@ namespace BitskiWPTheme\theme;
  */
 class ThemeHelpers
 {
-    /**
-     * Getter for SVG icon markup.
-     * Returns SVG element with <use> referencing the icon.
-     *
-     * @since 0.5.22
-     * @return string
-     */
+	/**
+	 * Getter for SVG icon markup.
+	 * Returns SVG element with <use> referencing the icon.
+	 *
+	 * @param string $iconName
+	 * @param array $args
+	 *
+	 * @return string
+	 * @since 0.5.22
+	 */
 	public static function getSvgIcon( string $iconName, array $args = [] ): string {
 		$class = 'icon icon-' . esc_attr( $iconName ) . ( ! empty( $args['class'] ) ? ' ' . esc_attr( $args['class'] ) : '' );
 
