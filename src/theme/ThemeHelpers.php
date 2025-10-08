@@ -14,13 +14,22 @@ namespace BitskiWPTheme\theme;
 class ThemeHelpers
 {
     /**
-     * Example helper function.
+     * Getter for SVG icon markup.
+     * Returns SVG element with <use> referencing the icon.
      *
-     * @since  0.1.0
+     * @since 0.5.22
      * @return string
      */
-    public static function exampleHelperFunction(): string
-    {
-        return 'Hello World!';
-    }
+	public static function getSvgIcon( string $iconName, array $args = [] ): string {
+		$class = 'icon icon-' . esc_attr( $iconName ) . ( ! empty( $args['class'] ) ? ' ' . esc_attr( $args['class'] ) : '' );
+
+		// Fixed default size to 16x16, can be overridden via args.
+		$width  = ! empty( $args['width'] ) ? intval( $args['width'] ) : 16;
+		$height = ! empty( $args['height'] ) ? intval( $args['height'] ) : 16;
+
+		// Return SVG element with <use> referencing the icon.
+		return '<svg class="' . esc_attr( $class ) . '" width="' . $width . '" height="' . $height . '" aria-hidden="true" focusable="false" role="img">'
+		       . '<use href="#icon-' . esc_attr( $iconName ) . '"></use>'
+		       . '</svg>';
+	}
 }

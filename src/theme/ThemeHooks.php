@@ -83,5 +83,18 @@ class ThemeHooks {
 	/*
 	 * Registers hooks for functionalities.
 	 */
-	protected function registerFunctionalHooks() {}
+	protected function registerFunctionalHooks() {
+		add_action( 'wp_footer', [ $this, 'outputSvgSprite' ], 20 );
+	}
+
+	/*
+	 * Outputs SVG sprite in the footer.
+	 * Ensures the sprite file exists before outputting its content.
+	 */
+	public function outputSvgSprite() {
+		$spritePath = get_template_directory() . '/assets/svg/bootstrap-icons.svg';
+		if ( file_exists( $spritePath ) ) {
+			echo file_get_contents( $spritePath );
+		}
+	}
 }
