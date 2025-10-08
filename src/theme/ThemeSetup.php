@@ -19,6 +19,7 @@ class ThemeSetup {
 	public static array $options = [
 		// Example: 'option-name' => 'default-value'
 		'bitski-wp-theme/option/load-fontawesome' => true,
+		'bitski-wp-theme/option/load-bootstrap-icons-sprite' => false,
 		'bitski-wp-theme/option/header/display-socials' => true,
 		'bitski-wp-theme/option/header/display-socials-labels' => true,
 		'bitski-wp-theme/option/header/display-search' => true,
