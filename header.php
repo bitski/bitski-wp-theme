@@ -24,9 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <!-- Skip Links -->
 <a class="skip-link visually-hidden-focusable"
-   href="#content"><?php esc_html_e( 'Skip to content', 'bitski-wp-theme' ); ?></a>
+   href="#content"><?php echo esc_html( 'Skip to content', 'bitski-wp-theme' ); ?></a>
 <a class="skip-link visually-hidden-focusable"
-   href="#footer"><?php esc_html_e( 'Skip to footer', 'bitski-wp-theme' ); ?></a>
+   href="#footer"><?php echo esc_html( 'Skip to footer', 'bitski-wp-theme' ); ?></a>
 
 <header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
     <!-- Navbar -->
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                  aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php esc_html_e( 'Menu',
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo esc_html( 'Menu',
                                 'bitski-wp-theme' ); ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>

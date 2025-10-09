@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <span class="visually-hidden"><?php bloginfo( 'name' ); ?></span>
                 </a>
                 <p class="footer-slogan mb-2">
-                    <?php esc_html_e( 'Branding slogan.', 'bitski-wp-theme' ); ?>
+                    <?php echo esc_html( 'Branding slogan.', 'bitski-wp-theme' ); ?>
                 </p>
             </div>
 
