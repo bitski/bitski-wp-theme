@@ -32,14 +32,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     <!-- Navbar -->
     <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
             'navbar-expand-lg' ); ?>">
-        <div class="<?php echo esc_attr(apply_filters( 'bitski-wp-theme/class/container', 'container-xl' )); ?>">
+        <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ) ); ?>">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
-                <img class="logo logo-light" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_30x30.svg"
+                <img class="logo logo-light"
+                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_30x30.svg"
                      alt="<?php echo esc_attr( get_bloginfo( 'name' ) ) ?> Logo" width="30" height="30">
-                <img class="logo logo-dark" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_30x30.svg"
+                <img class="logo logo-dark"
+                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_30x30.svg"
                      alt="<?php echo esc_attr( get_bloginfo( 'name' ) ) ?> Logo" width="30" height="30">
-                <span class="site-title visually-hidden"><?php echo esc_html(get_bloginfo( 'name' )); ?></span>
+                <span class="site-title visually-hidden"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
             </a>
 
             <!-- Offcanvas Navbar -->
@@ -78,18 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="collapse search-bar" id="collapseSearchBar">
             <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container',
                     'container-xl' ) ); ?> py-2">
-                <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                    <label for="search-bar-input" class="visually-hidden">Suche</label>
-                    <div class="input-group">
-                        <input type="search" id="search-bar-input" class="search-bar-input form-control"
-                               placeholder="Suchen …" value="" name="s">
-                        <button type="submit" class="search-bar-submit btn btn-outline-secondary"
-                                aria-label="Suche absenden">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <?php get_template_part( 'templates/components/search/form' ); ?>            </div>
         </div>
     <?php } ?>
 </header>

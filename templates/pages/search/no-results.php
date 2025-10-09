@@ -12,4 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div>No results message</div>
+<section class="search no-results">
+    <header class="alert alert-primary mb-4">
+        <h2><?php esc_html_e( 'Keine Ergebnisse gefunden!', 'bitski-wp-theme' ); ?></h2>
+    </header>
+    <div class="content">
+        <p class="alert alert-info mb-4"><?php esc_html_e( 'Bitte mit anderen Suchbegriffen erneut versuchen:',
+                    'bitski-wp-theme' ); ?></p>
+        <?php get_template_part( 'templates/components/search/form' ); ?>
+    </div>
+</section>

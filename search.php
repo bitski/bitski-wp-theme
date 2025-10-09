@@ -19,9 +19,9 @@ if ( ! apply_filters( 'bitski-wp-theme/option/header/display-search', true ) ) {
 get_header();
 ?>
 
-<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?> pt-4 pb-5">
     <!-- Content header -->
-    <header class="">
+    <header class="content-header mb-4">
         <h1 class="entry-title"><?php printf(esc_html__('Suchergebnisse für: %s', 'bitski-wp-theme'), '<span class="text-body-secondary">' . get_search_query() . '</span>') ?></h1>
     </header>
 

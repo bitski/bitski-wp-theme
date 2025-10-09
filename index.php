@@ -18,7 +18,7 @@ get_header();
 
 <main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
     <!-- Content header -->
-    <header class="">
+    <header class="content-header">
         <h1 class="entry-title"><?php bloginfo( 'name' ); ?></h1>
         <p class=""><?php bloginfo( 'description' ); ?></p>
     </header>
