@@ -12,4 +12,53 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div>Search results loop</div>
+<section class="search results">
+    <header class="alert alert-success mb-4">
+        <h2>
+            <?php
+            // Build the search results found message with proper pluralization.
+            printf(
+                    esc_html(
+                            _n(
+                                    '%d Treffer gefunden',
+                                    '%d Treffer gefunden',
+                                    $wp_query->found_posts,
+                                    'bitski-wp-theme'
+                            )
+                    ),
+                    $wp_query->found_posts
+            );
+            ?>
+        </h2>
+    </header>
+    <div class="content row g-4">
+        <?php
+        while ( have_posts() ) {
+            the_post();
+            $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
+            <div class="col-12 col-lg-6">
+                <article class="position-relative card h-100">
+                    <?php if ( $thumbnail_url ) { ?>
+                        <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
+                             alt="<?php the_title_attribute(); ?>">
+                    <?php } ?>
+                    <div class="card-body">
+                        <header>
+                            <h3 class="post-title card-title h5">
+                                <a class="stretched-link text-reset text-decoration-none"
+                                   href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+                        </header>
+                        <div class="post-content card-text">
+                            <p>
+                                <?php echo get_the_excerpt(); ?>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        <?php } ?>
+    </div>
+</section>
