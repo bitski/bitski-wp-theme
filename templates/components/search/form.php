@@ -9,9 +9,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+$class = !empty($args['class']) ? $args['class'] : '';
 ?>
 
-<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<form role="search" method="get" class="search-form <?php echo esc_attr($class); ?>" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <label for="search-bar-input" class="visually-hidden">Suche</label>
     <div class="input-group">
         <input type="search" id="search-bar-input" class="search-bar-input form-control"

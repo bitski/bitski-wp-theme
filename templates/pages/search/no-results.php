@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="content">
         <p class="alert alert-info mb-4"><?php echo esc_html( 'Bitte mit anderen Suchbegriffen erneut versuchen:',
                     'bitski-wp-theme' ); ?></p>
-        <?php get_template_part( 'templates/components/search/form' ); ?>
+        <?php get_template_part( 'templates/components/search/form', null, array( 'class' => 'mb-4') ); ?>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn-secondary">
+            <?php echo esc_html('Zur Startseite', 'bitski-wp-theme'); ?>
+        </a>
     </div>
 </section>
