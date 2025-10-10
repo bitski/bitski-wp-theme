@@ -84,6 +84,13 @@ class ThemeHooks {
 	 * Registers hooks for functionalities.
 	 */
 	protected function registerFunctionalHooks() {
+		// Header hooks
+		// (To be inhabited)
+
+		// Page hooks
+		// (To be inhabited)
+
+		// Footer hooks
 		add_action( 'wp_footer', [ $this, 'outputSvgSprite' ], 20 );
 	}
 

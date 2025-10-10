@@ -31,7 +31,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             ?>
         </h2>
     </header>
-    <div class="content row g-4">
+    <div class="content row g-4<?php
+    if ( paginate_links() ) {
+        echo ' mb-4';
+    } ?>">
         <?php
         while ( have_posts() ) {
             the_post();
@@ -61,4 +64,31 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         <?php } ?>
     </div>
+    <footer class="pagination">
+        <?php
+        $args  = [
+                'aria_label_nav' => __( '', 'Seitennavigation' ),
+                'prev_text'      => __( 'Vorherige', 'bitski-wp-theme' ),
+                'next_text'      => __( 'Nächste', 'bitski-wp-theme' ),
+                'type'           => 'array',
+        ];
+        $links = paginate_links( $args );
+        if ( $links ) { ?>
+            <nav aria-label="<?php echo esc_attr( $args['aria_label_nav'] ); ?>">
+                <ul class="pagination">
+                    <?php foreach ( $links as $link ) {
+                        if ( str_contains( $link, 'current' ) ) { ?>
+                            <li class="page-item active" aria-current="page">
+                                <?php echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
+                            </li>
+                        <?php } else { ?>
+                            <li class="page-item">
+                                <?php echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
+                            </li>
+                        <?php }
+                    } ?>
+                </ul>
+            </nav>
+        <?php } ?>
+    </footer>
 </section>
