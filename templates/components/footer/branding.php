@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- Footer branding -->
             <div class="footer-branding col-12 col-md-8 align-items-lg-end">
                 <a class="footer-branding-logo d-block mb-2" href="<?php echo esc_url( home_url() ); ?>"
-                   aria-label="<?php esc_attr_e( 'Home', 'bitski-wp-theme' ); ?>">
+                   aria-label="<?php echo esc_attr( 'Home', 'bitski-wp-theme' ); ?>">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_50x50.svg"
                          alt="<?php bloginfo( 'name' ); ?> Logo" class="logo logo-light d-inline-block align-middle">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_50x50.svg"
