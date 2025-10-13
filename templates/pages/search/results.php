@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<section class="search results">
+<section class="search results" aria-labelledby="search-results-heading">
     <header class="alert alert-success mb-4">
-        <h2>
+        <h2 id="search-results-heading">
             <?php
             // Build the search results found message with proper pluralization.
             printf(
@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <footer class="pagination">
         <?php
         $args  = [
-                'aria_label_nav' => __( '', 'Seitennavigation' ),
+                'aria_label_nav' => __( 'Seitennavigation', 'bitski-wp-theme' ),
                 'prev_text'      => __( 'Vorherige', 'bitski-wp-theme' ),
                 'next_text'      => __( 'Nächste', 'bitski-wp-theme' ),
                 'type'           => 'array',
