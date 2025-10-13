@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <article class="position-relative card h-100">
                     <?php if ( $thumbnail_url ) { ?>
                         <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
-                             alt="<?php the_title_attribute(); ?>">
+                             alt="<?php the_title_attribute(); ?>" loading="lazy">
                     <?php } ?>
                     <div class="card-body">
                         <header>

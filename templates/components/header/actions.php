@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="header-actions d-flex align-items-center" role="group"
-     aria-label="<?php esc_attr_e( 'Header actions', 'bitski-wp-theme' ); ?>">
+     aria-label="<?php echo esc_attr( 'Header actions', 'bitski-wp-theme' ); ?>">
     <!-- Search bar toggler -->
     <?php
     if ( apply_filters( 'bitski-wp-theme/option/header/display-search', true ) ) { ?>
