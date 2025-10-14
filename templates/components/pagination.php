@@ -31,7 +31,7 @@ $links = paginate_links( $args );
 if ( $links ) { ?>
     <footer class="pagination">
         <nav aria-label="<?php echo esc_attr( $args['aria_label_nav'] ); ?>">
-            <ul class="pagination">
+            <ul class="pagination mb-0">
                 <?php foreach ( $links as $link ) {
                     // Identify the current page link to highlight it with Bootstrap classes for accessibility.
                     if ( str_contains( $link, 'current' ) ) { ?>

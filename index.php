@@ -59,8 +59,20 @@ get_header();
                 </div>
             <?php } ?>
         </section>
+        <?php
+        get_template_part( 'templates/components/pagination' );
+    } else { ?>
+        <section class="no-posts">
+            <header class="alert alert-primary mb-4">
+                <h2><?php echo esc_html( 'Keine Beiträge gefunden!', 'bitski-wp-theme' ); ?></h2>
+            </header>
+            <div class="content">
+                <p class="alert alert-info mb-4"><?php echo esc_html( 'Zurzeit sind keine Beiträge verfügbar. Bitte besuche uns später wieder oder nutze die Suche:',
+                            'bitski-wp-theme' ); ?></p>
+                <?php get_template_part( 'templates/components/search/form', null, array( 'class' => 'mb-4' ) ); ?>
+            </div>
+        </section>
     <?php } ?>
-    <?php get_template_part( 'templates/components/pagination' ); ?>
 </main>
 
 <?php get_footer(); ?>
