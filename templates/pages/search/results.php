@@ -37,11 +37,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     } ?>">
         <?php
         while ( have_posts() ) {
-            the_post();
-            $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
+            the_post(); ?>
             <div class="col-12 col-lg-6">
                 <article class="position-relative card h-100">
-                    <?php if ( $thumbnail_url ) { ?>
+                    <?php if ( has_post_thumbnail()) {
+                        $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
                         <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
                              alt="<?php the_title_attribute(); ?>" loading="lazy">
                     <?php } ?>
@@ -64,31 +64,5 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         <?php } ?>
     </div>
-    <footer class="pagination">
-        <?php
-        $args  = [
-                'aria_label_nav' => __( 'Seitennavigation', 'bitski-wp-theme' ),
-                'prev_text'      => __( 'Vorherige', 'bitski-wp-theme' ),
-                'next_text'      => __( 'Nächste', 'bitski-wp-theme' ),
-                'type'           => 'array',
-        ];
-        $links = paginate_links( $args );
-        if ( $links ) { ?>
-            <nav aria-label="<?php echo esc_attr( $args['aria_label_nav'] ); ?>">
-                <ul class="pagination">
-                    <?php foreach ( $links as $link ) {
-                        if ( str_contains( $link, 'current' ) ) { ?>
-                            <li class="page-item active" aria-current="page">
-                                <?php echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
-                            </li>
-                        <?php } else { ?>
-                            <li class="page-item">
-                                <?php echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
-                            </li>
-                        <?php }
-                    } ?>
-                </ul>
-            </nav>
-        <?php } ?>
-    </footer>
+    <?php get_template_part( 'templates/components/pagination' ); ?>
 </section>
