@@ -10,10 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-?>
 
-<?php
-echo 'Moin';
 $post_type = 'post';
 $args = array(
         'post_type'      => $post_type,
@@ -40,7 +37,7 @@ if ( $custom_query->have_posts() ) {
                 </header>
                 <div class="post-content card-text">
                     <p>
-                        <?php echo get_the_content(); ?>
+                        <?php the_content(); ?>
                     </p>
                 </div>
             </div>

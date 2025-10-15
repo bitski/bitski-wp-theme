@@ -28,9 +28,9 @@ get_header();
     <!-- Content: search results loop or no results message -->
     <?php
     if ( have_posts() ) {
-        get_template_part( 'templates/pages/search/results' );
+        get_template_part( 'templates/pages/search/content/results' );
     } else {
-        get_template_part( 'templates/pages/search/no-results' );
+        get_template_part( 'templates/pages/search/content/no-results' );
     }
     ?>
 </main>

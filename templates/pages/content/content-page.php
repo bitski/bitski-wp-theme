@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </header>
         <div class="post-content card-text">
             <p>
-                <?php echo get_the_content(); ?>
+                <?php the_content(); ?>
             </p>
         </div>
     </div>
