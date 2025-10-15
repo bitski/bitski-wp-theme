@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$post_type = 'post';
-$args = array(
+$post_type    = 'post';
+$args         = array(
         'post_type'      => $post_type,
         'posts_per_page' => 10,
 );
@@ -26,7 +26,7 @@ if ( $custom_query->have_posts() ) {
                 <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
                      alt="<?php the_title_attribute(); ?>" loading="lazy">
             <?php } ?>
-            <div class="card-body">
+            <div class="article-body card-body">
                 <header>
                     <h2 class="post-title card-title h5">
                         <a class="stretched-link text-reset text-decoration-none"
@@ -36,9 +36,7 @@ if ( $custom_query->have_posts() ) {
                     </h2>
                 </header>
                 <div class="post-content card-text">
-                    <p>
-                        <?php the_content(); ?>
-                    </p>
+                    <?php the_excerpt(); ?>
                 </div>
             </div>
         </article>

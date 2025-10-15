@@ -12,25 +12,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="position-relative card h-100">
+<article id="post-<?php the_ID(); ?>" class="position-relative">
     <?php if ( has_post_thumbnail() ) {
         $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
-        <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
+        <img class="img-fluid rounded mb-3" src="<?php echo esc_url( $thumbnail_url ); ?>"
              alt="<?php the_title_attribute(); ?>" loading="lazy">
     <?php } ?>
-    <div class="card-body">
+    <div class="article-body">
         <header>
-            <h2 class="post-title card-title h5">
+            <h2 class="post-title h5">
                 <a class="stretched-link text-reset text-decoration-none"
                    href="<?php the_permalink(); ?>">
                     <?php the_title(); ?>
                 </a>
             </h2>
         </header>
-        <div class="post-content card-text">
-            <p>
-                <?php the_content(); ?>
-            </p>
+        <div class="post-content">
+            <?php the_content(); ?>
         </div>
     </div>
 </article>
