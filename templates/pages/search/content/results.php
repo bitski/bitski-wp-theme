@@ -10,6 +10,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+$found_posts = $wp_query->found_posts;
+$posts_per_page = get_option( 'posts_per_page' );
 ?>
 
 <section class="search results" aria-labelledby="search-results-heading">
@@ -22,11 +25,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                             _n(
                                     '%d Treffer gefunden',
                                     '%d Treffer gefunden',
-                                    $wp_query->found_posts,
+                                    $found_posts,
                                     'bitski-wp-theme'
                             )
                     ),
-                    $wp_query->found_posts
+                    $found_posts
             );
             ?>
         </h2>
@@ -38,9 +41,12 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php
         while ( have_posts() ) {
             the_post(); ?>
-            <div class="col-12 col-lg-6">
+            <div class="col-12<?php
+                if ( $found_posts > 1 && $posts_per_page > 1) { ?>
+                    col-lg-6
+                <?php } ?>">
                 <article id="post-<?php the_ID(); ?>" class="position-relative card h-100">
-                    <?php if ( has_post_thumbnail()) {
+                    <?php if ( has_post_thumbnail() ) {
                         $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
                         <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
                              alt="<?php the_title_attribute(); ?>" loading="lazy">

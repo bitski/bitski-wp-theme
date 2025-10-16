@@ -25,7 +25,10 @@ get_header();
     </header>
 
     <!-- Post list -->
-    <?php if ( have_posts() ) { ?>
+    <?php if ( have_posts() ) {
+        $found_posts = $wp_query->found_posts;
+        $posts_per_page = get_option( 'posts_per_page' );
+        ?>
         <section class="post-list row g-4<?php
         if ( paginate_links() ) {
             echo ' mb-4';
@@ -33,7 +36,10 @@ get_header();
             <?php
             while ( have_posts() ) {
                 the_post(); ?>
-                <div class="col-12 col-lg-6">
+                <div class="col-12<?php
+                if ( $found_posts > 1 && $posts_per_page > 1 ) { ?>
+                    col-lg-6
+                <?php } ?>">
                     <article id="post-<?php the_ID(); ?>" class="position-relative card h-100">
                         <?php if ( has_post_thumbnail() ) {
                             $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
