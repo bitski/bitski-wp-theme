@@ -21,15 +21,12 @@ get_header();
     </header>
 
     <!-- Content body -->
-    <section class="content-body row g-4">
-        <?php
-        if ( ! is_page( 33 ) ) {
-            get_template_part( 'templates/pages/content/content-page' );
-        } else {
-            get_template_part( 'templates/pages/content/custom-loop' );
-        }
-        ?>
-    </section>
+    <?php
+    if ( ! is_page( 33 ) ) {
+        get_template_part( 'templates/pages/content/content-page' );
+    } else {
+        get_template_part( 'templates/pages/content/custom-loop' );
+    } ?>
 </main>
 
 <?php get_footer(); ?>

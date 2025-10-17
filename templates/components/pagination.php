@@ -10,27 +10,35 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-/*
- * Define the arguments for the paginate_links function.
- *
- * The aria-label attribute for the pagination navigation.
- * The texts for the previous/next page links.
- * Output the pagination links as array.
- */
-$args  = [
+global $wp_query;
+
+// Set the pagination arguments.
+$pagination_args = [
         'aria_label_nav' => __( 'Seitennavigation', 'bitski-wp-theme' ),
         'prev_text'      => __( 'Vorherige', 'bitski-wp-theme' ),
         'next_text'      => __( 'Nächste', 'bitski-wp-theme' ),
         'type'           => 'array',
 ];
 
+/*
+ * Custom loop: the total and current page are passed as arguments from the parent template.
+ * Standard loop: the total and current page are retrieved from the global $wp_query object.
+ */
+if (isset($args['total']) && $args['current']) {
+    $pagination_args['total'] = (int) $args['total'];
+    $pagination_args['current'] = (int) $args['current'];
+} else {
+    $pagination_args['total'] = $wp_query->max_num_pages;
+    $pagination_args['current'] = max( 1, get_query_var( 'paged' ) );
+}
+
 // Get the pagination links.
-$links = paginate_links( $args );
+$links = paginate_links( $pagination_args );
 
 // Check if there are pagination links to display.
 if ( $links ) { ?>
     <footer class="pagination">
-        <nav aria-label="<?php echo esc_attr( $args['aria_label_nav'] ); ?>">
+        <nav aria-label="<?php echo esc_attr( $pagination_args['aria_label_nav'] ); ?>">
             <ul class="pagination mb-0">
                 <?php foreach ( $links as $link ) {
                     // Identify the current page link to highlight it with Bootstrap classes for accessibility.
