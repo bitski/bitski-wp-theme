@@ -46,7 +46,7 @@ get_header();
                             <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
                                  alt="<?php the_title_attribute(); ?>" loading="lazy">
                         <?php } ?>
-                        <div class="card-body">
+                        <div class="article-body card-body">
                             <header>
                                 <h2 class="post-title card-title h5">
                                     <a class="stretched-link text-reset text-decoration-none"
