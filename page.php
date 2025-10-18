@@ -1,6 +1,7 @@
 <?php
 /**
  * The template for displaying pages.
+ * Post type: page
  *
  * @since 0.1.0
  */

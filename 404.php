@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * The template for displaying 404 pages (not found).
+ * Post type: none assigned
  *
  * @since 0.1.0
  */

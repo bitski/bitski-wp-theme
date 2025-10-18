@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The template for displaying archive pages.
+ * Post type: post, custom post types
  *
  * @since 0.1.0
  */
