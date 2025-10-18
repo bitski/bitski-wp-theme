@@ -15,7 +15,8 @@ $found_posts = $wp_query->found_posts;
 $posts_per_page = get_option( 'posts_per_page' );
 ?>
 
-<section class="search results" aria-labelledby="search-results-heading">
+<!-- Content body: search results list -->
+<section class="content-body search results" aria-labelledby="search-results-heading">
     <header class="alert alert-success mb-4">
         <h2 id="search-results-heading">
             <?php

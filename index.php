@@ -20,16 +20,16 @@ get_header();
         'container-xl' ) ); ?> pt-4 pb-5">
     <!-- Content header -->
     <header class="content-header mb-4">
-        <h1 class="entry-title"><?php bloginfo( 'name' ); ?></h1>
+        <h1 class="post-title"><?php bloginfo( 'name' ); ?></h1>
         <p class="site-description"><?php bloginfo( 'description' ); ?></p>
     </header>
 
-    <!-- Post list -->
     <?php if ( have_posts() ) {
         $found_posts = $wp_query->found_posts;
         $posts_per_page = get_option( 'posts_per_page' );
         ?>
-        <section class="post-list row g-4<?php
+        <!-- Content body: post list -->
+        <section class="content-body row g-4<?php
         if ( paginate_links() ) {
             echo ' mb-4';
         } ?>">
@@ -47,11 +47,12 @@ get_header();
         <?php
         get_template_part( 'templates/components/pagination' );
     } else { ?>
-        <section class="no-posts">
-            <header class="alert alert-primary mb-4">
-                <h2><?php echo esc_html( 'Keine Beiträge gefunden!', 'bitski-wp-theme' ); ?></h2>
+        <!-- Content body: no posts -->
+        <section class="content-body no-posts">
+            <header class="no-posts-header alert alert-primary mb-4">
+                <h2 class="no-posts-title"><?php echo esc_html( 'Keine Beiträge gefunden!', 'bitski-wp-theme' ); ?></h2>
             </header>
-            <div class="content">
+            <div class="no-posts-content">
                 <p class="alert alert-info mb-4"><?php echo esc_html( 'Zurzeit sind keine Beiträge verfügbar. Bitte besuche uns später wieder oder nutze die Suche:',
                             'bitski-wp-theme' ); ?></p>
                 <?php get_template_part( 'templates/components/search/form', null, array( 'class' => 'mb-4' ) ); ?>

@@ -18,8 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
         <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
              alt="<?php the_title_attribute(); ?>" loading="lazy">
     <?php } ?>
-    <div class="article-body card-body">
-        <header>
+    <div class="card-body">
+        <header class="post-header">
             <h2 class="post-title card-title h5">
                 <a class="stretched-link text-reset text-decoration-none"
                    href="<?php the_permalink(); ?>">
@@ -28,9 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </h2>
         </header>
         <div class="post-content card-text">
-            <p>
-                <?php the_excerpt(); ?>
-            </p>
+            <?php the_excerpt(); ?>
         </div>
     </div>
 </article>

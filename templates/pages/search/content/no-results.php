@@ -12,7 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<section class="search no-results">
+<!-- Content body: no results message, search form -->
+<section class="content-body search no-results">
     <header class="alert alert-primary mb-4">
         <h2><?php echo esc_html( 'Keine Treffer gefunden!', 'bitski-wp-theme' ); ?></h2>
     </header>

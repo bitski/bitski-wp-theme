@@ -37,6 +37,7 @@ $links = paginate_links( $pagination_args );
 
 // Check if there are pagination links to display.
 if ( $links ) { ?>
+    <!-- Pagination -->
     <footer class="pagination">
         <nav aria-label="<?php echo esc_attr( $pagination_args['aria_label_nav'] ); ?>">
             <ul class="pagination mb-0">

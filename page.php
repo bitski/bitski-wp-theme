@@ -20,7 +20,6 @@ get_header();
         <h1 class="entry-title"><?php the_title(); ?></h1>
     </header>
 
-    <!-- Content body -->
     <?php
     if ( ! is_page( 33 ) ) {
         get_template_part( 'templates/pages/content/content-page' );

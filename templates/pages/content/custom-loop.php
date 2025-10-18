@@ -33,6 +33,7 @@ if ( $custom_query->have_posts() ) {
     $max_num_pages  = $custom_query->max_num_pages;
     $posts_per_page = $args['posts_per_page'];
     ?>
+    <!-- Content body: post list -->
     <section class="content-body row g-4<?php
     if ( $max_num_pages > 1 ) {
         echo ' mb-4';
