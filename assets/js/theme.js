@@ -156,29 +156,32 @@ document.addEventListener("DOMContentLoaded", function () {
      * Update pagination link colors based on current color theme.
      * This ensures pagination links are visible in both light and dark modes.
      */
-    const updatePaginationColors = function () {
-        const theme = document.documentElement.getAttribute('data-bs-theme');
-        document.querySelectorAll('.pagination li:not(.active) .page-link').forEach(function (link) {
-            if (theme === 'dark') {
-                link.classList.remove('text-dark');
-                link.classList.add('text-light');
-            } else {
-                link.classList.remove('text-light');
-                link.classList.add('text-dark');
-            }
-        });
-    };
+    const pagination = document.querySelector('.pagination');
+    if (pagination) {
+        const updatePaginationColors = function () {
+            const theme = document.documentElement.getAttribute('data-bs-theme');
+            document.querySelectorAll('.pagination li:not(.active) .page-link').forEach(function (link) {
+                if (theme === 'dark') {
+                    link.classList.remove('text-dark');
+                    link.classList.add('text-light');
+                } else {
+                    link.classList.remove('text-light');
+                    link.classList.add('text-dark');
+                }
+            });
+        };
 
-    // Initialize pagination colors
-    updatePaginationColors();
+        // Initialize pagination colors
+        updatePaginationColors();
 
-    // Observe changes to data-bs-theme attribute
-    const observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-            if (mutation.attributeName === 'data-bs-theme') {
-                updatePaginationColors();
-            }
+        // Observe changes to data-bs-theme attribute
+        const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.attributeName === 'data-bs-theme') {
+                    updatePaginationColors();
+                }
+            });
         });
-    });
-    observer.observe(document.documentElement, {attributes: true});
+        observer.observe(document.documentElement, {attributes: true});
+    }
 });

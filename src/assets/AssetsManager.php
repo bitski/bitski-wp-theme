@@ -45,29 +45,14 @@ class AssetsManager
 
 		// Scripts
 	    //
-        // Bootstrap JS
-	    wp_enqueue_script(
-		    'bootstrap',
-		    $theme_uri . '/assets/js/lib/bootstrap.bundle.min.js',
-		    [],
-		    '5.3.8',
-		    true
-	    );
-
-		// Theme core script
-	    wp_enqueue_script(
-		    'bitski-wp-theme-core-script',
-		    $theme_uri . '/assets/js/theme.js',
-		    [],
-		    $theme_version,
-		    true
-	    );
-
-	    // Theme main script
-	    wp_enqueue_script(
+	    // Enqueue the main theme script as an ES6 JavaScript module.
+		// This will load main.js with the correct type="module" attribute,
+		// enabling native module imports within main.js (e.g., importing theme.js, bootstrap.bundle.min.js).
+	    // Requires WordPress 6.5 or higher for native wp_enqueue_script_module() support.
+	    wp_enqueue_script_module(
 		    'bitski-wp-theme-main-script',
 		    $theme_uri . '/assets/js/main.js',
-		    [ 'bitski-wp-theme-core-script' ],
+		    [],
 		    $theme_version,
 		    true
 	    );
