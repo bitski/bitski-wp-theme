@@ -35,27 +35,27 @@ if (isset($args['total']) && $args['current']) {
 // Get the pagination links.
 $links = paginate_links( $pagination_args );
 
-// Check if there are pagination links to display.
-if ( $links ) { ?>
-    <!-- Pagination -->
-    <footer class="pagination">
-        <nav aria-label="<?php echo esc_attr( $pagination_args['aria_label_nav'] ); ?>">
-            <ul class="pagination mb-0">
-                <?php foreach ( $links as $link ) {
-                    // Identify the current page link to highlight it with Bootstrap classes for accessibility.
-                    if ( str_contains( $link, 'current' ) ) { ?>
-                        <li class="page-item active" aria-current="page">
-                            <?php
-                            // Replace the 'page-numbers' class with Bootstrap classes for styling.
-                            echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
-                        </li>
-                    <?php } else { ?>
-                        <li class="page-item">
-                            <?php echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
-                        </li>
-                    <?php }
-                } ?>
-            </ul>
-        </nav>
-    </footer>
-<?php } ?>
+// Return early if there are no pagination links to display.
+if ( ! $links ) {
+    return;
+} ?>
+
+<!-- Pagination -->
+<nav class="pagination" aria-label="<?php echo esc_attr( $pagination_args['aria_label_nav'] ); ?>">
+    <ul class="pagination mb-0">
+        <?php foreach ( $links as $link ) {
+            // Identify the current page link to highlight it with Bootstrap classes for accessibility.
+            if ( str_contains( $link, 'current' ) ) { ?>
+                <li class="page-item active" aria-current="page">
+                    <?php
+                    // Replace the 'page-numbers' class with Bootstrap classes for styling.
+                    echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
+                </li>
+            <?php } else { ?>
+                <li class="page-item">
+                    <?php echo str_replace( 'page-numbers', 'page-link text-light', $link ); ?>
+                </li>
+            <?php }
+        } ?>
+    </ul>
+</nav>
