@@ -28,9 +28,9 @@ get_header();
 
     <?php
     if ( have_posts() ) {
-        get_template_part( 'templates/pages/search/content/results' );
+        get_template_part( 'templates/pages/search-404/content/results' );
     } else {
-        get_template_part( 'templates/pages/search/content/no-results' );
+        get_template_part( 'templates/pages/search-404/content/no-results' );
     }
     ?>
 </main>
