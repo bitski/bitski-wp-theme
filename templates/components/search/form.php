@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying the search form.
+ * Template component for displaying the search form.
  *
  * @since 0.5.25
  */

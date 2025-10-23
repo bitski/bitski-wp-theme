@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying the no search results message.
+ * Template component for displaying the no search results message.
  * Used by the search.php template when no posts are found.
  *
  * @since 0.5.21

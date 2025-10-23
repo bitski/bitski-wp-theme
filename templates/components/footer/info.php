@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying footer info.
+ * Template component for displaying footer info.
  *
  * @since 0.5.6
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying post navigation links.
+ * Template component for displaying post navigation links.
  * Post type: post, custom post types
  *
  * @since 0.6.11

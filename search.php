@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying search results pages.
+ * Template for displaying search results pages.
  * Post type: all
  *
  * @since 0.5.18

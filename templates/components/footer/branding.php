@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying footer branding.
+ * Template component for displaying footer branding.
  * Includes site branding and optional social icons.
  *
  * @since 0.5.6

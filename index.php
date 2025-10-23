@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file.
+ * Main template file.
  *
  * This is the most generic template file in a WordPress theme.
  * Post type: all

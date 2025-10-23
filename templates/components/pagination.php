@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying a pagination.
+ * Template component for displaying a pagination.
  *
  * @since 0.6.0
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying single posts.
+ * Template for displaying single posts.
  * Post type: post
  *
  * @since 0.1.0
@@ -45,6 +45,7 @@ get_header();
     if ( ! empty( trim( $post_navigation_content ) ) ) { ?>
         <footer class="content-footer">
             <?php echo $post_navigation_content; ?>
+
         </footer>
     <?php } ?>
 </main>

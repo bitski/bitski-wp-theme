@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying social icon links.
+ * Template component for displaying social icon links.
  *
  * @since 0.5.7
  */

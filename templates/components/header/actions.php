@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying header actions.
+ * Template component for displaying header actions.
  *
  * @since 0.5.0
  */

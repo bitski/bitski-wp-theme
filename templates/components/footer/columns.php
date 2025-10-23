@@ -1,6 +1,6 @@
 <?php
 /**
- * The template component for displaying footer columns.
+ * Template component for displaying footer columns.
  *
  * @since 0.5.6
  */
