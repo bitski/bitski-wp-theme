@@ -11,11 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Set the adjacent post arguments.
-$adjacent_post_args = [
-        'aria_label_nav' => __( 'Beitragsnavigation', 'bitski-wp-theme' ),
-];
+$aria_label_nav = __( 'Beitragsnavigation', 'bitski-wp-theme' );
 
+// Get the adjacent posts.
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 
@@ -25,7 +23,7 @@ if ( ! $prev_post && ! $next_post ) {
 } ?>
 
 <!-- Post navigation -->
-<nav class="post-navigation" aria-label="<?php echo esc_attr( $adjacent_post_args['aria_label_nav'] ); ?>">
+<nav class="post-navigation" aria-label="<?php echo esc_attr( $aria_label_nav); ?>">
     <ul class="pagination mb-0">
         <?php if ( $prev_post ) { ?>
             <li class="page-item">
