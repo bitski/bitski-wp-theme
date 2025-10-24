@@ -48,7 +48,8 @@ get_header();
 		<!-- Content body: no posts -->
 		<section class="content-body no-posts">
 			<header class="no-posts-header alert alert-primary mb-4">
-				<h2 class="no-posts-title"><?php echo esc_html( 'Keine Beiträge gefunden!', 'bitski-wp-theme' ); ?></h2>
+                <?php get_template_part( 'templates/components/category-badges' ); ?>
+                <h2 class="no-posts-title"><?php echo esc_html( 'Keine Beiträge gefunden!', 'bitski-wp-theme' ); ?></h2>
 			</header>
 			<div class="no-posts-content">
 				<p class="alert alert-info mb-4"><?php echo esc_html( 'Zurzeit sind keine Beiträge verfügbar. Bitte besuche uns später wieder oder nutze die Suche:',

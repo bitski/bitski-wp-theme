@@ -18,6 +18,7 @@ get_header();
         'container-xl' ) ); ?> pt-4 pb-5">
     <!-- Content header: post title, thumbnail -->
     <header class="content-header mb-4">
+        <?php get_template_part( 'templates/components/category-badges' ); ?>
         <h1 class="post-title"><?php the_title(); ?></h1>
         <?php if ( has_post_thumbnail() ) {
             $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
