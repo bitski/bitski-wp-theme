@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php } ?>
     <div class="card-body">
         <header class="post-header">
-            <?php get_template_part( 'templates/components/category-badges' ); ?>
+            <?php get_template_part( 'templates/components/post/category-badges' ); ?>
             <h2 class="post-title card-title h5">
                 <a class="stretched-link text-reset text-decoration-none"
                    href="<?php the_permalink(); ?>">
