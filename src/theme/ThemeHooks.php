@@ -36,7 +36,7 @@ class ThemeHooks {
 	 * @return string
 	 */
 	public function getClassesByFilter( string $filter, array $defaultClasses = [], bool $merge = true ): string {
-		// Return default classes if they're set and not empty.'
+		// Get setup classes if they're set and not empty.
 		$setupClasses = [];
 		if ( isset( ThemeSetup::$classes[ $filter ] ) && ! empty( ThemeSetup::$classes[ $filter ] ) ) {
 			$setupClasses = ThemeSetup::$classes[ $filter ];
@@ -48,13 +48,14 @@ class ThemeHooks {
 		}
 
 		// Merge setup classes with default classes if $merge is true.
+		// Return merged classes as a space-separated string.
 		if ( $merge ) {
 			$merged_classes = array_filter( array_unique( array_merge( $setupClasses, $defaultClasses ) ) );
 
 			return implode( ' ', $merged_classes );
 		}
 
-		// Return default classes only.
+		// Return default classes only as a space-separated string.
 		return implode( ' ', $defaultClasses );
 	}
 
@@ -107,6 +108,7 @@ class ThemeHooks {
 	protected function registerOptionHooks() {
 		foreach ( ThemeSetup::$options as $filter => $setupOption ) {
 			add_filter( $filter, function ( $defaultOption = '' ) use ( $filter ) {
+				// Returns the option value or the default option if set.
 				return $this->getOptionByFilter( $filter, $defaultOption );
 			} );
 		}
