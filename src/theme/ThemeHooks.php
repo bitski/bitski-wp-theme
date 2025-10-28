@@ -39,15 +39,22 @@ class ThemeHooks {
 
 	/*
      * Getter for theme options by filter name.
-     * Returns the option value or default value if not found.
+     * Returns the default option if set and not empty, otherwise returns the setup option or default as fallback.
      */
 	public function getOptionByFilter( string $filter, string|bool $defaultOption = '' ): string|bool {
+		// Return default option if it's set and not empty.
+		if ( isset( $defaultOption ) && $defaultOption !== '' ) {
+			return $defaultOption;
+		}
+
+		// Return setup option if it's set and not empty.
 		if ( isset( ThemeSetup::$options[ $filter ] ) && ThemeSetup::$options[ $filter ] !== '' ) {
 			$setupOption = ThemeSetup::$options[ $filter ];
 
 			return is_bool($setupOption) ? $setupOption : (string) $setupOption;
 		}
 
+		// Return default option as fallback.
 		return $defaultOption;
 	}
 
