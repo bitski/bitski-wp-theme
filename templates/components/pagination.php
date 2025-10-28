@@ -24,11 +24,11 @@ $pagination_args = [
  * Custom loop: the total and current page are passed as arguments from the parent template.
  * Standard loop: the total and current page are retrieved from the global $wp_query object.
  */
-if (isset($args['total']) && $args['current']) {
-    $pagination_args['total'] = (int) $args['total'];
+if ( isset( $args['total'] ) && $args['current'] ) {
+    $pagination_args['total']   = (int) $args['total'];
     $pagination_args['current'] = (int) $args['current'];
 } else {
-    $pagination_args['total'] = $wp_query->max_num_pages;
+    $pagination_args['total']   = $wp_query->max_num_pages;
     $pagination_args['current'] = max( 1, get_query_var( 'paged' ) );
 }
 

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <section class="footer-info py-2 border-top">
-    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', ['container-xl'], true ); ?>">
         <p class="mb-0 text-center">
             <small>&copy; 2025 &ndash; <?php
                 echo date( "Y" ) . ' ';

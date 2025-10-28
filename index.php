@@ -18,7 +18,7 @@ get_header();
 ?>
 
 <main id="content" class="content <?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container',
-        'container-xl' ) ); ?> pt-4 pb-5">
+        [ 'container-xl' ], true ) ); ?> pt-4 pb-5">
     <!-- Content header -->
     <header class="content-header mb-4">
         <h1 class="post-title"><?php bloginfo( 'name' ); ?></h1>
@@ -26,7 +26,7 @@ get_header();
     </header>
 
     <?php if ( have_posts() ) {
-        $found_posts = $wp_query->found_posts;
+        $found_posts    = $wp_query->found_posts;
         $posts_per_page = get_option( 'posts_per_page' );
         ?>
         <!-- Content body: post list -->

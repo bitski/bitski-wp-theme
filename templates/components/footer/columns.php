@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <section class="footer-columns border-top py-5">
-    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?>">
+    <div class="<?php echo apply_filters( 'bitski-wp-theme/class/container', ['container-xl'], true ); ?>">
         <div class="row">
             <div class="col-6 col-lg-3">
                 <h2 class="h5">Headline</h2>

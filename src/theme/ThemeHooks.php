@@ -4,6 +4,7 @@
  *
  * @since 0.1.0
  */
+
 namespace BitskiWPTheme\theme;
 
 use BitskiWPTheme\theme\ThemeSetup;
@@ -25,21 +26,45 @@ class ThemeHooks {
 
 	/*
 	 * Getter for CSS classes by filter name.
-	 * Returns a space-separated string of classes or default string if not found.
+	 * Returns a space-separated string of classes.
+	 * Merges setup classes with default classes if $merge is true.
+	 * Otherwise, returns default classes only.
+	 *
+	 * @param string $filter
+	 * @param array $defaultClasses
+	 * @param bool $merge
+	 * @return string
 	 */
-	public function getClassesByFilter( string $filter, string $defaultClasses = '' ): string {
-		if ( isset( ThemeSetup::$classes[ $filter ] ) && !empty(ThemeSetup::$classes[ $filter ])) {
+	public function getClassesByFilter( string $filter, array $defaultClasses = [], bool $merge = true ): string {
+		// Return default classes if they're set and not empty.'
+		$setupClasses = [];
+		if ( isset( ThemeSetup::$classes[ $filter ] ) && ! empty( ThemeSetup::$classes[ $filter ] ) ) {
 			$setupClasses = ThemeSetup::$classes[ $filter ];
-
-			return is_array( $setupClasses ) ? implode( ' ', $setupClasses ) : (string) $setupClasses;
 		}
 
-		return $defaultClasses;
+		// Ensure $defaultClasses is an array.
+		if ( ! is_array( $defaultClasses ) ) {
+			$defaultClasses = [];
+		}
+
+		// Merge setup classes with default classes if $merge is true.
+		if ( $merge ) {
+			$merged_classes = array_filter( array_unique( array_merge( $setupClasses, $defaultClasses ) ) );
+
+			return implode( ' ', $merged_classes );
+		}
+
+		// Return default classes only.
+		return implode( ' ', $defaultClasses );
 	}
 
 	/*
      * Getter for theme options by filter name.
      * Returns the default option if set and not empty, otherwise returns the setup option or default as fallback.
+	 *
+	 * @param string $filter
+	 * @param string|bool $defaultOption
+	 * @return string|bool
      */
 	public function getOptionByFilter( string $filter, string|bool $defaultOption = '' ): string|bool {
 		// Return default option if it's set and not empty.
@@ -51,7 +76,7 @@ class ThemeHooks {
 		if ( isset( ThemeSetup::$options[ $filter ] ) && ThemeSetup::$options[ $filter ] !== '' ) {
 			$setupOption = ThemeSetup::$options[ $filter ];
 
-			return is_bool($setupOption) ? $setupOption : (string) $setupOption;
+			return is_bool( $setupOption ) ? $setupOption : (string) $setupOption;
 		}
 
 		// Return default option as fallback.
@@ -61,18 +86,18 @@ class ThemeHooks {
 	/*
 	 * Registers base hooks.
 	 */
-	protected function registerBaseHooks() {}
+	protected function registerBaseHooks() {
+	}
 
 	/*
 	 * Registers hooks for CSS classes.
-	 * Applies filters to return only classes without context.
 	 */
 	protected function registerCssClassesHooks() {
 		foreach ( ThemeSetup::$classes as $filter => $setupClasses ) {
-			add_filter( $filter, function ( $defaultClasses = '' ) use ( $filter ) {
-				// Returns setup classes or default classes if none are set.
-				return $this->getClassesByFilter( $filter, $defaultClasses );
-			} );
+			add_filter( $filter, function ( $defaultClasses = '', $merge = true ) use ( $filter ) {
+				// Returns classes as a space-separated string.
+				return $this->getClassesByFilter( $filter, $defaultClasses, $merge );
+			}, 10, 2 );
 		}
 	}
 
@@ -80,10 +105,10 @@ class ThemeHooks {
 	 * Registers hooks for theme options.
 	 */
 	protected function registerOptionHooks() {
-		foreach (ThemeSetup::$options as $filter => $setupOption) {
-			add_filter($filter, function ($defaultOption = '') use ($filter) {
-				return $this->getOptionByFilter($filter, $defaultOption);
-			});
+		foreach ( ThemeSetup::$options as $filter => $setupOption ) {
+			add_filter( $filter, function ( $defaultOption = '' ) use ( $filter ) {
+				return $this->getOptionByFilter( $filter, $defaultOption );
+			} );
 		}
 	}
 

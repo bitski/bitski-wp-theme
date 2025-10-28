@@ -23,11 +23,12 @@ if ( ! $prev_post && ! $next_post ) {
 } ?>
 
 <!-- Post navigation -->
-<nav class="post-navigation" aria-label="<?php echo esc_attr( $aria_label_nav); ?>">
+<nav class="post-navigation" aria-label="<?php echo esc_attr( $aria_label_nav ); ?>">
     <ul class="pagination mb-0">
         <?php if ( $prev_post ) { ?>
             <li class="page-item">
-                <a class="page-link text-light" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" rel="prev">
+                <a class="page-link text-light" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
+                   rel="prev">
                     <i class="fa-solid fa-angles-left fa-xs" aria-hidden="true"></i>
                     <span><?php echo esc_html( $prev_post->post_title ); ?></span>
                 </a>
@@ -35,7 +36,8 @@ if ( ! $prev_post && ! $next_post ) {
         <?php }
         if ( $next_post ) { ?>
             <li class="page-item">
-                <a class="page-link text-light" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" rel="next">
+                <a class="page-link text-light" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
+                   rel="next">
                     <span><?php echo esc_html( $next_post->post_title ); ?></span>
                     <i class="fa-solid fa-angles-right fa-xs" aria-hidden="true"></i>
                 </a>

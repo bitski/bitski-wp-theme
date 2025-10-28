@@ -28,11 +28,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <a class="skip-link visually-hidden-focusable"
    href="#footer"><?php echo esc_html( 'Skip to footer', 'bitski-wp-theme' ); ?></a>
 
-<header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', 'bg-body-tertiary' ); ?>">
+<header class="header <?php echo apply_filters( 'bitski-wp-theme/class/header', [ 'text-dark' ], false ); ?>">
     <!-- Navbar -->
     <nav id="nav-main" class="navbar <?php echo apply_filters( 'bitski-wp-theme/class/header/navbar/breakpoint',
-            'navbar-expand-lg' ); ?>">
-        <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ) ); ?>">
+            [ 'navbar-expand-lg' ], true ); ?>">
+        <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container', [ 'container-xl' ],
+                true ) ); ?>">
             <!-- Navbar Brand -->
             <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">
                 <img class="logo logo-light"
@@ -79,7 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     if ( apply_filters( 'bitski-wp-theme/option/header/display-search', true ) ) { ?>
         <div class="collapse search-bar" id="collapseSearchBar">
             <div class="<?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container',
-                    'container-xl' ) ); ?> py-2">
+                    [ 'container-xl' ], true ) ); ?> py-2">
                 <?php get_template_part( 'templates/components/search/form' ); ?>            </div>
         </div>
     <?php } ?>

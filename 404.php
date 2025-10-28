@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', 'container-xl' ); ?> pt-4 pb-5">
+<main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', ['container-xl'], true ); ?> pt-4 pb-5">
 	<!-- Content header -->
 	<header class="content-header mb-4">
 		<h1 class="entry-title"><?php printf(esc_html__('404 – Fehler bei Aufruf der Seite: %s', 'bitski-wp-theme'), '<span class="text-body-secondary">' . esc_html( '/' . $wp->request ) . '</span>') ?></h1>
