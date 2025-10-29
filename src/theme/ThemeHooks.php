@@ -7,9 +7,6 @@
 
 namespace BitskiWPTheme\theme;
 
-use BitskiWPTheme\theme\ThemeSetup;
-use BitskiWPTheme\assets\AssetsManager;
-
 /**
  * Manages theme hooks.
  *
@@ -47,7 +44,7 @@ class ThemeHooks {
 			$defaultClasses = [];
 		}
 
-		// Merge setup classes with default classes if $merge is true.
+		// If $merge parameter is set to true, merge setup classes with default classes.
 		// Return merged classes as a space-separated string.
 		if ( $merge ) {
 			$merged_classes = array_filter( array_unique( array_merge( $setupClasses, $defaultClasses ) ) );
@@ -125,7 +122,7 @@ class ThemeHooks {
 		// (To be inhabited)
 
 		// Footer hooks
-		add_action( 'wp_footer', [ $this, 'outputSvgSprite' ], 20 );
+		//add_action( 'wp_footer', [ $this, 'outputSvgSprite' ], 20 );
 	}
 
 	/*
