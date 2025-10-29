@@ -27,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php the_title(); ?>
                 </a>
             </h2>
+            <?php get_template_part( 'templates/components/post/meta', null, array( 'context' => 'card' ) ); ?>
         </header>
         <div class="post-content card-text">
             <?php the_excerpt(); ?>

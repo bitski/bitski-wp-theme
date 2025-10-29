@@ -19,15 +19,18 @@ class ThemeSetup {
 	 */
 	public static array $options = [
 		// Example: 'option-name' => 'default-value'
-		'bitski-wp-theme/option/load-fontawesome'                => true,
-		'bitski-wp-theme/option/load-bootstrap-icons-sprite'     => false,
-		'bitski-wp-theme/option/header/display-socials'          => true,
-		'bitski-wp-theme/option/header/display-socials-labels'   => true,
-		'bitski-wp-theme/option/header/display-search'           => true,
-		'bitski-wp-theme/option/footer/display-socials'          => true,
-		'bitski-wp-theme/option/post/meta/display-author'        => true,
-		'bitski-wp-theme/option/post/meta/display-date'          => true,
-		'bitski-wp-theme/option/post/meta/display-date-modified' => true,
+		'bitski-wp-theme/option/load-fontawesome'                  => true,
+		'bitski-wp-theme/option/load-bootstrap-icons-sprite'       => false,
+		'bitski-wp-theme/option/header/display-socials'            => true,
+		'bitski-wp-theme/option/header/display-socials-labels'     => true,
+		'bitski-wp-theme/option/header/display-search'             => true,
+		'bitski-wp-theme/option/footer/display-socials'            => true,
+		'bitski-wp-theme/option/single/meta/display-author'        => true,
+		'bitski-wp-theme/option/single/meta/display-date'          => true,
+		'bitski-wp-theme/option/single/meta/display-date-modified' => true,
+		'bitski-wp-theme/option/card/meta/display-author'          => true,
+		'bitski-wp-theme/option/card/meta/display-date'            => true,
+		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,
 		// Add more option filters as needed
 	];
 

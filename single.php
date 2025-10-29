@@ -20,7 +20,7 @@ get_header();
     <header class="content-header mb-4">
         <?php get_template_part( 'templates/components/post/category-badges' ); ?>
         <h1 class="post-title"><?php the_title(); ?></h1>
-        <?php get_template_part( 'templates/components/post/meta' ); ?>
+        <?php get_template_part( 'templates/components/post/meta', null, array( 'context' => 'single' ) ); ?>
         <?php if ( has_post_thumbnail() ) {
             $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
             <img class="post-thumbnail img-fluid rounded mb-3" src="<?php echo esc_url( $thumbnail_url ); ?>"

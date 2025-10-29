@@ -11,10 +11,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Get the meta data options.
-$display_author        = apply_filters( 'bitski-wp-theme/option/post/meta/display-author', true );
-$display_date          = apply_filters( 'bitski-wp-theme/option/post/meta/display-date', true );
-$display_date_modified = apply_filters( 'bitski-wp-theme/option/post/meta/display-date-modified', true );
+// Get the context from the calling template.
+$context = $args['context'] ?? '';
+
+// Return early if no context is provided.
+if ( empty( $context ) ) {
+    return;
+}
+
+// Get the meta data options, based on the context.
+$display_author        = apply_filters( 'bitski-wp-theme/option/' . $context . '/meta/display-author', true );
+$display_date          = apply_filters( 'bitski-wp-theme/option/' . $context . '/meta/display-date', true );
+$display_date_modified = apply_filters( 'bitski-wp-theme/option/' . $context . '/meta/display-date-modified', true );
 
 // Return early if no meta data should be displayed.
 if ( ! $display_author && ! $display_date ) {
