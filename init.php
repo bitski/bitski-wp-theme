@@ -19,11 +19,18 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 }
 
 // Array of core theme classes to be initialized automatically, can be extended or modified as needed.
+//
+// Classes that are initialized unconditionally.
 $classes = [
     \BitskiWPTheme\theme\ThemeSetup::class,
     \BitskiWPTheme\assets\AssetsManager::class,
     \BitskiWPTheme\theme\ThemeHooks::class,
 ];
+
+// Conditional classes that are only initialized if the corresponding option is enabled.
+if (apply_filters('bitski-wp-theme/option/load-forms', true)) {
+	$classes[] = \BitskiWPTheme\content\FormManager::class;
+}
 
 // Instantiate each class and call its init() method if it exists.
 foreach ($classes as $class) {
