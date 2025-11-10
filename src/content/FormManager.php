@@ -14,7 +14,6 @@ namespace BitskiWPTheme\content;
 
 class FormManager {
 	public function init() {
-		//error_log('FormManager initialized');
 		$this->processFormContact();
 	}
 
