@@ -27,9 +27,9 @@ if ( $template === 'header' && $display_labels ) {
            href="<?php echo esc_url( wp_login_url() ); ?>">
             <i class="fa-brands fa-github" aria-hidden="true"></i>
             <?php if ( $display_labels ) { ?>
-                <span class="<?php echo $class_display_labels; ?>"><?php echo esc_html( 'GitHub', 'bitski-wp-theme' ); ?></span>
+                <span class="<?php echo $class_display_labels; ?>"><?php echo esc_html__( 'GitHub', 'bitski-wp-theme' ); ?></span>
             <?php } ?>
-            <span class="visually-hidden"><?php echo esc_html( 'GitHub', 'bitski-wp-theme' ); ?></span>
+            <span class="visually-hidden"><?php echo esc_html__( 'GitHub', 'bitski-wp-theme' ); ?></span>
         </a>
     </li>
     <li class="me-1">
@@ -37,9 +37,9 @@ if ( $template === 'header' && $display_labels ) {
            href="<?php echo esc_url( wp_login_url() ); ?>">
             <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
             <?php if ( $display_labels ) { ?>
-                <span class="<?php echo $class_display_labels; ?>"><?php echo esc_html( 'x.com', 'bitski-wp-theme' ); ?></span>
+                <span class="<?php echo $class_display_labels; ?>"><?php echo esc_html__( 'x.com', 'bitski-wp-theme' ); ?></span>
             <?php } ?>
-            <span class="visually-hidden"><?php echo esc_html( 'x.com', 'bitski-wp-theme' ); ?></span>
+            <span class="visually-hidden"><?php echo esc_html__( 'x.com', 'bitski-wp-theme' ); ?></span>
         </a>
     </li>
     <li class="me-2">
@@ -47,9 +47,9 @@ if ( $template === 'header' && $display_labels ) {
            href="<?php echo esc_url( wp_login_url() ); ?>">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             <?php if ( $display_labels ) { ?>
-                <span class="<?php echo $class_display_labels; ?>"><?php echo esc_html( 'Instagram', 'bitski-wp-theme' ); ?></span>
+                <span class="<?php echo $class_display_labels; ?>"><?php echo esc_html__( 'Instagram', 'bitski-wp-theme' ); ?></span>
             <?php } ?>
-            <span class="visually-hidden"><?php echo esc_html( 'Instagram', 'bitski-wp-theme' ); ?></span>
+            <span class="visually-hidden"><?php echo esc_html__( 'Instagram', 'bitski-wp-theme' ); ?></span>
         </a>
     </li>
 </ul>

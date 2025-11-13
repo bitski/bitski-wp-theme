@@ -23,7 +23,7 @@ get_header();
 <main id="content" class="content <?php echo apply_filters( 'bitski-wp-theme/class/container', ['container-xl'], true ); ?> pt-4 pb-5">
     <!-- Content header -->
     <header class="content-header mb-4">
-        <h1 class="entry-title"><?php printf(esc_html__('Suchergebnisse für: %s', 'bitski-wp-theme'), '<span class="text-body-secondary">' . get_search_query() . '</span>') ?></h1>
+        <h1 class="entry-title"><?php printf(esc_html____('Suchergebnisse für: %s', 'bitski-wp-theme'), '<span class="text-body-secondary">' . get_search_query() . '</span>') ?></h1>
     </header>
 
     <?php
