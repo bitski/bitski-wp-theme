@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="main-menu-actions me-lg-2 py-3 py-lg-0 d-flex align-items-center" role="group" aria-label="<?php echo esc_attr( 'Main menu actions', 'bitski-wp-theme' ); ?>">
+<div class="main-menu-actions me-lg-2 py-3 py-lg-0 d-flex align-items-center" role="group" aria-label="<?php echo esc_attr__( 'Main menu actions', 'bitski-wp-theme' ); ?>">
     <!-- Color theme dropdown -->
     <div class="color-theme-dropdown dropdown">
-        <button id="color-theme-switcher" class="color-theme-switcher dropdown-toggle btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?php echo esc_attr( 'Toggle color theme', 'bitski-wp-theme' ); ?> ()">
+        <button id="color-theme-switcher" class="color-theme-switcher dropdown-toggle btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?php echo esc_attr__( 'Toggle color theme', 'bitski-wp-theme' ); ?> ()">
             <i class="icon-active-theme fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
             <span class="visually-hidden"><?php echo esc_html__( 'Toggle color theme', 'bitski-wp-theme' ); ?></span>
         </button>

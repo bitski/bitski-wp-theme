@@ -21,7 +21,7 @@ if ( $template === 'header' && $display_labels ) {
 
 <ul class="socials list-unstyled me-lg-2 mb-0 py-2 py-lg-0 d-flex justify-content-lg-end align-items-center"
     role="group"
-    aria-label="<?php echo esc_attr( 'Main menu socials', 'bitski-wp-theme' ); ?>">
+    aria-label="<?php echo esc_attr__( 'Main menu socials', 'bitski-wp-theme' ); ?>">
     <li class="me-2">
         <a class="github-link nav-link p-2 ps-0"
            href="<?php echo esc_url( wp_login_url() ); ?>">
