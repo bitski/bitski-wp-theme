@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<form>
+<form method="post" class="contact-form" action="">
+    <?php wp_nonce_field( 'contact_form', 'contact_form_nonce' ); ?>
     Form
 </form>
