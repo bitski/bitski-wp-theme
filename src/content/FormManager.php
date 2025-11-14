@@ -14,10 +14,11 @@ namespace BitskiWPTheme\content;
 
 class FormManager {
 	public function init() {
-		$this->processFormContact();
 	}
 
-	public function processFormContact() {
-		return 'Kontaktformular verarbeitet';
+	public static function processFormContact() {
+
+
+//		return __('Danke, Ihre Nachricht wurde erfolgreich versendet.', 'bitski-wp-theme');
 	}
 }
