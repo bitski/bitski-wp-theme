@@ -10,15 +10,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$message = BitskiWPTheme\content\FormManager::processFormContact();
-
-if ( ! empty( $message ) ) { ?>
-    <div class="alert alert-success" role="alert">
-        <?php echo esc_html( $message ); ?>
+if ( ! empty( $_SESSION['flash_message'] ) ) {
+    $flash_message      = $_SESSION['flash_message'];
+    $flash_message_type = $flash_message['type'];
+    $flash_message_text = $flash_message['text'];
+    ?>
+    <div class="alert alert-<?php echo esc_attr( $flash_message_type ); ?>" role="alert">
+        <?php echo esc_html__( $flash_message_text, 'bitski-wp-theme' ); ?>
     </div>
-<?php } else { ?>
-    <form method="post" class="contact-form" action="">
-        <?php wp_nonce_field( 'contact_form', 'contact_form_nonce' ); ?>
+    <?php
+    unset( $_SESSION['flash_message'] );
+} else { ?>
+    <form method="post" class="contact-form" action="<?php echo esc_url( get_permalink() ); ?>">
+        <?php wp_nonce_field( 'contact_form_submit', 'contact_form_nonce' ); ?>
 
         <div class="mb-3">
             <label for="contact-name" class="visually-hidden">Name</label>
@@ -50,5 +54,4 @@ if ( ! empty( $message ) ) { ?>
             Nachricht senden
         </button>
     </form>
-<?php } ?>
-
+<?php }
