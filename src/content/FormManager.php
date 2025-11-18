@@ -9,7 +9,7 @@ namespace BitskiWPTheme\content;
 
 class FormManager {
 	/*
-	 * Initialize form manager
+	 * Initialize form manager.
 	 * Add form processing actions.
 	 */
 	public function init(): void {
@@ -37,13 +37,28 @@ class FormManager {
 				wp_redirect( get_permalink() );
 				exit;
 			}
-
+			$this->validateFormContact();
 			$this->setFlashMessage( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
 
 			// Redirect back to the contact page
 			wp_redirect( get_permalink() );
 			exit;
 		}
+	}
+
+	protected function validateFormContact(): bool {
+		// Here you would add your form validation and processing logic.
+		if (empty($_POST['contact-name']) ) {
+			$this->setFlashMessage('Bitte geben Sie einen Namen ein.', 'danger');
+		}
+		if (empty($_POST['contact-email'])) {
+			$this->setFlashMessage('Bitte geben Sie eine E-Mail-Adresse ein.', 'danger');
+		}
+		if (empty($_POST['contact-message'])) {
+			$this->setFlashMessage('Bitte geben Sie eine Nachricht ein.', 'danger');
+		}
+
+		return true;
 	}
 
 	/*
