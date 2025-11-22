@@ -13,7 +13,3 @@ if (!defined('ABSPATH')) {
 if (file_exists(__DIR__ . '/init.php')) {
     require_once __DIR__ . '/init.php';
 }
-
-add_action('init', function() {
-	setcookie('test_cookie', '1', time() + 3600, '/');
-});

@@ -2,6 +2,8 @@
 /**
  * Manages theme forms.
  *
+ * Handles form submission and validation for the contact page.
+ *
  * @since 0.8.0
  */
 
@@ -33,32 +35,56 @@ class FormManager {
 					'contact_form_submit' ) ) {
 				$this->setFlashMessage( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
 
-				// Redirect back to the contact page
+				// Redirect back to the contact page.
 				wp_redirect( get_permalink() );
 				exit;
 			}
-			$this->validateFormContact();
+
+			// Validate form data
+			// If validation fails, redirect back to the contact page
+			if(! $this->validateFormContact()) {
+				wp_redirect( get_permalink() );
+				exit;
+			}
+
+			// Set flash message.
 			$this->setFlashMessage( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
 
-			// Redirect back to the contact page
+			// Redirect back to the contact page.
 			wp_redirect( get_permalink() );
 			exit;
 		}
 	}
 
+	/*
+	 * Validate form data for the contact page.
+	 * Checks for required fields and validates email format.
+	 *
+	 * @return bool Returns true if the form is valid, false otherwise.
+	 * @since 0.8.9
+	 */
 	protected function validateFormContact(): bool {
-		// Here you would add your form validation and processing logic.
-		if (empty($_POST['contact-name']) ) {
+		$is_valid = true;
+
+		$name = isset($_POST['contact_name']) ? trim($_POST['contact_name']) : '';
+		$email = isset($_POST['contact_email']) ? trim($_POST['contact_email']) : '';
+		$message = isset($_POST['contact_message']) ? trim($_POST['contact_message']) : '';
+
+		// Check for required fields, set flash message if any field is empty or invalid
+		if ($name === '') {
 			$this->setFlashMessage('Bitte geben Sie einen Namen ein.', 'danger');
+			$is_valid = false;
 		}
-		if (empty($_POST['contact-email'])) {
+		if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$this->setFlashMessage('Bitte geben Sie eine E-Mail-Adresse ein.', 'danger');
+			$is_valid = false;
 		}
-		if (empty($_POST['contact-message'])) {
+		if ( $message === '' ) {
 			$this->setFlashMessage('Bitte geben Sie eine Nachricht ein.', 'danger');
+			$is_valid = false;
 		}
 
-		return true;
+		return $is_valid;
 	}
 
 	/*
