@@ -2,6 +2,9 @@
 /**
  * Template component for displaying a contact form.
  *
+ * The template manages the display of the form depending on the form submission status and form validation.
+ * Also displays form-related flash messages if available before the form.
+ *
  * @since 0.8.1
  */
 
@@ -10,17 +13,31 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! empty( $_SESSION['flash_message'] ) ) {
-    $flash_message      = $_SESSION['flash_message'];
-    $flash_message_type = $flash_message['type'];
-    $flash_message_text = $flash_message['text'];
-    ?>
-    <div class="alert alert-<?php echo esc_attr( $flash_message_type ); ?>" role="alert">
-        <?php echo esc_html__( $flash_message_text, 'bitski-wp-theme' ); ?>
-    </div>
-    <?php
-    unset( $_SESSION['flash_message'] );
-} else { ?>
+$is_submitted = false;
+$is_valid = true;
+
+// Check for flash messages and display them if available.
+if ( ! empty( $_SESSION['flash_messages'] ) ) {
+    $is_submitted = true;
+    $flash_messages = $_SESSION['flash_messages'];
+
+    foreach ( $flash_messages as $flash_message ) {
+        $flash_message_type = $flash_message['type'];
+        $flash_message_text = $flash_message['text'];
+
+        // Set the form validation status based on the flash message type.
+        if ($flash_message_type === 'danger') {
+            $is_valid = false;
+        } ?>
+        <div class="alert alert-<?php echo esc_attr( $flash_message_type ); ?>" role="alert">
+            <?php echo esc_html__( $flash_message_text, 'bitski-wp-theme' ); ?>
+        </div>
+    <?php }
+    unset( $_SESSION['flash_messages'] );
+}
+
+// Display the contact form only if it hasn't been submitted yet or if the form is invalid.
+if ( ! $is_submitted || $is_valid === false ) { ?>
     <form method="post" class="contact-form" action="<?php echo esc_url( get_permalink() ); ?>">
         <?php wp_nonce_field( 'contact_form_submit', 'contact_form_nonce' ); ?>
 

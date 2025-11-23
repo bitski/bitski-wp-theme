@@ -33,7 +33,7 @@ class FormManager {
 			// Verify nonce
 			if ( ! isset( $_POST['contact_form_nonce'] ) || ! wp_verify_nonce( $_POST['contact_form_nonce'],
 					'contact_form_submit' ) ) {
-				$this->setFlashMessage( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
+				$this->setFlashMessages( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
 
 				// Redirect back to the contact page.
 				wp_redirect( get_permalink() );
@@ -48,7 +48,7 @@ class FormManager {
 			}
 
 			// Set flash message.
-			$this->setFlashMessage( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
+			$this->setFlashMessages( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
 
 			// Redirect back to the contact page.
 			wp_redirect( get_permalink() );
@@ -72,15 +72,15 @@ class FormManager {
 
 		// Check for required fields, set flash message if any field is empty or invalid
 		if ($name === '') {
-			$this->setFlashMessage('Bitte geben Sie einen Namen ein.', 'danger');
+			$this->setFlashMessages('Bitte geben Sie einen Namen ein.', 'danger');
 			$is_valid = false;
 		}
 		if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$this->setFlashMessage('Bitte geben Sie eine E-Mail-Adresse ein.', 'danger');
+			$this->setFlashMessages('Bitte geben Sie eine E-Mail-Adresse ein.', 'danger');
 			$is_valid = false;
 		}
 		if ( $message === '' ) {
-			$this->setFlashMessage('Bitte geben Sie eine Nachricht ein.', 'danger');
+			$this->setFlashMessages('Bitte geben Sie eine Nachricht ein.', 'danger');
 			$is_valid = false;
 		}
 
@@ -93,9 +93,13 @@ class FormManager {
 	 * @param string $message The message to display.
 	 * @param string $type The type of message (success, danger, warning).
 	 */
-	protected function setFlashMessage( $message, $type = 'success' ): void {
+	protected function setFlashMessages( $message, $type = 'success' ): void {
 		global $_SESSION;
-		$_SESSION['flash_message'] = [
+		if (!isset($_SESSION['flash_messages'])) {
+			$_SESSION['flash_messages'] = [];
+		}
+
+		$_SESSION['flash_messages'][] = [
 			'type' => $type,
 			'text' => $message
 		];
