@@ -103,7 +103,7 @@ class FormManager {
 			$this->setFlashMessages('Bitte geben Sie einen Namen ein.', 'danger');
 			$is_valid = false;
 		}
-		if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		if ($email === '' || !is_email($email)) {
 			$this->setFlashMessages('Bitte geben Sie eine E-Mail-Adresse ein.', 'danger');
 			$is_valid = false;
 		}
