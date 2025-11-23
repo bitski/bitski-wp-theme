@@ -11,6 +11,13 @@ namespace BitskiWPTheme\content;
 
 class FormManager {
 	/*
+	 * Sanitized form data storage.
+	 *
+	 * @since 0.8.12
+	 */
+	protected array $sanitized_form_data = [];
+
+	/*
 	 * Initialize form manager.
 	 * Add form processing actions.
 	 */
@@ -40,6 +47,9 @@ class FormManager {
 				exit;
 			}
 
+			// Sanitize form data
+			$this->sanitizeFormContact();
+
 			// Validate form data
 			// If validation fails, redirect back to the contact page
 			if(! $this->validateFormContact()) {
@@ -57,6 +67,24 @@ class FormManager {
 	}
 
 	/*
+	 * Sanitize form data for the contact page.
+	 * Sanitizes input fields using WordPress sanitization functions.
+	 *
+	 * @since 0.8.12
+	 */
+	protected function sanitizeFormContact(): void {
+		if (isset($_POST['contact_name'])) {
+			$this->sanitized_form_data['contact_name'] = sanitize_text_field($_POST['contact_name']);
+		}
+		if (isset($_POST['contact_email'])) {
+			$this->sanitized_form_data['contact_email'] = sanitize_email($_POST['contact_email']);
+		}
+		if (isset($_POST['contact_message'])) {
+			$this->sanitized_form_data['contact_message'] = sanitize_textarea_field($_POST['contact_message']);
+		}
+	}
+
+	/*
 	 * Validate form data for the contact page.
 	 * Checks for required fields and validates email format.
 	 *
@@ -66,9 +94,9 @@ class FormManager {
 	protected function validateFormContact(): bool {
 		$is_valid = true;
 
-		$name = isset($_POST['contact_name']) ? trim($_POST['contact_name']) : '';
-		$email = isset($_POST['contact_email']) ? trim($_POST['contact_email']) : '';
-		$message = isset($_POST['contact_message']) ? trim($_POST['contact_message']) : '';
+		$name = isset($this->sanitized_form_data['contact_name']) ? trim($this->sanitized_form_data['contact_name']) : '';
+		$email = isset($this->sanitized_form_data['contact_email']) ? trim($this->sanitized_form_data['contact_email']) : '';
+		$message = isset($this->sanitized_form_data['contact_message']) ? trim($this->sanitized_form_data['contact_message']) : '';
 
 		// Check for required fields, set flash message if any field is empty or invalid
 		if ($name === '') {
