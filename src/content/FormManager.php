@@ -35,9 +35,9 @@ class FormManager {
 			return;
 		}
 
-		// Check for form submission
+		// Check for form submission.
 		if ( ! empty( $_POST ) ) {
-			// Verify nonce
+			// Verify nonce.
 			if ( ! isset( $_POST['contact_form_nonce'] ) || ! wp_verify_nonce( $_POST['contact_form_nonce'],
 					'contact_form_submit' ) ) {
 				$this->setFlashMessages( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
@@ -47,20 +47,20 @@ class FormManager {
 				exit;
 			}
 
-			// Sanitize form data
+			// Sanitize form data.
 			$this->sanitizeFormContact();
 
-			// Validate form data
-			// If validation fails, redirect back to the contact page
+			// Validate form data.
+			// If validation fails, redirect back to the contact page.
 			if(! $this->validateFormContact()) {
 				wp_redirect( get_permalink() );
 				exit;
 			}
 
-			// Set flash message.
-			$this->setFlashMessages( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
-
+			// The form is valid.
+			// Proceed with form submission here (e.g., send email, save to database).
 			// Redirect back to the contact page.
+			$this->setFlashMessages( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
 			wp_redirect( get_permalink() );
 			exit;
 		}
