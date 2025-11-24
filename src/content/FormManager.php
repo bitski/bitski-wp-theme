@@ -59,8 +59,15 @@ class FormManager {
 
 			// The form is valid.
 			// Proceed with form submission here (e.g., send email, save to database).
+			//
+			// Send email using the sendFormContactEmail() method.
+			// Set success or error flash message based on the result of the email sending.
 			// Redirect back to the contact page.
-			$this->setFlashMessages( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
+			if ($this->sendFormContactEmail()) {
+				$this->setFlashMessages( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
+			} else {
+				$this->setFlashMessages( 'Beim Versenden der Nachricht ist leider ein Fehler aufgetreten. Bitte versuchen Sie es erneut.', 'danger' );
+			}
 			wp_redirect( get_permalink() );
 			exit;
 		}
@@ -113,6 +120,34 @@ class FormManager {
 		}
 
 		return $is_valid;
+	}
+
+	/*
+	 * Send an email with the form data.
+	 * Uses WordPress' wp_mail function to send the email.
+	 *
+	 * @since 0.8.15
+	 */
+	protected function sendFormContactEmail(): bool {
+		// Set email parameter 'to' to the admin email address
+		$to = get_option('admin_email');
+
+		$subject = sprintf(
+			'Neue Kontaktanfrage von %s',
+			$this->sanitized_form_data['contact_name']
+		);
+		$message = sprintf(
+			"Name: %s\nE-Mail: %s\n\nNachricht:\n%s",
+			$this->sanitized_form_data['contact_name'],
+			$this->sanitized_form_data['contact_email'],
+			$this->sanitized_form_data['contact_message']
+		);
+		$headers = [
+			'Content-Type: text/plain; charset=UTF-8',
+			'Reply-To: ' . $this->sanitized_form_data['contact_email']
+		];
+
+		return wp_mail($to, $subject, $message, $headers);
 	}
 
 	/*
