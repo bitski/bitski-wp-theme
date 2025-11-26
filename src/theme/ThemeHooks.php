@@ -61,14 +61,15 @@ class ThemeHooks {
 
 	/**
      * Getter for theme options by filter name.
-     * Returns the default option if it is boolean,
-	 * or if it is set and and neither an empty string nor an empty array.
+     * Returns the default option if it is explicitly set (not null) and valid.
+	 * Otherwise, checks global ThemeSetup options.
 	 *
 	 * @param string $filter
-	 * @param string|bool|array $defaultOption
-	 * @return string|bool
+	 * @param mixed $defaultOption (default: null, for fallback to global setup option)
+	 * @return mixed
      */
-	public function getOptionByFilter( string $filter, string|bool|array $defaultOption = '' ): string|bool|array {
+	public function getOptionByFilter( string $filter, mixed $defaultOption = null ): mixed {
+		// Return default option if it is explicitly set (not null).
 		// Return default option if it is boolean,
 		// or if it is set and and neither an empty string nor an empty array.
 		if ( is_bool( $defaultOption )
@@ -116,7 +117,7 @@ class ThemeHooks {
 	 */
 	protected function registerOptionHooks() {
 		foreach ( ThemeSetup::$options as $filter => $setupOption ) {
-			add_filter( $filter, function ( $defaultOption = '' ) use ( $filter ) {
+			add_filter( $filter, function ( $defaultOption = null ) use ( $filter ) {
 				// Returns the option value or the default option if set.
 				return $this->getOptionByFilter( $filter, $defaultOption );
 			} );

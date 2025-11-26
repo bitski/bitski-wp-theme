@@ -40,7 +40,7 @@ class ThemeSetup {
 		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,
 
 		// Pages options
-		'bitski-wp-theme/option/pages/using-session'               => [ 'kontakt' ]
+		'bitski-wp-theme/option/pages/using-session/ids'           => [ 49 ]    // [ 13, 232 ]
 
 		// Add more option filters as needed
 	];
@@ -70,7 +70,7 @@ class ThemeSetup {
 		add_action( 'after_setup_theme', [ $this, 'loadTextdomain' ] );
 		add_action( 'after_setup_theme', [ $this, 'registerNavMenus' ] );
 
-		add_action('init', [ $this, 'startSession' ] );
+		add_action('template_redirect', [ $this, 'startSession' ] );
 	}
 
 	/**
@@ -112,13 +112,29 @@ class ThemeSetup {
 	}
 
 	/**
-	 * Start the session if it's not already started.
+	 * Start session if its not already started and
+	 * if current page is in the option array of pages using sessions.
 	 */
 	public function startSession(): void {
-		if ( ! session_id() ) {
-			$pages_using_session = apply_filters( 'bitski-wp-theme/option/pages/using-session', []);
+		// Return early if session is already started.
+		if ( session_id() ) {
+			return;
+		}
 
-			session_start();
+		// Security check if headers are already sent.
+		// Return early if so, no session can be started.
+		if ( headers_sent( $file, $line ) ) {
+			error_log( "Session could not be started. Headers already sent in $file on line $line." );
+			return;
+		}
+
+		// Check if current page is in the option array of pages using sessions.
+		$pages_using_session_ids = apply_filters( 'bitski-wp-theme/option/pages/using-session/ids', [] );
+		foreach ( $pages_using_session_ids as $id ) {
+			if ( is_page( $id ) ) {
+				session_start();
+				break;
+			}
 		}
 	}
 }
