@@ -58,15 +58,20 @@ class ThemeHooks {
 
 	/*
      * Getter for theme options by filter name.
-     * Returns the default option if set and not empty, otherwise returns the setup option or default as fallback.
+     * Returns the default option if it is boolean,
+	 * or if it is set and and neither an empty string nor an empty array.
 	 *
 	 * @param string $filter
-	 * @param string|bool $defaultOption
+	 * @param string|bool|array $defaultOption
 	 * @return string|bool
      */
-	public function getOptionByFilter( string $filter, string|bool $defaultOption = '' ): string|bool {
-		// Return default option if it's set and not empty.
-		if ( isset( $defaultOption ) && $defaultOption !== '' ) {
+	public function getOptionByFilter( string $filter, string|bool|array $defaultOption = '' ): string|bool|array {
+		// Return default option if it is boolean,
+		// or if it is set and and neither an empty string nor an empty array.
+		if ( is_bool( $defaultOption )
+		     || ( isset( $defaultOption )
+		          && $defaultOption !== ''
+		          && ! ( is_array( $defaultOption ) && empty( $defaultOption ) ) ) ) {
 			return $defaultOption;
 		}
 
@@ -74,7 +79,11 @@ class ThemeHooks {
 		if ( isset( ThemeSetup::$options[ $filter ] ) && ThemeSetup::$options[ $filter ] !== '' ) {
 			$setupOption = ThemeSetup::$options[ $filter ];
 
-			return is_bool( $setupOption ) ? $setupOption : (string) $setupOption;
+			if ( is_array( $setupOption ) || is_bool( $setupOption )) {
+				return $setupOption;
+			}
+
+			return (string) $setupOption;
 		}
 
 		// Return default option as fallback.

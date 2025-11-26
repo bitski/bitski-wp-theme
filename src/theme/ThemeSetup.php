@@ -12,26 +12,36 @@ class ThemeSetup {
 	 * Centralized array to manage theme options.
 	 * Key: option name, Value: option value
 	 * Usage: apply_filters('option-name', 'default-value')
-	 *
-	 * @var array{
-	 *   'bitski-wp-theme/option/load-fontawesome': bool,
-	 * }
 	 */
 	public static array $options = [
 		// Example: 'option-name' => 'default-value'
+
+		// Loading options
 		'bitski-wp-theme/option/load-fontawesome'                  => true,
 		'bitski-wp-theme/option/load-bootstrap-icons-sprite'       => false,
 		'bitski-wp-theme/option/load-forms'                        => true,
+
+		// Header options
 		'bitski-wp-theme/option/header/display-socials'            => true,
 		'bitski-wp-theme/option/header/display-socials-labels'     => true,
 		'bitski-wp-theme/option/header/display-search'             => true,
+
+		// Footer options
 		'bitski-wp-theme/option/footer/display-socials'            => true,
+
+		// Single post options
 		'bitski-wp-theme/option/single/meta/display-author'        => true,
 		'bitski-wp-theme/option/single/meta/display-date'          => true,
 		'bitski-wp-theme/option/single/meta/display-date-modified' => true,
+
+		// Archive page options
 		'bitski-wp-theme/option/card/meta/display-author'          => true,
 		'bitski-wp-theme/option/card/meta/display-date'            => true,
 		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,
+
+		// Pages options
+		'bitski-wp-theme/option/pages/using-session'               => [ 'kontakt' ]
+
 		// Add more option filters as needed
 	];
 
@@ -98,6 +108,8 @@ class ThemeSetup {
 	// Start the session if it's not already started'
 	public function startSession(): void {
 		if ( ! session_id() ) {
+			$pages_using_session = apply_filters( 'bitski-wp-theme/option/pages/using-session', []);
+
 			session_start();
 		}
 	}
