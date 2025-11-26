@@ -70,13 +70,15 @@ class ThemeHooks {
      */
 	public function getOptionByFilter( string $filter, mixed $defaultOption = null ): mixed {
 		// Return default option if it is explicitly set (not null).
-		// Return default option if it is boolean,
+		// Return default option if it is boolean or integer,
 		// or if it is set and and neither an empty string nor an empty array.
-		if ( is_bool( $defaultOption )
-		     || ( isset( $defaultOption )
-		          && $defaultOption !== ''
-		          && ! ( is_array( $defaultOption ) && empty( $defaultOption ) ) ) ) {
-			return $defaultOption;
+		if ( $defaultOption !== null ) {
+			if ( is_bool( $defaultOption )
+			     || is_int( $defaultOption )
+			     || ( $defaultOption !== ''
+			          && ! ( is_array( $defaultOption ) && empty( $defaultOption ) ) ) ) {
+				return $defaultOption;
+			}
 		}
 
 		// Return setup option if it's set and not empty.
