@@ -59,7 +59,7 @@ class ThemeSetup {
 		// Add more class name filters as needed
 	];
 
-	/*
+	/**
 	 * Initialize theme setup
 	 *
 	 * Theme support features, textdomain loading,
@@ -73,7 +73,9 @@ class ThemeSetup {
 		add_action('init', [ $this, 'startSession' ] );
 	}
 
-	// Add theme support features
+	/**
+	 * Add theme support features.
+	 */
 	public function themeSupport(): void {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
@@ -92,12 +94,16 @@ class ThemeSetup {
 		add_theme_support( 'editor-styles' );
 	}
 
-	// Load theme textdomain for translations
+	/**
+	 * Load theme textdomain for translations.
+	 */
 	public function loadTextdomain(): void {
 		load_theme_textdomain( 'bitski-wp-theme', get_template_directory() . '/languages' );
 	}
 
-	// Register theme navigation menus
+	/**
+	 * Register theme navigation menus.
+	 */
 	public function registerNavMenus(): void {
 		register_nav_menus( [
 			'main-menu'   => __( 'Main menu', 'bitski-wp-theme' ),
@@ -105,7 +111,9 @@ class ThemeSetup {
 		] );
 	}
 
-	// Start the session if it's not already started'
+	/**
+	 * Start the session if it's not already started.
+	 */
 	public function startSession(): void {
 		if ( ! session_id() ) {
 			$pages_using_session = apply_filters( 'bitski-wp-theme/option/pages/using-session', []);

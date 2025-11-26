@@ -13,7 +13,10 @@ namespace BitskiWPTheme\theme;
  * @since 0.1.0
  */
 class ThemeHooks {
-	// Initialize theme hooks.
+	/**
+	 * Initialize theme hooks.
+	 * Registers all hooks.
+	 */
 	public function init() {
 		$this->registerBaseHooks();         // Base hooks, support.
 		$this->registerCssClassesHooks();   // CSS classes hooks.
@@ -21,7 +24,7 @@ class ThemeHooks {
 		$this->registerFunctionalHooks();   // Functional hooks, e.g., JS events.
 	}
 
-	/*
+	/**
 	 * Getter for CSS classes by filter name.
 	 * Returns a space-separated string of classes.
 	 * Merges setup classes with default classes if $merge is true.
@@ -56,7 +59,7 @@ class ThemeHooks {
 		return implode( ' ', $defaultClasses );
 	}
 
-	/*
+	/**
      * Getter for theme options by filter name.
      * Returns the default option if it is boolean,
 	 * or if it is set and and neither an empty string nor an empty array.
@@ -90,13 +93,13 @@ class ThemeHooks {
 		return $defaultOption;
 	}
 
-	/*
+	/**
 	 * Registers base hooks.
 	 */
 	protected function registerBaseHooks() {
 	}
 
-	/*
+	/**
 	 * Registers hooks for CSS classes.
 	 */
 	protected function registerCssClassesHooks() {
@@ -108,7 +111,7 @@ class ThemeHooks {
 		}
 	}
 
-	/*
+	/**
 	 * Registers hooks for theme options.
 	 */
 	protected function registerOptionHooks() {
@@ -120,7 +123,7 @@ class ThemeHooks {
 		}
 	}
 
-	/*
+	/**
 	 * Registers hooks for functionalities.
 	 */
 	protected function registerFunctionalHooks() {
@@ -134,7 +137,7 @@ class ThemeHooks {
 		//add_action( 'wp_footer', [ $this, 'outputSvgSprite' ], 20 );
 	}
 
-	/*
+	/**
 	 * Outputs Bootstrap icons SVG sprite in the footer.
 	 * Applies filter to enable/disable the sprite output.
 	 * Ensures the sprite file exists before outputting its content.

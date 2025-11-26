@@ -17,7 +17,7 @@ class FormManager {
 	 */
 	protected array $sanitized_form_data = [];
 
-	/*
+	/**
 	 * Initialize form manager.
 	 * Add form processing actions.
 	 */
@@ -25,7 +25,7 @@ class FormManager {
 		add_action( 'template_redirect', [ $this, 'processFormContact' ] );
 	}
 
-	/*
+	/**
 	 * Process form submission for the contact page.
 	 * Checks for form submission and handles form validation and submission.
 	 */
@@ -73,7 +73,7 @@ class FormManager {
 		}
 	}
 
-	/*
+	/**
 	 * Sanitize form data for the contact page.
 	 * Sanitizes input fields using WordPress sanitization functions.
 	 *
@@ -91,7 +91,7 @@ class FormManager {
 		}
 	}
 
-	/*
+	/**
 	 * Validate form data for the contact page.
 	 * Checks for required fields and validates email format.
 	 *
@@ -122,7 +122,7 @@ class FormManager {
 		return $is_valid;
 	}
 
-	/*
+	/**
 	 * Send an email with the form data.
 	 * Uses WordPress' wp_mail function to send the email.
 	 *
@@ -150,7 +150,7 @@ class FormManager {
 		return wp_mail($to, $subject, $message, $headers);
 	}
 
-	/*
+	/**
 	 * Set a flash message in the session.
 	 *
 	 * @param string $message The message to display.
