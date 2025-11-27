@@ -54,6 +54,11 @@ if ( ! $is_submitted || $is_valid === false ) { ?>
             <div class="invalid-feedback">Bitte gib deine Email-Adresse ein.</div>
         </div>
         <div class="mb-3">
+            <label for="contact-phone" class="visually-hidden">Telefon</label>
+            <input id="contact-phone" class="contact-phone-input form-control" name="contact_phone" type="tel"
+                   placeholder="Deine Telefonnummer" style="position:absolute; left:-9999px;" aria-hidden="true" autocomplete="off" tabindex="-1" />
+        </div>
+        <div class="mb-3">
             <label for="contact-message" class="visually-hidden">Nachricht</label>
             <textarea id="contact-message" class="contact-message-textarea form-control" name="contact_message" rows="3"
                       placeholder="Deine Nachricht" required></textarea>
