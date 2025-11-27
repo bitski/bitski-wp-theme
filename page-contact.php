@@ -23,7 +23,7 @@ get_header();
     </header>
 
     <?php
-    if ( ! apply_filters( 'bitski-wp-theme/option/load-forms', false ) ) { ?>
+    if ( apply_filters( 'bitski-wp-theme/option/forms/load', null ) ) { ?>
         <!-- Content body: contact form -->
         <?php get_template_part( 'templates/components/forms/contact/form' );
     } ?>

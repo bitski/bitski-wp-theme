@@ -66,9 +66,11 @@ class FormManager {
 		// Anti-spam: Time-based check.
 		// To protect against bots.
 		// If the form was submitted less than 5 seconds ago, redirect back to the contact page.
+		$forms_antispam_delay = apply_filters( 'bitski-wp-theme/option/forms/antispam-delay', null );
+
 		if ( isset( $_SESSION['form_contact_load_time'] ) &&
-		     ( time() - $_SESSION['form_contact_load_time'] ) < 5 ) {
-			$this->setFlashMessages( 'Fehler: Bitte warten Sie 5 Sekunden.', 'danger' );
+		     ( time() - $_SESSION['form_contact_load_time'] ) < $forms_antispam_delay ) {
+			$this->setFlashMessages( 'Fehler: Bitte warten Sie ' . $forms_antispam_delay . ' Sekunden, bevor Sie das Formular erneut senden.', 'danger' );
 			wp_redirect( get_permalink() );
 			exit;
 		}
@@ -124,7 +126,6 @@ class FormManager {
 		}
 		wp_redirect( get_permalink() );
 		exit;
-
 	}
 
 	/**

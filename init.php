@@ -28,7 +28,7 @@ $classes = [
 ];
 
 // Conditional classes that are only initialized if the corresponding option is enabled.
-if (apply_filters('bitski-wp-theme/option/load-forms', true)) {
+if (apply_filters('bitski-wp-theme/option/forms/load', true)) {
 	$classes[] = \BitskiWPTheme\content\FormManager::class;
 }
 

@@ -19,7 +19,6 @@ class ThemeSetup {
 		// Loading options
 		'bitski-wp-theme/option/load-fontawesome'                  => true,
 		'bitski-wp-theme/option/load-bootstrap-icons-sprite'       => false,
-		'bitski-wp-theme/option/load-forms'                        => true,
 
 		// Header options
 		'bitski-wp-theme/option/header/display-socials'            => true,
@@ -40,7 +39,11 @@ class ThemeSetup {
 		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,
 
 		// Pages options
-		'bitski-wp-theme/option/pages/using-session/ids'           => [ 49 ]    // [ 13, 232 ]
+		'bitski-wp-theme/option/pages/using-session/ids'           => [ 49 ],    // [ 13, 232 ]
+
+		// Forms options
+		'bitski-wp-theme/option/forms/load'                        => true,
+		'bitski-wp-theme/option/forms/antispam-delay'              => 5,
 
 		// Add more option filters as needed
 	];
