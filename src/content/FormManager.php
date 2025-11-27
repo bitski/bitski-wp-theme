@@ -3,6 +3,10 @@
  * Manages theme forms.
  *
  * Handles form submission and validation for the contact page.
+ * Sanitizes form data using WordPress sanitization functions.
+ * Sets flash messages in the session for displaying messages on the page.
+ * Redirects back to the contact page if the form is invalid.
+ * Sends an email with the form data using WordPress' wp_mail function.
  *
  * @since 0.8.0
  */
@@ -19,15 +23,23 @@ class FormManager {
 
 	/**
 	 * Initialize form manager.
-	 * Add form processing actions.
+	 * Registers hooks and initializes form processing actions.
 	 */
 	public function init(): void {
 		add_action( 'template_redirect', [ $this, 'setFormContactLoadTime' ] );
 		add_action( 'template_redirect', [ $this, 'processFormContact' ] );
 	}
 
+	/**
+	 * Set form contact load time in the session.
+	 * Returns early if the current request is not a GET request or not for the contact page.
+	 * Sets the form contact load time in the session.
+	 *
+	 * @return void
+	 * @since 0.8.20
+	 */
 	public function setFormContactLoadTime(): void {
-		// Return early if not on the contact page
+		// Return early if not a GET request or not on the contact page.
 		if ( $_SERVER['REQUEST_METHOD'] !== 'GET' || ! is_page( 'kontakt' ) ) {
 			return;
 		}
@@ -37,16 +49,23 @@ class FormManager {
 
 	/**
 	 * Process form submission for the contact page.
-	 * Checks for form submission and handles form validation and submission.
+	 * Returns early if the current request is not a POST request or not for the contact page.
+	 * Redirects back to the contact page if the form was submitted less than 5 seconds ago.
+	 * Verifies the nonce for the form submission.
+	 * Sanitizes form data using WordPress sanitization functions.
+	 * Validates form data using custom validation functions.
+	 * Redirects back to the contact page if the form is invalid.
+	 * Sends an email with the form data using WordPress' wp_mail function.
 	 */
 	public function processFormContact(): void {
-		// Return early if not on the contact page
-		// Check for form submission.
+		// Return early if not a POST request (no form submission) or not on the contact page.
 		if ( empty( $_POST ) || ! is_page( 'kontakt' ) ) {
 			return;
 		}
 
-		// Check time stamp.
+		// Anti-spam: Time-based check.
+		// To protect against bots.
+		// If the form was submitted less than 5 seconds ago, redirect back to the contact page.
 		if ( isset( $_SESSION['form_contact_load_time'] ) &&
 		     ( time() - $_SESSION['form_contact_load_time'] ) < 5 ) {
 			$this->setFlashMessages( 'Fehler: Bitte warten Sie 5 Sekunden.', 'danger' );
@@ -55,6 +74,7 @@ class FormManager {
 		}
 
 		// Honeypot field check.
+		// To protect against bots.
 		// If the hidden field 'contact_phone' is filled, treat it as spam.
 		if ( ! empty( $_POST['contact_phone'] ) ) {
 			$this->setFlashMessages( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
@@ -65,6 +85,7 @@ class FormManager {
 		}
 
 		// Verify nonce.
+		// To protect against CSRF attacks.
 		if ( ! isset( $_POST['contact_form_nonce'] ) || ! wp_verify_nonce( $_POST['contact_form_nonce'],
 				'contact_form_submit' ) ) {
 			$this->setFlashMessages( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
@@ -75,6 +96,7 @@ class FormManager {
 		}
 
 		// Sanitize form data.
+		// To prevent XSS attacks.
 		$this->sanitizeFormContact();
 
 		// Validate form data.
@@ -88,6 +110,7 @@ class FormManager {
 		// Proceed with form submission here (e.g., send email, save to database).
 		//
 		// Send email using the sendFormContactEmail() method.
+		// Unset form contact load time from the session.
 		// Set success or error flash message based on the result of the email sending.
 		// Redirect back to the contact page.
 		if ( $this->sendFormContactEmail() ) {
@@ -187,8 +210,7 @@ class FormManager {
 	 * @param  string  $message  The message to display.
 	 * @param  string  $type  The type of message (success, danger, warning).
 	 */
-	protected function setFlashMessages( $message, $type = 'success' ): void {
-		global $_SESSION;
+	protected function setFlashMessages( string $message, string $type = 'success' ): void {
 		if ( ! isset( $_SESSION['flash_messages'] ) ) {
 			$_SESSION['flash_messages'] = [];
 		}
