@@ -11,5 +11,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-    <a>tel</a>
-    <a>email</a>
+<a>tel</a>
+<a>email</a>
