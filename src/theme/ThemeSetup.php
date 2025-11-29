@@ -39,11 +39,14 @@ class ThemeSetup {
 		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,
 
 		// Pages options
-		'bitski-wp-theme/option/pages/using-session/ids'           => [ 49 ],    // [ 13, 232 ]
+		'bitski-wp-theme/option/pages/using-session/ids'           => [ 49 ], // [ 13, 232 ]
 
 		// Forms options
-		'bitski-wp-theme/option/forms/load'                        => true,
-		'bitski-wp-theme/option/forms/antispam-delay'              => 5,
+		'bitski-wp-theme/option/forms/general/load'                => true,
+		'bitski-wp-theme/option/forms/general/antispam-delay'      => 5,
+		'bitski-wp-theme/option/forms/contact/recipient-email'     => 'info@example.com',
+		'bitski-wp-theme/option/forms/contact/from-email'          => 'info@example.com',
+		'bitski-wp-theme/option/forms/contact/from-name'           => 'Website Kontakt',
 
 		// Add more option filters as needed
 	];
@@ -73,7 +76,7 @@ class ThemeSetup {
 		add_action( 'after_setup_theme', [ $this, 'loadTextdomain' ] );
 		add_action( 'after_setup_theme', [ $this, 'registerNavMenus' ] );
 
-		add_action('template_redirect', [ $this, 'startSession' ] );
+		add_action( 'template_redirect', [ $this, 'startSession' ] );
 	}
 
 	/**
@@ -128,6 +131,7 @@ class ThemeSetup {
 		// Return early if so, no session can be started.
 		if ( headers_sent( $file, $line ) ) {
 			error_log( "Session could not be started. Headers already sent in $file on line $line." );
+
 			return;
 		}
 

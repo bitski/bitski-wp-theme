@@ -66,7 +66,7 @@ class FormManager {
 		// Anti-spam: Time-based check.
 		// To protect against bots.
 		// If the form was submitted less than 5 seconds ago, redirect back to the contact page.
-		$forms_antispam_delay = apply_filters( 'bitski-wp-theme/option/forms/antispam-delay', null );
+		$forms_antispam_delay = apply_filters( 'bitski-wp-theme/option/forms/general/antispam-delay', null );
 
 		if ( isset( $_SESSION['form_contact_load_time'] ) &&
 		     ( time() - $_SESSION['form_contact_load_time'] ) < $forms_antispam_delay ) {
@@ -184,9 +184,9 @@ class FormManager {
 	 * @since 0.8.15
 	 */
 	protected function sendFormContactEmail(): bool {
-		// Set email parameter 'to' to the admin email address
-		$to = get_option( 'admin_email' );
-
+		$to = apply_filters('bitski-wp-theme/option/forms/contact/recipient-email', get_option('admin_email') );
+		$from_email = apply_filters('bitski-wp-theme/option/forms/contact/from-email', get_option('admin_email') );
+		$from_name = apply_filters('bitski-wp-theme/option/forms/contact/from-name', get_bloginfo('name') );
 		$subject = sprintf(
 			'Neue Kontaktanfrage von %s',
 			$this->sanitized_form_data['contact_name']
@@ -199,6 +199,7 @@ class FormManager {
 		);
 		$headers = [
 			'Content-Type: text/plain; charset=UTF-8',
+			sprintf( 'From: %s <%s>', $from_name, $from_email ),
 			'Reply-To: ' . $this->sanitized_form_data['contact_email']
 		];
 
