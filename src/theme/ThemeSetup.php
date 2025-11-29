@@ -27,6 +27,7 @@ class ThemeSetup {
 
 		// Footer options
 		'bitski-wp-theme/option/footer/display-socials'            => true,
+		'bitski-wp-theme/option/footer/display-contacts'           => true,
 
 		// Single post options
 		'bitski-wp-theme/option/single/meta/display-author'        => true,

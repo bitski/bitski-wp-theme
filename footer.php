@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
         <!-- Footer columns -->
         <?php get_template_part( 'templates/components/footer/columns' ); ?>
 
-        <!-- Footer infos -->
-        <?php get_template_part( 'templates/components/footer/info' ); ?>
+        <!-- Footer bottom -->
+        <?php get_template_part( 'templates/components/footer/bottom' ); ?>
     </div>
 </footer>
 
