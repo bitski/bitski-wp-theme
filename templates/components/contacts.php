@@ -21,8 +21,8 @@ $tel_href = preg_replace( '/[^0-9+]/', '', $tel );
     role="group"
     aria-label="<?php echo esc_attr__( 'Main menu contacts', 'bitski-wp-theme' ); ?>">
     <?php if ( ! empty( $tel ) ) { ?>
-        <li class="me-2">
-            <a class="tel-link nav-link p-2 p-md-0"
+        <li>
+            <a class="tel-link nav-link px-1 py-1 py-md-0"
                href="tel:<?php echo esc_attr( $tel_href ); ?>">
                 <i class="fa-solid fa-phone" aria-hidden="true"></i>
                 <?php if ( $display_labels ) { ?>
@@ -33,8 +33,8 @@ $tel_href = preg_replace( '/[^0-9+]/', '', $tel );
         </li>
     <?php }
     if ( ! empty( $mail ) ) { ?>
-        <li class="me-2">
-            <a class="mail-link nav-link p-2 p-md-0"
+        <li>
+            <a class="mail-link nav-link px-1 py-1 py-md-0"
                href="mailto:<?php echo esc_attr( antispambot( $mail ) ); ?>">
                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 <?php if ( $display_labels ) { ?>
