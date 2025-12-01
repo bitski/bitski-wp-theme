@@ -1,6 +1,7 @@
 <?php
 /**
  * Template component for displaying the bottom row of the footer.
+ * Includes legal info and contact links (optional).
  *
  * @since 0.9.0
  */
@@ -10,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$display_contacts = apply_filters( 'bitski-wp-theme/option/footer/display-contacts', null );
+$display_contacts = apply_filters( 'bitski-wp-theme/option/footer/contacts/display', null );
 ?>
 
 <section class="footer-bottom py-2 border-top">

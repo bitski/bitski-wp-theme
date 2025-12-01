@@ -27,7 +27,11 @@ class ThemeSetup {
 
 		// Footer options
 		'bitski-wp-theme/option/footer/display-socials'            => true,
-		'bitski-wp-theme/option/footer/display-contacts'           => true,
+		'bitski-wp-theme/option/footer/contacts/display'           => true,
+		'bitski-wp-theme/option/footer/contacts/display-labels'    => true,
+		'bitski-wp-theme/option/footer/contacts/tel'               => '+1234567890',
+		'bitski-wp-theme/option/footer/contacts/mail'              => 'info@example.com',
+
 
 		// Single post options
 		'bitski-wp-theme/option/single/meta/display-author'        => true,
