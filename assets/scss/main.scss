@@ -38,22 +38,23 @@
 // use CSS files or internal @import statements (e.g., Bootstrap 5 uses @import).
 // Use @import if they do.
 //@import "vendors/vendors";
-@use "vendors/vendors";
+@import "vendors/vendors";
 
 // 3.2 Abstracts
-@use "abstracts/abstracts";
+@import "abstracts/abstracts";
 
 // 3.3 Base
-@use "base/base";
+@import "base/base";
 
 // 3.4 Layout
-@use "layout/layout";
+@import "layout/layout";
 
 // 3.5 Components
-@use "components/components";
+@import "components/components";
 
 // 3.6 Pages
-@use "pages/pages";
+@import "pages/pages";
 
 // 3.7 Themes
-@use "themes/themes";
+@import "themes/themes";
+
