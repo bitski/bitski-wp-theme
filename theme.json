@@ -1,4 +1,37 @@
 {
   "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 3
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#0d6efd",
+          "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "#6c757d",
+          "name": "Secondary"
+        }
+      ],
+      "custom": true,
+      "duotone": []
+    },
+    "typography": {
+      "customFontSize": false,
+      "dropCap": false,
+      "lineHeight": false,
+      "fontStyle": false,
+      "fontWeight": false
+    },
+    "spacing": {
+      "margin": false,
+      "padding": false,
+      "blockGap": false
+    },
+    "layout": {
+      "allowEditing": false
+    }
+  }
 }
