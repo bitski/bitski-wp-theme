@@ -88,9 +88,18 @@ class ThemeSetup {
 	 * Add theme support features.
 	 */
 	public function themeSupport(): void {
+		// Core features
 		add_theme_support( 'title-tag' );
+
+		// Content features
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'menus' );
+
+		// Block editor features
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'editor-styles' );
+
+		// Frontend features
 		add_theme_support(
 			'html5',
 			[
@@ -101,8 +110,6 @@ class ThemeSetup {
 				'search-form'
 			]
 		);
-		add_theme_support( 'wp-block-styles' );
-		add_theme_support( 'editor-styles' );
 	}
 
 	/**
