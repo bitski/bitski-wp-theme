@@ -28,8 +28,23 @@ $classes = [
 ];
 
 // Conditional classes that are only initialized if the corresponding option is enabled.
-if (apply_filters('bitski-wp-theme/option/forms/general/load', true)) {
-	$classes[] = \BitskiWPTheme\content\FormManager::class;
+//
+// Nested array structure: [ [ 'option-filter-name', 'Fully\Qualified\ClassName' ], ... ]
+$conditional_classes = [
+	[
+		'bitski-wp-theme/option/forms/general/load',
+		\BitskiWPTheme\content\FormManager::class
+	],
+	[
+		'bitski-wp-theme/option/archive/load-more',
+		\BitskiWpTheme\content\LoadMore::class
+	],
+];
+
+foreach ($conditional_classes as $class) {
+	if (apply_filters($class[0], null)) {
+		$classes[] = $class[1];
+	}
 }
 
 // Instantiate each class and call its init() method if it exists.
