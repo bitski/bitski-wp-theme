@@ -39,6 +39,8 @@ class ThemeSetup {
 		'bitski-wp-theme/option/single/meta/display-date-modified' => true,
 
 		// Archive page options
+		'bitski-wp-theme/option/archive/load-more'                 => true,
+		'bitski-wp-theme/option/archive/posts-per-page'            => 9,
 		'bitski-wp-theme/option/card/meta/display-author'          => true,
 		'bitski-wp-theme/option/card/meta/display-date'            => true,
 		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,

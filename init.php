@@ -27,7 +27,7 @@ $classes = [
     \BitskiWPTheme\theme\ThemeHooks::class,
 ];
 
-// Conditional classes that are only initialized if the corresponding option is enabled.
+// Array of conditional classes that are only initialized if the corresponding option is enabled.
 //
 // Nested array structure: [ [ 'option-filter-name', 'Fully\Qualified\ClassName' ], ... ]
 $conditional_classes = [
