@@ -40,6 +40,7 @@ class ThemeSetup {
 
 		// Archive page options
 		'bitski-wp-theme/option/archive/load-more'                 => true,
+		'bitski-wp-theme/option/archive/posts-per-load-more'       => 3,
 		'bitski-wp-theme/option/archive/posts-per-page'            => 9,
 		'bitski-wp-theme/option/card/meta/display-author'          => true,
 		'bitski-wp-theme/option/card/meta/display-date'            => true,

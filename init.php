@@ -37,7 +37,7 @@ $conditional_classes = [
 	],
 	[
 		'bitski-wp-theme/option/archive/load-more',
-		\BitskiWpTheme\content\LoadMore::class
+		\BitskiWPTheme\content\LoadMore::class
 	],
 ];
 
