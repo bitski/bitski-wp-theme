@@ -16,7 +16,7 @@ class LoadMore {
 	 * Initialize "Load More" functionality.
 	 */
 	public function init(): void {
-		echo '<script>console.log("Load More")</script>';
+//		echo '<script>console.log("Load More")</script>';
 		add_action( 'rest_api_init', [ $this, 'registerLoadMoreRestRoutes' ] );
 	}
 
@@ -24,7 +24,7 @@ class LoadMore {
 	 * Register REST API routes.
 	 */
 	public function registerLoadMoreRestRoutes(): void {
-		register_rest_route( 'bitski-wp-theme/v1', '/loadmore-posts', [
+		register_rest_route( 'bitski-wp-theme/v1', '/posts/load-more', [
 			'methods'             => 'GET',
 			'callback'            => [ $this, 'getPosts' ],
 			'permission_callback' => '__return_true',
@@ -49,7 +49,7 @@ class LoadMore {
 	 * @return WP_REST_Response
 	 */
 	public function getPosts( WP_REST_Request $request ): WP_REST_Response {
-		$post_type          = $request->get_param( 'post_type' ) ?: 'post';
+		$post_type          = (string) $request->get_param( 'post_type' ) ?: 'post';
 		$posts_per_load_more = apply_filters( 'bitski-wp-theme/option/archive/posts-per-load-more', null );
 		$offset             = (int) ( $request->get_param( 'offset' ) ?: 0 );
 
