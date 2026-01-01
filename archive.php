@@ -43,7 +43,11 @@ get_header();
 			<?php } ?>
 		</section>
 		<?php
-		get_template_part( 'templates/components/pagination' );
+        if (! apply_filters('bitski-wp-theme/option/archive/load-more', null)) {
+            get_template_part( 'templates/components/pagination' );
+        } else {
+            get_template_part( 'templates/components/load-more/button' );
+        }
 	} else { ?>
 		<!-- Content body: no posts -->
 		<section class="content-body no-posts">
