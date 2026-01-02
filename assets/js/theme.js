@@ -184,4 +184,59 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         observer.observe(document.documentElement, {attributes: true});
     }
+
+
+    /**
+     * [04] Load more
+     *
+     * Handle "Load More" button functionality via WordPress REST API at archive pages.
+     * Clicking it will fetch the next batch of posts and append it after the current list.
+     */
+    const bodyClassList = document.body.classList;
+    if (bodyClassList.contains('archive') || bodyClassList.contains('blog')) {
+        const contentBody = document.querySelector('.content-body');
+        const loadMoreButton = document.querySelector('.load-more');
+        let offset = parseInt(contentBody.dataset.offset) || 0;
+
+        // Return early if required elements are missing.
+        if (!loadMoreButton || !contentBody) {
+            return;
+        }
+
+        loadMoreButton.addEventListener('click', handleLoadMore);
+
+        async function handleLoadMore() {
+            console.log('load handleLoadMore');
+            // Prevent multiple clicks
+            if (loadMoreButton.disabled) {
+                return;
+            }
+            loadMoreButton.disabled = true;
+            loadMoreButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Loading...';
+
+            const url = new URL('/wp-json/bitski-wp-theme/v1/posts/load-more', window.location.origin);
+            url.searchParams.append('post_type', 'post');
+            url.searchParams.append('offset', offset);
+
+            try {
+                const response = await fetch(url.toString());
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                if (result.posts_html && result.posts_html.length > 0) {
+                    contentBody.insertAdjacentHTML('beforeend', result.posts_html.join(''));
+                    offset = result.offset;
+                } else {
+                    loadMoreButton.innerHTML = 'No more posts to load.';
+                }
+                loadMoreButton.disabled = false;
+                console.log(result);
+                // console.log(response.headers.get("content-type"));
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+    }
 });

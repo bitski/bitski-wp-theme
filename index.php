@@ -27,13 +27,14 @@ get_header();
 
     <?php if ( have_posts() ) {
         $found_posts    = $wp_query->found_posts;
-        $posts_per_page = get_option( 'posts_per_page' );
+        $posts_per_page = apply_filters( 'bitski-wp-theme/option/archive/posts-per-page', null );
         ?>
         <!-- Content body: post list -->
         <section class="content-body row g-4<?php
         if ( paginate_links() ) {
             echo ' mb-4';
-        } ?>">
+        } ?>"
+        data-offset="<?php echo esc_attr( $posts_per_page ); ?>">
             <?php
             while ( have_posts() ) {
                 the_post(); ?>
