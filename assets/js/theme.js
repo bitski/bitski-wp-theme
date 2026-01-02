@@ -196,14 +196,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bodyClassList.contains('archive') || bodyClassList.contains('blog')) {
         const contentBody = document.querySelector('.content-body');
         const loadMoreButton = document.querySelector('.load-more');
-        let offset = parseInt(contentBody.dataset.offset) || 0;
+        let offset = 0;
 
-        // Return early if required elements are missing.
-        if (!loadMoreButton || !contentBody) {
-            return;
+        // Only proceed if button and container exist.
+        if (loadMoreButton && contentBody) {
+            offset = parseInt(contentBody.dataset.offset) || 0;
+            loadMoreButton.addEventListener('click', handleLoadMore);
         }
-
-        loadMoreButton.addEventListener('click', handleLoadMore);
 
         async function handleLoadMore() {
             console.log('load handleLoadMore');
