@@ -34,7 +34,8 @@ get_header();
         if ( paginate_links() ) {
             echo ' mb-4';
         } ?>"
-        data-offset="<?php echo esc_attr( $posts_per_page ); ?>">
+                 data-posts-per-page="<?php echo esc_attr( $posts_per_page ); ?>"
+                 data-found-posts="<?php echo esc_attr( $found_posts ); ?>">
             <?php
             while ( have_posts() ) {
                 the_post(); ?>

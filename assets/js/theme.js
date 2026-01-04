@@ -197,10 +197,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const contentBody = document.querySelector('.content-body');
         const loadMoreButton = document.querySelector('.load-more');
         let offset = 0;
+        let foundPosts = 0;
 
         // Only proceed if button and container exist.
         if (loadMoreButton && contentBody) {
-            offset = parseInt(contentBody.dataset.offset) || 0;
+            // Initialize offset & foundPosts from data attribute, representing the value of the themes posts-per-page option and the total number of posts found for the current (archive) query.
+            offset = parseInt(contentBody.dataset.postsPerPage) || 0;
+            foundPosts = parseInt(contentBody.dataset.foundPosts) || 0;
             loadMoreButton.addEventListener('click', handleLoadMore);
         }
 
@@ -216,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const url = new URL('/wp-json/bitski-wp-theme/v1/posts/load-more', window.location.origin);
             url.searchParams.append('post_type', 'post');
             url.searchParams.append('offset', offset);
+            url.searchParams.append('found_posts', foundPosts);
 
             try {
                 const response = await fetch(url.toString());

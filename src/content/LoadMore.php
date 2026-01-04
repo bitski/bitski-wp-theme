@@ -49,9 +49,13 @@ class LoadMore {
      * @return WP_REST_Response
      */
     public function getPosts( WP_REST_Request $request ): WP_REST_Response {
-        $post_type           = (string) $request->get_param( 'post_type' ) ?: 'post';
         $posts_per_load_more = apply_filters( 'bitski-wp-theme/option/archive/posts-per-load-more', null );
-        $offset              = (int) ( $request->get_param( 'offset' ) ?: 2 );
+        $posts_per_page      = apply_filters( 'bitski-wp-theme/option/archive/posts-per-page', null );
+
+        // Get request parameters.
+        $post_type           = (string) $request->get_param( 'post_type' ) ?: 'post';
+        $offset              = (int) ( $request->get_param( 'offset' ) ?: 0 );
+        $found_posts         = (int) ( $request->get_param( 'found_posts' ) ?: 0 );
 
         $args = array(
                 'post_type'           => $post_type,
@@ -63,7 +67,6 @@ class LoadMore {
 
         $custom_query = new WP_Query( $args );
         $posts_html   = [];
-        $found_posts  = $custom_query->found_posts;
 
         if ( $custom_query->have_posts() ) {
             while ( $custom_query->have_posts() ) {
@@ -71,7 +74,7 @@ class LoadMore {
 
                 // Put a wrapper around the card in order to apply the Bootstrap grid.
                 ob_start(); ?>
-                <div class="col-12<?php if ( $found_posts > 1 && $posts_per_load_more > 1 ) { ?> col-lg-6<?php } ?>">
+                <div class="col-12<?php if ( $found_posts > 1 && $posts_per_page > 1 ) { ?> col-lg-6<?php } ?>">
                     <?php get_template_part( 'templates/components/post/card' ); ?>
                 </div>
                 <?php
