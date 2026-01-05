@@ -85,7 +85,6 @@ class LoadMore {
 
         return new WP_REST_Response( [
                 'posts_html' => $posts_html,
-                'total'      => $found_posts,
                 'offset'     => $offset + count( $posts_html ),
                 'has_more'   => $offset + count( $posts_html ) < $found_posts,
         ] );

@@ -235,10 +235,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     loadMoreButton.innerHTML = 'No more posts to load.';
                 }
                 loadMoreButton.disabled = false;
-                console.log(result);
-                // console.log(response.headers.get("content-type"));
+                //console.log(result);
             } catch (error) {
                 console.error(error.message);
+            } finally {
+                if (result.has_more) {
+                    loadMoreButton.disabled = false;
+                    loadMoreButton.innerHTML = '<i class="fa-solid fa-plus me-2" aria-hidden="true"></i> Mehr laden';
+                }
             }
         }
     }
