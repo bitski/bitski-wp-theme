@@ -208,6 +208,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         async function handleLoadMore() {
+            // Set ARIA attributes for live region.
+            contentBody.setAttribute('aria-live', 'polite');
+            contentBody.setAttribute('aria-atomic', 'false');
+
             console.log('load handleLoadMore');
             // Prevent multiple clicks.
             if (loadMoreButton.disabled) {
@@ -218,6 +222,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Set Buttons loading state.
             const originalInnerHTML = loadMoreButton.innerHTML;
             loadMoreButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Loading...';
+            loadMoreButton.setAttribute('aria-busy', 'true');
+            loadMoreButton.setAttribute('aria-disabled', 'true');
 
             // Fetch posts from WordPress REST API.
             //
@@ -248,12 +254,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error(error.message);
             } finally {
                 if (result && !result.has_more) {
+                    // Reset ARIA attributes for live region.
+                    contentBody.removeAttribute('aria-live');
+                    contentBody.removeAttribute('aria-atomic');
+
                     // Hide the button if there are no more posts to load.
                     loadMoreButton.classList.add('d-none');
                 } else {
                     // Reset button state.
                     loadMoreButton.innerHTML = originalInnerHTML;
                     loadMoreButton.disabled = false;
+                    loadMoreButton.removeAttribute('aria-busy');
+                    loadMoreButton.removeAttribute('aria-disabled');
                 }
             }
         }
