@@ -50,7 +50,7 @@ get_header();
         <?php
         if (! apply_filters('bitski-wp-theme/option/archive/load-more', null)) {
             get_template_part( 'templates/components/pagination' );
-        } else {
+        } elseif ( $found_posts > $posts_per_page ) {
             get_template_part( 'templates/components/load-more/button' );
         }
     } else { ?>

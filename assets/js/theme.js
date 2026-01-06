@@ -209,39 +209,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
         async function handleLoadMore() {
             console.log('load handleLoadMore');
-            // Prevent multiple clicks
+            // Prevent multiple clicks.
             if (loadMoreButton.disabled) {
                 return;
             }
             loadMoreButton.disabled = true;
+
+            // Set Buttons loading state.
+            const originalInnerHTML = loadMoreButton.innerHTML;
             loadMoreButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Loading...';
 
+            // Fetch posts from WordPress REST API.
+            //
+            // Set request parameters based on current offset and total number of posts found.
             const url = new URL('/wp-json/bitski-wp-theme/v1/posts/load-more', window.location.origin);
             url.searchParams.append('post_type', 'post');
             url.searchParams.append('offset', offset);
             url.searchParams.append('found_posts', foundPosts);
 
+            let result = null;
+
+            // Fetch posts from WordPress REST API and append them to the content body.
             try {
+                // Fetch posts using url with parameters.
                 const response = await fetch(url.toString());
                 if (!response.ok) {
                     throw new Error(`Response status: ${response.status}`);
                 }
 
-                const result = await response.json();
+                // Append posts to content body.
+                result = await response.json();
                 if (result.posts_html && result.posts_html.length > 0) {
                     contentBody.insertAdjacentHTML('beforeend', result.posts_html.join(''));
                     offset = result.offset;
-                } else {
-                    loadMoreButton.innerHTML = 'No more posts to load.';
                 }
-                loadMoreButton.disabled = false;
                 //console.log(result);
             } catch (error) {
                 console.error(error.message);
             } finally {
-                if (result.has_more) {
+                if (result && !result.has_more) {
+                    // Hide the button if there are no more posts to load.
+                    loadMoreButton.classList.add('d-none');
+                } else {
+                    // Reset button state.
+                    loadMoreButton.innerHTML = originalInnerHTML;
                     loadMoreButton.disabled = false;
-                    loadMoreButton.innerHTML = '<i class="fa-solid fa-plus me-2" aria-hidden="true"></i> Mehr laden';
                 }
             }
         }
