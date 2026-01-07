@@ -17,44 +17,45 @@ class ThemeSetup {
 		// Example: 'option-name' => 'default-value'
 
 		// Loading options
-		'bitski-wp-theme/option/load-fontawesome'                  => true,
-		'bitski-wp-theme/option/load-bootstrap-icons-sprite'       => false,
+		'bitski-wp-theme/option/load-fontawesome'                      => true,
+		'bitski-wp-theme/option/load-bootstrap-icons-sprite'           => false,
 
 		// Header options
-		'bitski-wp-theme/option/header/display-socials'            => true,
-		'bitski-wp-theme/option/header/display-socials-labels'     => true,
-		'bitski-wp-theme/option/header/display-search'             => true,
+		'bitski-wp-theme/option/header/display-socials'                => true,
+		'bitski-wp-theme/option/header/display-socials-labels'         => true,
+		'bitski-wp-theme/option/header/display-search'                 => true,
 
 		// Footer options
-		'bitski-wp-theme/option/footer/display-socials'            => true,
-		'bitski-wp-theme/option/footer/contacts/display'           => true,
-		'bitski-wp-theme/option/footer/contacts/display-labels'    => true,
-		'bitski-wp-theme/option/footer/contacts/tel'               => '+1234567890',
-		'bitski-wp-theme/option/footer/contacts/mail'              => 'info@example.com',
+		'bitski-wp-theme/option/footer/display-socials'                => true,
+		'bitski-wp-theme/option/footer/contacts/display'               => true,
+		'bitski-wp-theme/option/footer/contacts/display-labels'        => true,
+		'bitski-wp-theme/option/footer/contacts/tel'                   => '+1234567890',
+		'bitski-wp-theme/option/footer/contacts/mail'                  => 'info@example.com',
 
 
 		// Single post options
-		'bitski-wp-theme/option/single/meta/display-author'        => true,
-		'bitski-wp-theme/option/single/meta/display-date'          => true,
-		'bitski-wp-theme/option/single/meta/display-date-modified' => true,
+		'bitski-wp-theme/option/single/meta/display-author'            => true,
+		'bitski-wp-theme/option/single/meta/display-date'              => true,
+		'bitski-wp-theme/option/single/meta/display-date-modified'     => true,
 
 		// Archive page options
-		'bitski-wp-theme/option/archive/load-more'                 => true,
-		'bitski-wp-theme/option/archive/posts-per-load-more'       => 3,
-		'bitski-wp-theme/option/archive/posts-per-page'            => 9,
-		'bitski-wp-theme/option/card/meta/display-author'          => true,
-		'bitski-wp-theme/option/card/meta/display-date'            => true,
-		'bitski-wp-theme/option/card/meta/display-date-modified'   => true,
+		'bitski-wp-theme/option/archive/load-more'                     => true,
+		'bitski-wp-theme/option/archive/load-more/posts-per-load-more' => 1,
+		'bitski-wp-theme/option/archive/load-more/spinner-delay'       => 300,  // ms
+		'bitski-wp-theme/option/archive/posts-per-page'                => 2,
+		'bitski-wp-theme/option/card/meta/display-author'              => true,
+		'bitski-wp-theme/option/card/meta/display-date'                => true,
+		'bitski-wp-theme/option/card/meta/display-date-modified'       => true,
 
 		// Pages options
-		'bitski-wp-theme/option/pages/using-session/ids'           => [ 49 ], // [ 13, 232 ]
+		'bitski-wp-theme/option/pages/using-session/ids'               => [ 49 ], // [ 13, 232 ]
 
 		// Forms options
-		'bitski-wp-theme/option/forms/general/load'                => true,
-		'bitski-wp-theme/option/forms/general/antispam-delay'      => 5,
-		'bitski-wp-theme/option/forms/contact/recipient-email'     => 'info@example.com',
-		'bitski-wp-theme/option/forms/contact/from-email'          => 'info@example.com',
-		'bitski-wp-theme/option/forms/contact/from-name'           => 'Website Kontakt',
+		'bitski-wp-theme/option/forms/general/load'                    => true,
+		'bitski-wp-theme/option/forms/general/antispam-delay'          => 5,
+		'bitski-wp-theme/option/forms/contact/recipient-email'         => 'info@example.com',
+		'bitski-wp-theme/option/forms/contact/from-email'              => 'info@example.com',
+		'bitski-wp-theme/option/forms/contact/from-name'               => 'Website Kontakt',
 
 		// Add more option filters as needed
 	];

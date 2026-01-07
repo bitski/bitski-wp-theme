@@ -49,7 +49,7 @@ class LoadMore {
      * @return WP_REST_Response
      */
     public function getPosts( WP_REST_Request $request ): WP_REST_Response {
-        $posts_per_load_more = apply_filters( 'bitski-wp-theme/option/archive/posts-per-load-more', null );
+        $posts_per_load_more = apply_filters( 'bitski-wp-theme/option/archive/load-more/posts-per-load-more', null );
         $posts_per_page      = apply_filters( 'bitski-wp-theme/option/archive/posts-per-page', null );
 
         // Get request parameters.

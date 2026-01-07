@@ -198,12 +198,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const loadMoreButton = document.querySelector('.load-more');
         let offset = 0;
         let foundPosts = 0;
+        let spinnerDelay = 0;
 
         // Only proceed if button and container exist.
         if (loadMoreButton && contentBody) {
-            // Initialize offset & foundPosts from data attribute, representing the value of the themes posts-per-page option and the total number of posts found for the current (archive) query.
+            // Initialize offset, foundPosts, spinnerDelay from data attribute, representing the value of the themes posts-per-page & spinner-delay options and the total number of posts found for the current (archive) query.
             offset = parseInt(contentBody.dataset.postsPerPage) || 0;
             foundPosts = parseInt(contentBody.dataset.foundPosts) || 0;
+            spinnerDelay = parseInt(contentBody.dataset.spinnerDelay) || 300;
             loadMoreButton.addEventListener('click', handleLoadMore);
         }
 
@@ -238,7 +240,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // Fetch posts from WordPress REST API and append them to the content body.
             try {
                 // Fetch posts using url with parameters.
-                const response = await fetch(url.toString());
+                //
+                // Using the theme option, add a minimum delay to improve UX by preventing quick flickering of the button.
+                // Promise.all() ensures that both requests are executed concurrently.
+                const responses = await Promise.all([
+                    fetch(url.toString()),
+                    new Promise(resolve => setTimeout(resolve, spinnerDelay))
+                ]);
+
+                // Retrieve fetch response from Promise.all array.
+                const response = responses[0];
+
                 if (!response.ok) {
                     throw new Error(`Response status: ${response.status}`);
                 }
