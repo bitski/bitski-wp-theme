@@ -7,6 +7,8 @@
 
 namespace BitskiWPTheme\theme;
 
+use WP_Query;
+
 /**
  * Manages theme hooks.
  *
@@ -30,9 +32,10 @@ class ThemeHooks {
 	 * Merges setup classes with default classes if $merge is true.
 	 * Otherwise, returns default classes only.
 	 *
-	 * @param string $filter
-	 * @param array $defaultClasses
-	 * @param bool $merge
+	 * @param  string  $filter
+	 * @param  array  $defaultClasses
+	 * @param  bool  $merge
+	 *
 	 * @return string
 	 */
 	public function getClassesByFilter( string $filter, array $defaultClasses = [], bool $merge = true ): string {
@@ -60,14 +63,15 @@ class ThemeHooks {
 	}
 
 	/**
-     * Getter for theme options by filter name.
-     * Returns the default option if it is explicitly set (not null) and valid.
+	 * Getter for theme options by filter name.
+	 * Returns the default option if it is explicitly set (not null) and valid.
 	 * Otherwise, checks global ThemeSetup options.
 	 *
-	 * @param string $filter
-	 * @param mixed $defaultOption (default: null, for fallback to global setup option)
+	 * @param  string  $filter
+	 * @param  mixed  $defaultOption  (default: null, for fallback to global setup option)
+	 *
 	 * @return mixed
-     */
+	 */
 	public function getOptionByFilter( string $filter, mixed $defaultOption = null ): mixed {
 		// Return default option if it is explicitly set (not null).
 		// Return default option if it is boolean or integer,
@@ -85,7 +89,7 @@ class ThemeHooks {
 		if ( isset( ThemeSetup::$options[ $filter ] ) && ThemeSetup::$options[ $filter ] !== '' ) {
 			$setupOption = ThemeSetup::$options[ $filter ];
 
-			if ( is_array( $setupOption ) || is_bool( $setupOption )) {
+			if ( is_array( $setupOption ) || is_bool( $setupOption ) ) {
 				return $setupOption;
 			}
 
@@ -94,6 +98,29 @@ class ThemeHooks {
 
 		// Return default option as fallback.
 		return $defaultOption;
+	}
+
+	/**
+	 * Override archive posts per page WordPress option with theme option.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param WP_Query $query
+	 */
+	public function overrideArchivePostsPerPage( $query ) {
+		// Return early if on admin page.
+		if ( is_admin() ) {
+			return;
+		}
+
+		// Return early if not main query or not archive or home page.
+		if ( ! $query->is_main_query() || ! ( is_archive() || is_home() ) ) {
+			return;
+		}
+
+		// Set theme option for posts per page.
+		$posts_per_page = apply_filters( 'bitski-wp-theme/option/archive/posts-per-page', null );
+		$query->set( 'posts_per_page', $posts_per_page );
 	}
 
 	/**
@@ -130,6 +157,10 @@ class ThemeHooks {
 	 * Registers hooks for functionalities.
 	 */
 	protected function registerFunctionalHooks() {
+		// Archive hooks
+		// Archive query override - ignore WordPress backend option.
+		add_action( 'pre_get_posts', [ $this, 'overrideArchivePostsPerPage' ] );
+
 		// Header hooks
 		// (To be inhabited)
 
