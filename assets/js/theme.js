@@ -65,38 +65,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const activeThemeIcon = themeSwitcher.querySelector('.icon-active-theme');
         const activeButton = document.querySelector(`[data-bs-theme-value="${theme}"]`);
-        const activeButtonIconClasses = activeButton.querySelector('i').className;
 
-        document.querySelectorAll('[data-bs-theme-value]').forEach(function (element) {
-            element.classList.remove('active');
-            element.setAttribute('aria-pressed', 'false');
-        })
+        // Handle active button state.
+        if (activeButton) {
+            const activeButtonIconClasses = activeButton.querySelector('i').className;
 
-        activeButton.classList.add('active');
-        activeButton.setAttribute('aria-pressed', 'true');
-        activeThemeIcon.classList.forEach(function (className) {
-            if (className.startsWith('fa-')) {
-                activeThemeIcon.classList.remove(className);
-            }
-        });
-        activeThemeIcon.className += (activeThemeIcon.className ? ' ' : '') + activeButtonIconClasses;
+            document.querySelectorAll('[data-bs-theme-value]').forEach(function (element) {
+                element.classList.remove('active');
+                element.setAttribute('aria-pressed', 'false');
+            })
 
+            activeButton.classList.add('active');
+            activeButton.setAttribute('aria-pressed', 'true');
+            activeThemeIcon.classList.forEach(function (className) {
+                if (className.startsWith('fa-')) {
+                    activeThemeIcon.classList.remove(className);
+                }
+            });
+            activeThemeIcon.className += (activeThemeIcon.className ? ' ' : '') + activeButtonIconClasses;
+        }
+
+        // Update theme switcher aria-label.
         const themeSwitcherHiddenText = themeSwitcher.querySelector('.visually-hidden');
-        const base = (themeSwitcherHiddenText.textContent.trim())
-            || ((themeSwitcher.getAttribute('aria-label') || '').replace(/\s*\(.*\)\s*$/, ''))
-            || 'Toggle color theme';
-        themeSwitcher.setAttribute('aria-label', `${base} (${theme})`);
+        if (themeSwitcherHiddenText) {
+            const base = (themeSwitcherHiddenText.textContent.trim())
+                || ((themeSwitcher.getAttribute('aria-label') || '').replace(/\s*\(.*\)\s*$/, ''))
+                || 'Toggle color theme';
+            themeSwitcher.setAttribute('aria-label', `${base} (${theme})`);
+        }
 
+        // Focus the theme switcher button for better accessibility.
         if (focus) {
             themeSwitcher.focus();
         }
     }
 
-    // Initialize theme
-    setTheme(getPreferredTheme());
-    showActiveTheme(getPreferredTheme());
+    // Initialize theme.
+    const preferredTheme = getPreferredTheme();
+    setTheme(preferredTheme);
+    showActiveTheme(preferredTheme);
 
-    // Listen for system theme changes
+    // Listen for system theme changes.
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
         const storedTheme = getStoredTheme();
         if (storedTheme !== 'light' && storedTheme !== 'dark') {
@@ -105,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
 
-    // Handle theme switcher clicks
+    // Handle theme switcher clicks.
     document.querySelectorAll('[data-bs-theme-value]')
         .forEach(function (toggle) {
             toggle.addEventListener('click', function () {
@@ -171,10 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         };
 
-        // Initialize pagination colors
+        // Initialize pagination colors.
         updatePaginationColors();
 
-        // Observe changes to data-bs-theme attribute
+        // Observe changes to data-bs-theme attribute.
         const observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.attributeName === 'data-bs-theme') {
@@ -214,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
             contentBody.setAttribute('aria-live', 'polite');
             contentBody.setAttribute('aria-atomic', 'false');
 
-            console.log('load handleLoadMore');
             // Prevent multiple clicks.
             if (loadMoreButton.disabled) {
                 return;
@@ -261,7 +269,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     contentBody.insertAdjacentHTML('beforeend', result.posts_html.join(''));
                     offset = result.offset;
                 }
-                //console.log(result);
             } catch (error) {
                 console.error(error.message);
             } finally {
