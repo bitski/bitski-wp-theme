@@ -31,6 +31,8 @@
       "blockGap": false
     },
     "layout": {
+      "contentSize": "728px",
+      "wideSize": "1140px",
       "allowEditing": false
     }
   }
