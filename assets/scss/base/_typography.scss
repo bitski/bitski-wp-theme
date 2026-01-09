@@ -1,1 +1,14 @@
 // base/_typography.scss
+@use "sass:math";
+
+html {
+  $theme-base-font-size: 1rem;    // 1 * 16px = 16px
+  $theme-max-font-size: 1.125rem; // 1.125 * 16px = 18px
+  $theme-diff-font-size: math.div($theme-max-font-size - $theme-base-font-size, 1rem);
+
+  font-size: clamp(
+      $theme-base-font-size,
+      calc(#{$theme-base-font-size} + #{$theme-diff-font-size} * 16 * (100vw - 400px) / 800),
+      $theme-max-font-size
+  );
+}
