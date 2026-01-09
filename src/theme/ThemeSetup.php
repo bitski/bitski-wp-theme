@@ -41,7 +41,7 @@ class ThemeSetup {
 		// Archive page options
 		'bitski-wp-theme/option/archive/load-more'                     => true,
 		'bitski-wp-theme/option/archive/load-more/posts-per-load-more' => 1,
-		'bitski-wp-theme/option/archive/load-more/spinner-delay'       => 300,  // ms
+		'bitski-wp-theme/option/archive/load-more/spinner-delay'       => 600,  // ms
 		'bitski-wp-theme/option/archive/posts-per-page'                => 2,
 		'bitski-wp-theme/option/card/meta/display-author'              => true,
 		'bitski-wp-theme/option/card/meta/display-date'                => true,

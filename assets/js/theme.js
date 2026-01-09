@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Initialize offset, foundPosts, spinnerDelay from data attribute, representing the value of the themes posts-per-page & spinner-delay options and the total number of posts found for the current (archive) query.
             offset = parseInt(contentBody.dataset.postsPerPage) || 0;
             foundPosts = parseInt(contentBody.dataset.foundPosts) || 0;
-            spinnerDelay = parseInt(contentBody.dataset.spinnerDelay) || 300;
+            spinnerDelay = parseInt(contentBody.dataset.spinnerDelay) || 600;
             loadMoreButton.addEventListener('click', handleLoadMore);
         }
 
