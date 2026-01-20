@@ -2,13 +2,17 @@
 @use "sass:math";
 
 html {
-  $theme-base-font-size: 1rem;    // 1 * 16px = 16px
-  $theme-max-font-size: 1.125rem; // 1.125 * 16px = 18px
-  $theme-diff-font-size: math.div($theme-max-font-size - $theme-base-font-size, 1rem);
+  $theme-font-size-base: 1rem; // 1 * 16px = 16px
+  $theme-font-size-max: 1.125rem; // 1.125 * 16px = 18px
+  $theme-font-size-diff: math.div($theme-font-size-max - $theme-font-size-base, 1rem);
+
+  $theme-content-width-base: 360px;
+  $theme-content-width-max: 1200px;
+  $theme-content-width-diff: $theme-content-width-max - $theme-content-width-base;
 
   font-size: clamp(
-      $theme-base-font-size,
-      calc(#{$theme-base-font-size} + #{$theme-diff-font-size} * 16 * (100vw - 400px) / 800),
-      $theme-max-font-size
+      $theme-font-size-base,
+      calc(#{$theme-font-size-base} + #{$theme-font-size-diff} * 16px * (100vw - #{$theme-content-width-base}) / #{$theme-content-width-diff}),
+      $theme-font-size-max
   );
 }
