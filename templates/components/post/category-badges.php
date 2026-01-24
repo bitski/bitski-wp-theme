@@ -22,7 +22,7 @@ if ( empty( $categories ) ) {
 } ?>
 
 <!-- Category badges -->
-<nav class="category-badges" aria-label="<?php echo esc_attr( $aria_label_nav ); ?>">
+<nav class="category-badges" aria-label="<?php echo esc_attr__( $aria_label_nav, 'bitski-wp-theme' ); ?>">
     <ul class="list-unstyled d-flex flex-wrap gap-2"><?php
         $category_names = [];
         foreach ( $categories as $category ) {

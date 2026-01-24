@@ -19,20 +19,20 @@ if ( ! defined( 'ABSPATH' ) ) {
         <button class="search-bar-toggler me-1 me-md-2 btn btn-outline-secondary" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseSearchBar" aria-expanded="false" aria-controls="collapseSearchBar"
-                aria-label="Toggle search bar">
+                aria-label="<?php echo esc_attr__( 'Toggle search bar', 'bitski-wp-theme' ); ?>">
             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         </button>
     <?php } ?>
 
     <!-- Login link -->
-    <a class="login-link btn btn-outline-secondary me-1 me-md-2 me-lg-0" href="<?php echo esc_url( wp_login_url() ); ?>" aria-label="Login">
+    <a class="login-link btn btn-outline-secondary me-1 me-md-2 me-lg-0" href="<?php echo esc_url( wp_login_url() ); ?>" aria-label="<?php echo esc_attr__( 'Login', 'bitski-wp-theme' ); ?>">
         <i class="fa-solid fa-user" aria-hidden="true"></i>
     </a>
 
     <!-- Offcanvas navbar toggler -->
     <button class="offcanvas-navbar-toggler d-lg-none btn btn-secondary" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            aria-controls="offcanvasNavbar" aria-label="<?php echo esc_attr__( 'Toggle navigation', 'bitski-wp-theme' ); ?>">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </button>
 </div>

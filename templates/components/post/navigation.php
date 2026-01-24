@@ -23,7 +23,7 @@ if ( ! $prev_post && ! $next_post ) {
 } ?>
 
 <!-- Post navigation -->
-<nav class="post-navigation" aria-label="<?php echo esc_attr( $aria_label_nav ); ?>">
+<nav class="post-navigation" aria-label="<?php echo esc_attr__( $aria_label_nav, 'bitski-wp-theme' ); ?>">
     <ul class="pagination mb-0">
         <?php if ( $prev_post ) { ?>
             <li class="page-item">

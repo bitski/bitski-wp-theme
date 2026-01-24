@@ -41,7 +41,7 @@ if ( ! $links ) {
 } ?>
 
 <!-- Pagination -->
-<nav class="pagination" aria-label="<?php echo esc_attr( $pagination_args['aria_label_nav'] ); ?>">
+<nav class="pagination" aria-label="<?php echo esc_attr__( $pagination_args['aria_label_nav'], 'bitski-wp-theme' ); ?>">
     <ul class="pagination mb-0">
         <?php foreach ( $links as $link ) {
             // Identify the current page link to highlight it with Bootstrap classes for accessibility.

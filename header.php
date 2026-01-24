@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo esc_html__( 'Menu',
                                 'bitski-wp-theme' ); ?></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?php echo esc_attr__( 'Close', 'bitski-wp-theme' ); ?>"></button>
                 </div>
                 <div class="offcanvas-body">
                     <!-- Main Menu -->

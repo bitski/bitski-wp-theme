@@ -70,7 +70,9 @@ class FormManager {
 
 		if ( isset( $_SESSION['form_contact_load_time'] ) &&
 		     ( time() - $_SESSION['form_contact_load_time'] ) < $forms_antispam_delay ) {
-			$this->setFlashMessages( 'Fehler: Bitte warten Sie ' . $forms_antispam_delay . ' Sekunden, bevor Sie das Formular erneut senden.', 'danger' );
+			$this->setFlashMessages(
+				sprintf( __( 'Fehler: Bitte warten Sie %s Sekunden, bevor Sie das Formular erneut senden.',
+					'bitski-wp-theme' ), $forms_antispam_delay ), 'danger' );
 			wp_redirect( get_permalink() );
 			exit;
 		}
@@ -79,7 +81,8 @@ class FormManager {
 		// To protect against bots.
 		// If the hidden field 'contact_phone' is filled, treat it as spam.
 		if ( ! empty( $_POST['contact_phone'] ) ) {
-			$this->setFlashMessages( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
+			$this->setFlashMessages( __( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.',
+				'bitski-wp-theme' ), 'danger' );
 
 			// Redirect back to the contact page.
 			wp_redirect( get_permalink() );
@@ -90,7 +93,8 @@ class FormManager {
 		// To protect against CSRF attacks.
 		if ( ! isset( $_POST['contact_form_nonce'] ) || ! wp_verify_nonce( $_POST['contact_form_nonce'],
 				'contact_form_submit' ) ) {
-			$this->setFlashMessages( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.', 'danger' );
+			$this->setFlashMessages( __( 'Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut.',
+				'bitski-wp-theme' ), 'danger' );
 
 			// Redirect back to the contact page.
 			wp_redirect( get_permalink() );
@@ -116,12 +120,14 @@ class FormManager {
 		// Set success or error flash message based on the result of the email sending.
 		// Redirect back to the contact page.
 		if ( $this->sendFormContactEmail() ) {
-			$this->setFlashMessages( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'success' );
+			$this->setFlashMessages( __( 'Danke, Ihre Nachricht wurde erfolgreich versendet.', 'bitski-wp-theme' ),
+				'success' );
 			unset(
 				$_SESSION['form_contact_load_time'],
 			);
 		} else {
-			$this->setFlashMessages( 'Beim Versenden der Nachricht ist leider ein Fehler aufgetreten. Bitte versuchen Sie es erneut.',
+			$this->setFlashMessages( __( 'Beim Versenden der Nachricht ist leider ein Fehler aufgetreten. Bitte versuchen Sie es erneut.',
+				'bitski-wp-theme' ),
 				'danger' );
 		}
 		wp_redirect( get_permalink() );
@@ -162,15 +168,15 @@ class FormManager {
 
 		// Check for required fields, set flash message if any field is empty or invalid
 		if ( $name === '' ) {
-			$this->setFlashMessages( 'Bitte geben Sie einen Namen ein.', 'danger' );
+			$this->setFlashMessages( __( 'Bitte geben Sie einen Namen ein.', 'bitski-wp-theme' ), 'danger' );
 			$is_valid = false;
 		}
 		if ( $email === '' || ! is_email( $email ) ) {
-			$this->setFlashMessages( 'Bitte geben Sie eine E-Mail-Adresse ein.', 'danger' );
+			$this->setFlashMessages( __( 'Bitte geben Sie eine E-Mail-Adresse ein.', 'bitski-wp-theme' ), 'danger' );
 			$is_valid = false;
 		}
 		if ( $message === '' ) {
-			$this->setFlashMessages( 'Bitte geben Sie eine Nachricht ein.', 'danger' );
+			$this->setFlashMessages( __( 'Bitte geben Sie eine Nachricht ein.', 'bitski-wp-theme' ), 'danger' );
 			$is_valid = false;
 		}
 
@@ -184,20 +190,21 @@ class FormManager {
 	 * @since 0.8.15
 	 */
 	protected function sendFormContactEmail(): bool {
-		$to = apply_filters('bitski-wp-theme/option/forms/contact/recipient-email', get_option('admin_email') );
-		$from_email = apply_filters('bitski-wp-theme/option/forms/contact/from-email', get_option('admin_email') );
-		$from_name = apply_filters('bitski-wp-theme/option/forms/contact/from-name', get_bloginfo('name') );
-		$subject = sprintf(
-			'Neue Kontaktanfrage von %s',
+		$to         = apply_filters( 'bitski-wp-theme/option/forms/contact/recipient-email',
+			get_option( 'admin_email' ) );
+		$from_email = apply_filters( 'bitski-wp-theme/option/forms/contact/from-email', get_option( 'admin_email' ) );
+		$from_name  = apply_filters( 'bitski-wp-theme/option/forms/contact/from-name', get_bloginfo( 'name' ) );
+		$subject    = sprintf(
+			__( 'Neue Kontaktanfrage von %s', 'bitski-wp-theme' ),
 			$this->sanitized_form_data['contact_name']
 		);
-		$message = sprintf(
-			"Name: %s\nE-Mail: %s\n\nNachricht:\n%s",
+		$message    = sprintf(
+			__( "Name: %s\nE-Mail: %s\n\nNachricht:\n%s", 'bitski-wp-theme' ),
 			$this->sanitized_form_data['contact_name'],
 			$this->sanitized_form_data['contact_email'],
 			$this->sanitized_form_data['contact_message']
 		);
-		$headers = [
+		$headers    = [
 			'Content-Type: text/plain; charset=UTF-8',
 			sprintf( 'From: %s <%s>', $from_name, $from_email ),
 			'Reply-To: ' . $this->sanitized_form_data['contact_email']
