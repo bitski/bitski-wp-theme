@@ -4,16 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bitski-wp-theme 0.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bitski-wp-theme\n"
-"POT-Creation-Date: 2026-01-24T18:08:19+00:00\n"
-"PO-Revision-Date: 2026-01-24 23:24+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: de_DE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"POT-Creation-Date: 2026-01-24T18:08:19+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bitski-wp-theme\n"
 
 #. Theme Name of the theme
@@ -69,11 +67,11 @@ msgstr ""
 
 #: src/content/FormManager.php:74
 #, php-format
-msgid ""
-"Fehler: Bitte warten Sie %s Sekunden, bevor Sie das Formular erneut senden."
+msgid "Fehler: Bitte warten Sie %s Sekunden, bevor Sie das Formular erneut senden."
 msgstr ""
 
-#: src/content/FormManager.php:84 src/content/FormManager.php:96
+#: src/content/FormManager.php:84
+#: src/content/FormManager.php:96
 msgid "Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut."
 msgstr ""
 
@@ -82,9 +80,7 @@ msgid "Danke, Ihre Nachricht wurde erfolgreich versendet."
 msgstr ""
 
 #: src/content/FormManager.php:129
-msgid ""
-"Beim Versenden der Nachricht ist leider ein Fehler aufgetreten. Bitte "
-"versuchen Sie es erneut."
+msgid "Beim Versenden der Nachricht ist leider ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
 msgstr ""
 
 #: src/content/FormManager.php:171
@@ -245,8 +241,7 @@ msgstr ""
 
 #: templates/components/forms/contact/form.php:81
 msgid ""
-"Mit dem Absenden des Formulars wird zugestimmt, dass die angegebenen Daten "
-"zur Bearbeitung der Anfrage\r\n"
+"Mit dem Absenden des Formulars wird zugestimmt, dass die angegebenen Daten zur Bearbeitung der Anfrage\r\n"
 "            verarbeitet werden"
 msgstr ""
 
@@ -347,15 +342,18 @@ msgstr ""
 msgid "Main menu socials"
 msgstr ""
 
-#: templates/components/socials.php:30 templates/components/socials.php:32
+#: templates/components/socials.php:30
+#: templates/components/socials.php:32
 msgid "GitHub"
 msgstr ""
 
-#: templates/components/socials.php:40 templates/components/socials.php:42
+#: templates/components/socials.php:40
+#: templates/components/socials.php:42
 msgid "x.com"
 msgstr ""
 
-#: templates/components/socials.php:50 templates/components/socials.php:52
+#: templates/components/socials.php:50
+#: templates/components/socials.php:52
 msgid "Instagram"
 msgstr ""
 
@@ -364,9 +362,7 @@ msgid "Keine Beiträge gefunden!"
 msgstr ""
 
 #: templates/pages/archive/loop.php:57
-msgid ""
-"Zurzeit sind keine Beiträge verfügbar. Bitte besuche uns später wieder oder "
-"nutze die Suche:"
+msgid "Zurzeit sind keine Beiträge verfügbar. Bitte besuche uns später wieder oder nutze die Suche:"
 msgstr ""
 
 #: templates/pages/search-404/content/no-results.php:20
@@ -378,14 +374,11 @@ msgid "Diese Seite wurde leider nicht gefunden."
 msgstr ""
 
 #: templates/pages/search-404/content/no-results.php:28
-msgid ""
-"Bitte versuchen Sie es mit anderen Suchbegriffen erneut oder nutzen Sie die "
-"Seitennavigation:"
+msgid "Bitte versuchen Sie es mit anderen Suchbegriffen erneut oder nutzen Sie die Seitennavigation:"
 msgstr ""
 
 #: templates/pages/search-404/content/no-results.php:31
-msgid ""
-"Bitte versuchen Sie es mit der Suche oder nutzen Sie die Seitennavigation:"
+msgid "Bitte versuchen Sie es mit der Suche oder nutzen Sie die Seitennavigation:"
 msgstr ""
 
 #: templates/pages/search-404/content/results.php:26

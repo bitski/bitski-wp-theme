@@ -1,10 +1,406 @@
+# Copyright (C) 2026 bitski.de
+# This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: bitski-wp-theme 0.14.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bitski-wp-theme\n"
+"POT-Creation-Date: 2026-01-24T18:08:19+00:00\n"
+"PO-Revision-Date: 2026-01-24 23:25+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Domain: bitski-wp-theme\n"
 
-msgid "Hello World"
-msgstr "Hello World"
+#. Theme Name of the theme
+#: style.css
+msgid "bitski-wp-theme"
+msgstr ""
 
-msgid "Read more"
-msgstr "Read more"
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://bitski.de"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Classic Bootstrap starter theme for WordPress, supporting blocks."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "bitski.de"
+msgstr ""
+
+#: 404.php:20
+#, php-format
+msgid "404 – Fehler bei Aufruf der Seite: %s"
+msgstr ""
+
+#: header.php:27
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:29
+msgid "Skip to footer"
+msgstr ""
+
+#: header.php:54
+msgid "Menu"
+msgstr ""
+
+#: header.php:56
+msgid "Close"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page Contact"
+msgstr ""
+
+#: search.php:26
+#, php-format
+msgid "Suchergebnisse für: %s"
+msgstr ""
+
+#: src/content/FormManager.php:74
+#, php-format
+msgid ""
+"Fehler: Bitte warten Sie %s Sekunden, bevor Sie das Formular erneut senden."
+msgstr ""
+
+#: src/content/FormManager.php:84 src/content/FormManager.php:96
+msgid "Fehler: Ungültiges Formular. Bitte versuchen Sie es erneut."
+msgstr ""
+
+#: src/content/FormManager.php:123
+msgid "Danke, Ihre Nachricht wurde erfolgreich versendet."
+msgstr ""
+
+#: src/content/FormManager.php:129
+msgid ""
+"Beim Versenden der Nachricht ist leider ein Fehler aufgetreten. Bitte "
+"versuchen Sie es erneut."
+msgstr ""
+
+#: src/content/FormManager.php:171
+msgid "Bitte geben Sie einen Namen ein."
+msgstr ""
+
+#: src/content/FormManager.php:175
+msgid "Bitte geben Sie eine E-Mail-Adresse ein."
+msgstr ""
+
+#: src/content/FormManager.php:179
+msgid "Bitte geben Sie eine Nachricht ein."
+msgstr ""
+
+#: src/content/FormManager.php:198
+#, php-format
+msgid "Neue Kontaktanfrage von %s"
+msgstr ""
+
+#: src/content/FormManager.php:202
+#, php-format
+msgid ""
+"Name: %s\n"
+"E-Mail: %s\n"
+"\n"
+"Nachricht:\n"
+"%s"
+msgstr ""
+
+#: src/theme/ThemeSetup.php:131
+msgid "Main menu"
+msgstr ""
+
+#: src/theme/ThemeSetup.php:132
+msgid "Footer menu"
+msgstr ""
+
+#: templates/components/contacts.php:22
+msgid "Main menu contacts"
+msgstr ""
+
+#: templates/components/footer/branding.php:21
+#: templates/pages/search-404/content/no-results.php:37
+msgid "Home"
+msgstr ""
+
+#: templates/components/footer/branding.php:31
+msgid "Branding slogan."
+msgstr ""
+
+#: templates/components/footer/columns.php:18
+msgid "Headline 1"
+msgstr ""
+
+#: templates/components/footer/columns.php:20
+msgid "Link 1.1"
+msgstr ""
+
+#: templates/components/footer/columns.php:21
+msgid "Link 1.2"
+msgstr ""
+
+#: templates/components/footer/columns.php:22
+msgid "Link 1.3"
+msgstr ""
+
+#: templates/components/footer/columns.php:26
+msgid "Headline 2"
+msgstr ""
+
+#: templates/components/footer/columns.php:28
+msgid "Link 2.1"
+msgstr ""
+
+#: templates/components/footer/columns.php:29
+msgid "Link 2.2"
+msgstr ""
+
+#: templates/components/footer/columns.php:30
+msgid "Link 2.3"
+msgstr ""
+
+#: templates/components/footer/columns.php:34
+msgid "Headline 3"
+msgstr ""
+
+#: templates/components/footer/columns.php:36
+msgid "Link 3.1"
+msgstr ""
+
+#: templates/components/footer/columns.php:37
+msgid "Link 3.2"
+msgstr ""
+
+#: templates/components/footer/columns.php:38
+msgid "Link 3.3"
+msgstr ""
+
+#: templates/components/footer/columns.php:42
+msgid "Headline 4"
+msgstr ""
+
+#: templates/components/footer/columns.php:44
+msgid "Link 4.1"
+msgstr ""
+
+#: templates/components/footer/columns.php:45
+msgid "Link 4.2"
+msgstr ""
+
+#: templates/components/footer/columns.php:46
+msgid "Link 4.3"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:45
+msgid "Name"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:48
+msgid "Dein Name"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:49
+msgid "Bitte gib deinen Namen ein"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:54
+msgid "Email"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:57
+msgid "Deine Email-Adresse"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:58
+msgid "Bitte gib deine Email-Adresse ein"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:63
+msgid "Telefon"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:66
+msgid "Deine Telefonnummer"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:71
+msgid "Nachricht"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:74
+msgid "Deine Nachricht"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:76
+msgid "Bitte gib deine Nachricht ein"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:81
+msgid ""
+"Mit dem Absenden des Formulars wird zugestimmt, dass die angegebenen Daten "
+"zur Bearbeitung der Anfrage\r\n"
+"            verarbeitet werden"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:83
+msgid "Mehr Informationen dazu gibt es in der"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:85
+msgid "Datenschutzerklärung"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:86
+msgid "Öffnet in neuem Fenster"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:88
+msgid "Ein Widerruf ist jederzeit möglich"
+msgstr ""
+
+#: templates/components/forms/contact/form.php:91
+msgid "Nachricht senden"
+msgstr ""
+
+#: templates/components/header/actions.php:15
+msgid "Header actions"
+msgstr ""
+
+#: templates/components/header/actions.php:22
+msgid "Toggle search bar"
+msgstr ""
+
+#: templates/components/header/actions.php:28
+msgid "Login"
+msgstr ""
+
+#: templates/components/header/actions.php:35
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/components/header/main-menu/actions.php:14
+msgid "Main menu actions"
+msgstr ""
+
+#: templates/components/header/main-menu/actions.php:17
+#: templates/components/header/main-menu/actions.php:19
+msgid "Toggle color theme"
+msgstr ""
+
+#: templates/components/header/main-menu/actions.php:25
+msgid "Light"
+msgstr ""
+
+#: templates/components/header/main-menu/actions.php:31
+msgid "Dark"
+msgstr ""
+
+#: templates/components/header/main-menu/actions.php:37
+msgid "Auto"
+msgstr ""
+
+#: templates/components/load-more/button.php:16
+msgid "Mehr laden"
+msgstr ""
+
+#: templates/components/pagination.php:17
+msgid "Seitennavigation"
+msgstr ""
+
+#: templates/components/pagination.php:18
+msgid "Vorherige"
+msgstr ""
+
+#: templates/components/pagination.php:19
+msgid "Nächste"
+msgstr ""
+
+#: templates/components/post/category-badges.php:14
+msgid "Kategorienavigation des Beitrages"
+msgstr ""
+
+#: templates/components/post/navigation.php:14
+msgid "Beitragsnavigation"
+msgstr ""
+
+#: templates/components/search/form.php:18
+msgid "Suche"
+msgstr ""
+
+#: templates/components/search/form.php:22
+msgid "Suchen"
+msgstr ""
+
+#: templates/components/search/form.php:23
+msgid "Suche absenden"
+msgstr ""
+
+#: templates/components/socials.php:24
+msgid "Main menu socials"
+msgstr ""
+
+#: templates/components/socials.php:30 templates/components/socials.php:32
+msgid "GitHub"
+msgstr ""
+
+#: templates/components/socials.php:40 templates/components/socials.php:42
+msgid "x.com"
+msgstr ""
+
+#: templates/components/socials.php:50 templates/components/socials.php:52
+msgid "Instagram"
+msgstr ""
+
+#: templates/pages/archive/loop.php:53
+msgid "Keine Beiträge gefunden!"
+msgstr ""
+
+#: templates/pages/archive/loop.php:57
+msgid ""
+"Zurzeit sind keine Beiträge verfügbar. Bitte besuche uns später wieder oder "
+"nutze die Suche:"
+msgstr ""
+
+#: templates/pages/search-404/content/no-results.php:20
+msgid "Es wurden leider keine Treffer gefunden."
+msgstr ""
+
+#: templates/pages/search-404/content/no-results.php:22
+msgid "Diese Seite wurde leider nicht gefunden."
+msgstr ""
+
+#: templates/pages/search-404/content/no-results.php:28
+msgid ""
+"Bitte versuchen Sie es mit anderen Suchbegriffen erneut oder nutzen Sie die "
+"Seitennavigation:"
+msgstr ""
+
+#: templates/pages/search-404/content/no-results.php:31
+msgid ""
+"Bitte versuchen Sie es mit der Suche oder nutzen Sie die Seitennavigation:"
+msgstr ""
+
+#: templates/pages/search-404/content/results.php:26
+#, php-format
+msgid "%d Treffer gefunden"
+msgid_plural "%d Treffer gefunden"
+msgstr[0] ""
+msgstr[1] ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
