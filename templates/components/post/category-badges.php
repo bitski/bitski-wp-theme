@@ -7,32 +7,36 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$aria_label_nav = __( 'Kategorienavigation des Beitrages', 'bitski-wp-theme' );
+$aria_label_nav = __('Kategorienavigation des Beitrages', 'bitski-wp-theme');
 
 // Get the related categories.
 $categories = get_the_category();
 
 // Return early if there are no related categories.
-if ( empty( $categories ) ) {
+if (empty($categories)) {
     return;
 } ?>
 
 <!-- Category badges -->
-<nav class="category-badges" aria-label="<?php echo esc_attr__( $aria_label_nav, 'bitski-wp-theme' ); ?>">
+<nav class="category-badges" aria-label="<?php
+echo esc_attr__($aria_label_nav, 'bitski-wp-theme'); ?>">
     <ul class="list-unstyled d-flex flex-wrap gap-2"><?php
         $category_names = [];
-        foreach ( $categories as $category ) {
+        foreach ($categories as $category) {
             $category_names[] = $category->name; ?>
             <li class="">
-                <a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>"
+                <a href="<?php
+                echo esc_url(get_category_link($category->term_id)); ?>"
                    class="category-badge badge bg-primary-subtle text-decoration-none text-primary-emphasis">
-                    <span><?php echo esc_html( $category->name ); ?></span>
+                    <span><?php
+                        echo esc_html($category->name); ?></span>
                 </a>
             </li>
-        <?php } ?>
+        <?php
+        } ?>
     </ul>
 </nav>

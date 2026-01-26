@@ -4,6 +4,7 @@
  *
  * @since 0.1.0
  */
+
 namespace BitskiWPTheme\content;
 
 /**

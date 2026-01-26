@@ -7,41 +7,49 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$aria_label_nav = __( 'Beitragsnavigation', 'bitski-wp-theme' );
+$aria_label_nav = __('Beitragsnavigation', 'bitski-wp-theme');
 
 // Get the adjacent posts.
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 
 // Return early if there is no adjacent post.
-if ( ! $prev_post && ! $next_post ) {
+if ( ! $prev_post && ! $next_post) {
     return;
 } ?>
 
 <!-- Post navigation -->
-<nav class="post-navigation" aria-label="<?php echo esc_attr__( $aria_label_nav, 'bitski-wp-theme' ); ?>">
+<nav class="post-navigation" aria-label="<?php
+echo esc_attr__($aria_label_nav, 'bitski-wp-theme'); ?>">
     <ul class="pagination mb-0">
-        <?php if ( $prev_post ) { ?>
+        <?php
+        if ($prev_post) { ?>
             <li class="page-item">
-                <a class="page-link text-light" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>"
+                <a class="page-link text-light" href="<?php
+                echo esc_url(get_permalink($prev_post->ID)); ?>"
                    rel="prev">
                     <i class="fa-solid fa-angles-left fa-xs" aria-hidden="true"></i>
-                    <span><?php echo esc_html( $prev_post->post_title ); ?></span>
+                    <span><?php
+                        echo esc_html($prev_post->post_title); ?></span>
                 </a>
             </li>
-        <?php }
-        if ( $next_post ) { ?>
+        <?php
+        }
+        if ($next_post) { ?>
             <li class="page-item">
-                <a class="page-link text-light" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>"
+                <a class="page-link text-light" href="<?php
+                echo esc_url(get_permalink($next_post->ID)); ?>"
                    rel="next">
-                    <span><?php echo esc_html( $next_post->post_title ); ?></span>
+                    <span><?php
+                        echo esc_html($next_post->post_title); ?></span>
                     <i class="fa-solid fa-angles-right fa-xs" aria-hidden="true"></i>
                 </a>
             </li>
-        <?php } ?>
+        <?php
+        } ?>
     </ul>
 </nav>

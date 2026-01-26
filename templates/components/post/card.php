@@ -7,30 +7,40 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="position-relative card h-100">
-    <?php if ( has_post_thumbnail() ) {
-        $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' ); ?>
-        <img class="card-img-top" src="<?php echo esc_url( $thumbnail_url ); ?>"
-             alt="<?php the_title_attribute(); ?>" loading="lazy">
-    <?php } ?>
+<article id="post-<?php
+the_ID(); ?>" class="position-relative card h-100">
+    <?php
+    if (has_post_thumbnail()) {
+        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
+        <img class="card-img-top" src="<?php
+        echo esc_url($thumbnail_url); ?>"
+             alt="<?php
+             the_title_attribute(); ?>" loading="lazy">
+    <?php
+    } ?>
     <div class="card-body">
         <header class="post-header">
-            <?php get_template_part( 'templates/components/post/category-badges' ); ?>
+            <?php
+            get_template_part('templates/components/post/category-badges'); ?>
             <h2 class="post-title card-title h5">
                 <a class="stretched-link text-reset text-decoration-none"
-                   href="<?php the_permalink(); ?>">
-                    <?php the_title(); ?>
+                   href="<?php
+                   the_permalink(); ?>">
+                    <?php
+                    the_title(); ?>
                 </a>
             </h2>
-            <?php get_template_part( 'templates/components/post/meta', null, array( 'context' => 'card' ) ); ?>
+            <?php
+            get_template_part('templates/components/post/meta', null, ['context' => 'card']); ?>
         </header>
         <div class="post-content card-text">
-            <?php the_excerpt(); ?>
+            <?php
+            the_excerpt(); ?>
         </div>
     </div>
 </article>

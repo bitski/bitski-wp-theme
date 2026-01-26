@@ -1,6 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+
+if ( ! defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
 }
 
 /**
@@ -13,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 0.2.0
  */
-if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-	require_once __DIR__ . '/vendor/autoload.php';
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once __DIR__.'/vendor/autoload.php';
 } else {
-	error_log( 'Autoloader not found: ' . __DIR__ . '/vendor/autoload.php' );
+    error_log('Autoloader not found: '.__DIR__.'/vendor/autoload.php');
 }
 
 /**
@@ -27,9 +28,9 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  * @var array $bootstrap_classes
  */
 $bootstrap_classes = [
-	\BitskiWPTheme\theme\ThemeSetup::class,
-	\BitskiWPTheme\theme\ThemeHooks::class,
-	\BitskiWPTheme\assets\AssetsManager::class,
+    \BitskiWPTheme\theme\ThemeSetup::class,
+    \BitskiWPTheme\theme\ThemeHooks::class,
+    \BitskiWPTheme\assets\AssetsManager::class,
 ];
 
 /**
@@ -41,36 +42,36 @@ $bootstrap_classes = [
  * @var array $conditional_class_map
  */
 $conditional_class_map = [
-	'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\content\FormManager::class,
-	'bitski-wp-theme/option/archive/load-more' => \BitskiWPTheme\content\LoadMore::class
+    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\content\FormManager::class,
+    'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\content\LoadMore::class
 ];
 
 /**
  * Instantiate and initialize core and feature classes unconditionally.
  */
-foreach ( $bootstrap_classes as $class ) {
-	try {
-		$instance = new $class();
-		if ( method_exists( $instance, 'init' ) ) {
-			$instance->init();
-		}
-	} catch ( \Throwable $error ) {
-		error_log( $class . ' Error: ' . $error->getMessage() );
-	}
+foreach ($bootstrap_classes as $class) {
+    try {
+        $instance = new $class();
+        if (method_exists($instance, 'init')) {
+            $instance->init();
+        }
+    } catch (\Throwable $error) {
+        error_log($class.' Error: '.$error->getMessage());
+    }
 }
 
 /**
  * Instantiate and initialize conditional classes based on theme option filters.
  */
-foreach ( $conditional_class_map as $filter => $class ) {
-	if ( apply_filters( $filter, null ) ) {
-		try {
-			$instance = new $class();
-			if ( method_exists( $instance, 'init' ) ) {
-				$instance->init();
-			}
-		} catch ( \Throwable $error ) {
-			error_log( $class . ' Error: ' . $error->getMessage() );
-		}
-	}
+foreach ($conditional_class_map as $filter => $class) {
+    if (apply_filters($filter, null)) {
+        try {
+            $instance = new $class();
+            if (method_exists($instance, 'init')) {
+                $instance->init();
+            }
+        } catch (\Throwable $error) {
+            error_log($class.' Error: '.$error->getMessage());
+        }
+    }
 }

@@ -7,12 +7,12 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$found_posts = $wp_query->found_posts;
-$posts_per_page = get_option( 'posts_per_page' );
+$found_posts    = $wp_query->found_posts;
+$posts_per_page = get_option('posts_per_page');
 ?>
 
 <!-- Content body: search results list -->
@@ -36,19 +36,23 @@ $posts_per_page = get_option( 'posts_per_page' );
         </h2>
     </header>
     <div class="content row g-4<?php
-    if ( paginate_links() ) {
+    if (paginate_links()) {
         echo ' mb-4';
     } ?>">
         <?php
-        while ( have_posts() ) {
+        while (have_posts()) {
             the_post(); ?>
             <div class="col-12<?php
-                if ( $found_posts > 1 && $posts_per_page > 1) { ?>
+            if ($found_posts > 1 && $posts_per_page > 1) { ?>
                     col-lg-6
-                <?php } ?>">
-                <?php get_template_part( 'templates/components/post/card' ); ?>
+                <?php
+            } ?>">
+                <?php
+                get_template_part('templates/components/post/card'); ?>
             </div>
-        <?php } ?>
+        <?php
+        } ?>
     </div>
-    <?php get_template_part( 'templates/components/pagination' ); ?>
+    <?php
+    get_template_part('templates/components/pagination'); ?>
 </section>

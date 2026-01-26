@@ -7,22 +7,32 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined('ABSPATH')) {
     exit;
 }
 
 get_header();
 ?>
 
-<main id="content" class="content <?php echo esc_attr( apply_filters( 'bitski-wp-theme/class/container',
-        [ 'container-xl' ], true ) ); ?> pt-4 pb-5">
+<main id="content" class="content <?php
+echo esc_attr(
+        apply_filters(
+                'bitski-wp-theme/class/container',
+                ['container-xl'],
+                true
+        )
+); ?> pt-4 pb-5">
     <!-- Content header -->
     <header class="content-header mb-4">
-        <h1 class="archive-title"><?php the_archive_title(); ?></h1>
-        <p class="archive-description"><?php the_archive_description(); ?></p>
+        <h1 class="archive-title"><?php
+            the_archive_title(); ?></h1>
+        <p class="archive-description"><?php
+            the_archive_description(); ?></p>
     </header>
 
-    <?php get_template_part( 'templates/pages/archive/loop' ); ?>
+    <?php
+    get_template_part('templates/pages/archive/loop'); ?>
 </main>
 
-<?php get_footer(); ?>
+<?php
+get_footer(); ?>
