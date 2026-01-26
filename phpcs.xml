@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="Bitski WP Theme">
+    <description>WordPress Coding Standards</description>
+
+    <!-- Dateien zum Checken -->
+    <file>src/</file>
+    <file>templates/</file>
+    <file>*.php</file>
+
+    <!-- WordPress Standards -->
+    <rule ref="WordPress">
+        <exclude name="WordPress.VIP.ValidFunctionName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.WP.EnqueuedResources.NonLiteralTextDomain"/>
+    </rule>
+</ruleset>
