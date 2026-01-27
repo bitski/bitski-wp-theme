@@ -25,8 +25,7 @@ if ($template === 'header' && $display_labels) {
     echo esc_attr__('Main menu socials', 'bitski-wp-theme'); ?>">
     <li class="me-2">
         <a class="github-link nav-link p-2 ps-0"
-           href="<?php
-           echo esc_url(wp_login_url()); ?>">
+           href="https://github.com/#">
             <i class="fa-brands fa-github" aria-hidden="true"></i>
             <?php
             if ($display_labels) { ?>
@@ -41,8 +40,7 @@ if ($template === 'header' && $display_labels) {
     </li>
     <li class="me-1">
         <a class="x-twitter-link nav-link p-2 ps-0"
-           href="<?php
-           echo esc_url(wp_login_url()); ?>">
+           href="https://twitter.com/#">
             <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
             <?php
             if ($display_labels) { ?>
@@ -57,8 +55,7 @@ if ($template === 'header' && $display_labels) {
     </li>
     <li class="me-2">
         <a class="instagram-link nav-link p-2 ps-0"
-           href="<?php
-           echo esc_url(wp_login_url()); ?>">
+           href="https://instagram.com/#">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             <?php
             if ($display_labels) { ?>

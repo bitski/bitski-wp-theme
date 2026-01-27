@@ -15,7 +15,7 @@ if ( ! defined('ABSPATH')) {
     <div class="<?php
     echo apply_filters('bitski-wp-theme/class/container', ['container-xl'], true); ?>">
         <div class="row">
-            <div class="col-6 col-lg-3">
+            <div class="col-6 col-lg-3 mb-4 mb-lg-0">
                 <h2 class="h5"><?php
                     echo esc_html__('Headline 1', 'bitski-wp-theme'); ?></h2>
                 <ul class="list-unstyled mb-0">
@@ -27,7 +27,7 @@ if ( ! defined('ABSPATH')) {
                             echo esc_html__('Link 1.3', 'bitski-wp-theme'); ?></a></li>
                 </ul>
             </div>
-            <div class="col-6 col-lg-3">
+            <div class="col-6 col-lg-3 mb-4 mb-lg-0">
                 <h2 class="h5"><?php
                     echo esc_html__('Headline 2', 'bitski-wp-theme'); ?></h2>
                 <ul class="list-unstyled mb-0">
