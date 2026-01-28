@@ -8,8 +8,9 @@
  * @since 0.3.0
  */
 
-import './lib/bootstrap.bundle.min.js';
-import './theme.js';
-document.addEventListener("DOMContentLoaded", function () {
-    console.log('Moin!');
-});
+import './lib/bootstrap.bundle.min.js'
+import './theme.js'
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('Moin!')
+})
