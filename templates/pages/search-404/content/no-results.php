@@ -37,7 +37,10 @@ if ( ! defined('ABSPATH')) {
             } ?>
         </p>
         <?php
-        get_template_part('templates/components/search/form', null, ['class' => 'mb-4']); ?>
+        get_template_part('templates/components/search/form', null, [
+                'context' => '404',
+                'class' => 'mb-4'
+        ]); ?>
         <a href="<?php
         echo esc_url(home_url('/')); ?>" class="btn btn-secondary">
             <?php

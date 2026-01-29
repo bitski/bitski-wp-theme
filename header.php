@@ -72,7 +72,7 @@ echo apply_filters('bitski-wp-theme/class/header', ['text-dark'], false); ?>">
             </a>
 
             <!-- Offcanvas Navbar -->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            <div class="offcanvas offcanvas-end" role="dialog" tabindex="-1" id="offcanvasNavbar"
                  aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php

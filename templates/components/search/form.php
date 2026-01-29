@@ -10,17 +10,22 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$class = ! empty($args['class']) ? $args['class'] : '';
+$search_bar_input_id = 'search-bar-input';
+$context             = ! empty($args['context']) ? $args['context'] : '';
+$class               = ! empty($args['class']) ? $args['class'] : '';
+if ( ! empty($context)) {
+    $search_bar_input_id .= "-".$context;
+}
 ?>
 
 <form role="search" method="get" class="search-form <?php
 echo esc_attr($class); ?>"
       action="<?php
       echo esc_url(home_url('/')); ?>">
-    <label for="search-bar-input" class="visually-hidden"><?php
+    <label for="<?php echo $search_bar_input_id; ?>" class="visually-hidden"><?php
         echo esc_html__('Suche', 'bitski-wp-theme'); ?></label>
     <div class="input-group">
-        <input id="search-bar-input" class="search-bar-input form-control" type="search" name="s"
+        <input id="<?php echo $search_bar_input_id; ?>" class="search-bar-input form-control" type="search" name="s"
                value="<?php
                echo get_search_query(); ?>"
                placeholder="<?php
