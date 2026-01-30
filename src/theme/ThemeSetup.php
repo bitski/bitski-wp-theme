@@ -33,7 +33,6 @@ class ThemeSetup
         'bitski-wp-theme/option/footer/contacts/tel'                   => '+1234567890',
         'bitski-wp-theme/option/footer/contacts/mail'                  => 'info@example.com',
 
-
         // Single post options
         'bitski-wp-theme/option/single/meta/display-author'            => true,
         'bitski-wp-theme/option/single/meta/display-date'              => true,
@@ -57,6 +56,11 @@ class ThemeSetup
         'bitski-wp-theme/option/forms/contact/recipient-email'         => 'info@example.com',
         'bitski-wp-theme/option/forms/contact/from-email'              => 'info@example.com',
         'bitski-wp-theme/option/forms/contact/from-name'               => 'Website Kontakt',
+
+        // Progressive web app (PWA) options
+        'bitski-wp-theme/option/pwa/load'                              => true,
+        'bitski-wp-theme/option/pwa/theme-color'                       => '#ffffff',
+        'bitski-wp-theme/option/pwa/precache-pages/ids'                => [],
 
         // Add more option filters as needed
     ];

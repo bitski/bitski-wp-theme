@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if ( ! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
@@ -14,10 +14,10 @@ if (! defined('ABSPATH')) {
  *
  * @since 0.2.0
  */
-if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require_once __DIR__ . '/vendor/autoload.php';
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once __DIR__.'/vendor/autoload.php';
 } else {
-    error_log('Autoloader not found: ' . __DIR__ . '/vendor/autoload.php');
+    error_log('Autoloader not found: '.__DIR__.'/vendor/autoload.php');
 }
 
 /**
@@ -43,7 +43,8 @@ $bootstrap_classes = [
  */
 $conditional_class_map = [
     'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\content\FormManager::class,
-    'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\content\LoadMore::class
+    'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\content\LoadMore::class,
+    'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\ThemePWAManager::class
 ];
 
 /**
@@ -56,7 +57,7 @@ foreach ($bootstrap_classes as $class) {
             $instance->init();
         }
     } catch (\Throwable $error) {
-        error_log($class . ' Error: ' . $error->getMessage());
+        error_log($class.' Error: '.$error->getMessage());
     }
 }
 
@@ -71,7 +72,7 @@ foreach ($conditional_class_map as $filter => $class) {
                 $instance->init();
             }
         } catch (\Throwable $error) {
-            error_log($class . ' Error: ' . $error->getMessage());
+            error_log($class.' Error: '.$error->getMessage());
         }
     }
 }

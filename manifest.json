@@ -1,0 +1,14 @@
+{
+  "name": "bitski-wp-theme",
+  "short_name": "bitski",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0d6efd",
+  "icons": [
+    {
+      "src": "assets/img/bitski-wp-theme-logo_50x50.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
