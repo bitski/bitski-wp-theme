@@ -2,12 +2,24 @@
   "name": "bitski-wp-theme",
   "short_name": "bitski",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "theme_color": "#0d6efd",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "assets/img/bitski-wp-theme-logo_50x50.svg",
       "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/img/bitski-wp-theme-logo_50x50.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/img/bitski-wp-theme-logo_50x50.svg",
+      "sizes": "512x512",
       "type": "image/svg+xml"
     }
   ]

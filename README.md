@@ -16,7 +16,7 @@ Classic Bootstrap 5 starter theme for WordPress, supporting blocks.
 Customize styles via SCSS and adjust template parts as needed.
 
 ## Development Status
-Version 0.16.0 (Alpha) – actively maintained and developed.
+Version 0.16.1 (Alpha) – actively maintained and developed.
 
 ## Contributing
 Issues and pull requests are welcome. Please report bugs or suggest features.
