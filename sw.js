@@ -40,14 +40,14 @@ const cacheFirst = async function ({ request }) {
   }
 }
 
-// Install event - cache essential assets.
+// Install event - cache homepage + essential assets.
 self.addEventListener('install', function (event) {
   event.waitUntil(
     addResourcesToCache([
-      // Essential assets only.
+      // Homepage + essential assets only.
       '/',
-      '/style.css',
-      '/assets/js/main.js'
+      '/wp-content/themes/bitski-wp-theme/style.css',
+      '/wp-content/themes/bitski-wp-theme/assets/js/main.js'
     ])
   )
 })
