@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme PWA manager.
+ * Theme PWA manager - webserver independent.
  * Handles Progressive Web App (PWA) features for the theme.
  * Registers the PWA manifest and service worker for offline support and assets caching.
  *
@@ -40,14 +40,14 @@ class ThemePWAManager
           const registerServiceWorker = async function () {
             if ('serviceWorker' in navigator) {
               try {
-                const themeUri = '<?php echo esc_url(get_template_directory_uri()); ?>';
+                const themeUri = '<?php echo esc_url(get_template_directory_uri()); ?>'
                 const registration = await navigator.serviceWorker.register(
                   `${themeUri}/sw.js`,
                   {
                     scope: `${themeUri}/`,
                   }
                 )
-                console.log('Service worker registered with scope:', registration.scope);
+                console.log('Service worker registered with scope:', registration.scope)
                 if (registration.installing) {
                   console.log('Service worker installing')
                 } else if (registration.waiting) {
@@ -62,8 +62,9 @@ class ThemePWAManager
           }
 
           // Register the service worker when the page loads.
-          registerServiceWorker();
+          window.addEventListener('load', registerServiceWorker)
         </script>
         <?php
     }
 }
+

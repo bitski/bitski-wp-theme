@@ -18,9 +18,13 @@ const addResourcesToCache = async function (resources) {
 
 // Implement cache-first strategy for fetch events.
 const cacheFirst = async function ({ request }) {
+  const cache = await caches.open(cacheName);
+
+  const cacheKey = new URL(request.url).pathname; // Ignoriere Query-Strings;
+
   // First try to get the resource from the cache.
   // If it's there, return it.
-  const responseFromCache = await caches.match(request)
+  const responseFromCache = await cache.match(cacheKey)
   if (responseFromCache) {
     return responseFromCache;
   }
@@ -30,7 +34,10 @@ const cacheFirst = async function ({ request }) {
     // Clone the request. A request is a stream and
     // can only be consumed once. Since we might need to
     // consume the request twice, we need to clone it.
-    return await fetch(request.clone())
+    const responseFromNetwork = await fetch(request.clone());
+    // 3. Cache die neue Antwort für zukünftige Anfragen
+    await cache.put(cacheKey, responseFromNetwork.clone());
+    return responseFromNetwork;
   } catch (error) {
     // Always return a Response object.
     return new Response('Network error happened', {
@@ -40,23 +47,35 @@ const cacheFirst = async function ({ request }) {
   }
 }
 
-// Install event - cache homepage + essential assets.
+// Install event - cache essential theme assets.
 self.addEventListener('install', function (event) {
   event.waitUntil(
     addResourcesToCache([
-      // Homepage + essential assets only.
-      '/',
-      '/wp-content/themes/bitski-wp-theme/style.css',
+      // Essential theme assets only.
+      '/wp-content/themes/bitski-wp-theme/assets/css/main.css',
+      '/wp-content/themes/bitski-wp-theme/assets/fonts/fontawesome/css/all.min.css',
       '/wp-content/themes/bitski-wp-theme/assets/js/main.js'
     ])
-  )
+  );
+  self.skipWaiting(); // Erzwinge sofortiges Update
 })
+
+self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim());
+});
+
+
 
 // Fetch event - use cache-first strategy.
 self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    cacheFirst({
-      request: event.request
-    })
-  )
+  if (event.request.url.includes('/wp-content/themes/bitski-wp-theme/assets/')) {
+    const url = new URL(event.request.url).pathname;
+    console.log('🔥 FETCH GEFEUERT:', url);
+    event.respondWith(
+      cacheFirst({
+        request: event.request,
+        cacheKey: new URL(event.request.url).pathname
+      })
+    );
+  }
 });
