@@ -12,8 +12,8 @@ const cacheName = 'bitski-wp-theme-v1'
 
 // Add resources to cache during installation.
 const addResourcesToCache = async function (resources) {
-  const cache = await caches.open(cacheName)
-  await cache.addAll(resources)
+  const cache = await caches.open(cacheName);
+  await cache.addAll(resources);
 }
 
 // Implement cache-first strategy for fetch events.
@@ -24,7 +24,7 @@ const cacheFirst = async function ({ request }) {
 
   // First try to get the resource from the cache.
   // If it's there, return it.
-  const responseFromCache = await cache.match(cacheKey)
+  const responseFromCache = await cache.match(cacheKey);
   if (responseFromCache) {
     return responseFromCache;
   }
@@ -43,7 +43,7 @@ const cacheFirst = async function ({ request }) {
     return new Response('Network error happened', {
       status: 408,
       headers: { 'Content-Type': 'text/plain' },
-    })
+    });
   }
 }
 
@@ -57,25 +57,24 @@ self.addEventListener('install', function (event) {
       '/wp-content/themes/bitski-wp-theme/assets/js/main.js'
     ])
   );
-  self.skipWaiting(); // Erzwinge sofortiges Update
+  self.skipWaiting();// Erzwinge sofortiges Update
 })
 
 self.addEventListener('activate', event => {
   event.waitUntil(self.clients.claim());
-});
-
-
+})
 
 // Fetch event - use cache-first strategy.
 self.addEventListener('fetch', function (event) {
-  if (event.request.url.includes('/wp-content/themes/bitski-wp-theme/assets/')) {
-    const url = new URL(event.request.url).pathname;
-    console.log('🔥 FETCH GEFEUERT:', url);
+  console.log('SW aktiv!');
+  const url = new URL(event.request.url);
+
+  if (url.pathname.startsWith('/wp-content/themes/bitski-wp-theme/assets/')) {
+    console.log('🔥 FETCH GEFEUERT:', url.pathname);
     event.respondWith(
       cacheFirst({
-        request: event.request,
-        cacheKey: new URL(event.request.url).pathname
+        request: event.request
       })
     );
   }
-});
+})
