@@ -58,9 +58,8 @@ class ThemeSetup
         'bitski-wp-theme/option/forms/contact/from-name'               => 'Website Kontakt',
 
         // Progressive web app (PWA) options
-        'bitski-wp-theme/option/pwa/load'                              => true,
+        'bitski-wp-theme/option/pwa/load'                              => false,
         'bitski-wp-theme/option/pwa/theme-color'                       => '#ffffff',
-        'bitski-wp-theme/option/pwa/precache-pages/ids'                => [],
 
         // Add more option filters as needed
     ];
