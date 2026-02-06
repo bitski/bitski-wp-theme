@@ -4,6 +4,8 @@
  * Handles Progressive Web App (PWA) features for the theme.
  * Registers the PWA manifest and service worker for offline support and assets caching.
  *
+ * Service worker pattern based on MDN simple service worker demo.
+ *
  * @since 0.16.0
  */
 
@@ -47,14 +49,17 @@ class ThemePWAManager
                     scope: `${themeUri}/`,
                   }
                 )
-                console.log('Service worker registered with scope:', registration.scope)
-                if (registration.installing) {
-                  console.log('Service worker installing')
-                } else if (registration.waiting) {
-                  console.log('Service worker installed')
-                } else if (registration.active) {
-                  console.log('Service worker active')
-                }
+
+                <?php if (WP_DEBUG) { ?>
+                    console.log('Service worker registered with scope:', registration.scope)
+                    if (registration.installing) {
+                      console.log('Service worker installing')
+                    } else if (registration.waiting) {
+                      console.log('Service worker installed')
+                    } else if (registration.active) {
+                      console.log('Service worker active')
+                    }
+                <?php } ?>
               } catch (error) {
                 console.error(`Registration failed with ${error}`)
               }
@@ -67,4 +72,3 @@ class ThemePWAManager
         <?php
     }
 }
-

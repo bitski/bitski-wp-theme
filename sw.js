@@ -2,7 +2,7 @@
  * service-worker.js - service worker for offline support.
  *
  * Opt-in via theme options.
- * Uses cache-first strategy for essential assets,
+ * Uses cache-first strategy for essential theme assets,
  * enabling offline access and faster load times.
  *
  * @since 0.16.1
@@ -12,21 +12,21 @@ const cacheName = 'bitski-wp-theme-v1'
 
 // Add resources to cache during installation.
 const addResourcesToCache = async function (resources) {
-  const cache = await caches.open(cacheName);
-  await cache.addAll(resources);
+  const cache = await caches.open(cacheName)
+  await cache.addAll(resources)
 }
 
 // Implement cache-first strategy for fetch events.
 const cacheFirst = async function ({ request }) {
-  const cache = await caches.open(cacheName);
+  const cache = await caches.open(cacheName)
 
-  const cacheKey = new URL(request.url).pathname; // Ignoriere Query-Strings;
+  const cacheKey = new URL(request.url).pathname // Ignoriere Query-Strings;
 
   // First try to get the resource from the cache.
   // If it's there, return it.
-  const responseFromCache = await cache.match(cacheKey);
+  const responseFromCache = await cache.match(cacheKey)
   if (responseFromCache) {
-    return responseFromCache;
+    return responseFromCache
   }
 
   // Next try to get the resource from the network
@@ -34,16 +34,18 @@ const cacheFirst = async function ({ request }) {
     // Clone the request. A request is a stream and
     // can only be consumed once. Since we might need to
     // consume the request twice, we need to clone it.
-    const responseFromNetwork = await fetch(request.clone());
-    // 3. Cache die neue Antwort für zukünftige Anfragen
-    await cache.put(cacheKey, responseFromNetwork.clone());
-    return responseFromNetwork;
+    const responseFromNetwork = await fetch(request.clone())
+
+    // Cache the new responseFromNetwork for future requests.
+    await cache.put(cacheKey, responseFromNetwork.clone())
+
+    return responseFromNetwork
   } catch (error) {
     // Always return a Response object.
     return new Response('Network error happened', {
       status: 408,
       headers: { 'Content-Type': 'text/plain' },
-    });
+    })
   }
 }
 
@@ -51,30 +53,48 @@ const cacheFirst = async function ({ request }) {
 self.addEventListener('install', function (event) {
   event.waitUntil(
     addResourcesToCache([
-      // Essential theme assets only.
+      // Theme styles.
+      '/wp-content/themes/bitski-wp-theme/style.css',
       '/wp-content/themes/bitski-wp-theme/assets/css/main.css',
       '/wp-content/themes/bitski-wp-theme/assets/fonts/fontawesome/css/all.min.css',
-      '/wp-content/themes/bitski-wp-theme/assets/js/main.js'
+
+      // Theme scripts.
+      '/wp-content/themes/bitski-wp-theme/assets/js/main.js',
+      '/wp-content/themes/bitski-wp-theme/assets/js/lib/bootstrap.bundle.min.js',
+
+      // Theme images.
+      '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo_30x30.svg',
+      '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo_50x50.svg',
+      '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo-dark_30x30.svg',
+      '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo-dark_50x50.svg',
+
+      // Theme fonts.
+      // Bootstrap/SCSS/Custom WOFF2s are already cached dynamically via fetch handler.
+
+      // PWA assets.
+      '/wp-content/themes/bitski-wp-theme/manifest.json',
+      '/wp-content/themes/bitski-wp-theme/sw.js'
     ])
-  );
-  self.skipWaiting();// Erzwinge sofortiges Update
+  )
+
+  // Force immediate update on install.
+  self.skipWaiting()
 })
 
+// Activate event - activate new service worker.
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(self.clients.claim())
 })
 
 // Fetch event - use cache-first strategy.
 self.addEventListener('fetch', function (event) {
-  console.log('SW aktiv!');
-  const url = new URL(event.request.url);
+  const url = new URL(event.request.url)
 
-  if (url.pathname.startsWith('/wp-content/themes/bitski-wp-theme/assets/')) {
-    console.log('🔥 FETCH GEFEUERT:', url.pathname);
+  if (url.pathname.startsWith('/wp-content/themes/bitski-wp-theme/')) {
     event.respondWith(
       cacheFirst({
         request: event.request
       })
-    );
+    )
   }
 })
