@@ -13,7 +13,7 @@
 
 namespace BitskiWPTheme\content;
 
-class FormManager
+class Manager
 {
     /*
      * Sanitized form data storage.

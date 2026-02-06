@@ -28,9 +28,10 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
  * @var array $bootstrap_classes
  */
 $bootstrap_classes = [
-    \BitskiWPTheme\theme\ThemeSetup::class,
-    \BitskiWPTheme\theme\ThemeHooks::class,
-    \BitskiWPTheme\assets\AssetsManager::class,
+    \BitskiWPTheme\theme\Setup::class,
+    \BitskiWPTheme\theme\Config::class,
+    \BitskiWPTheme\theme\Hooks::class,
+    \BitskiWPTheme\assets\Manager::class,
 ];
 
 /**
@@ -42,9 +43,9 @@ $bootstrap_classes = [
  * @var array $conditional_class_map
  */
 $conditional_class_map = [
-    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\content\FormManager::class,
+    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\content\Manager::class,
     'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\content\LoadMore::class,
-    'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\ThemePWAManager::class
+    'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\PWAManager::class
 ];
 
 /**

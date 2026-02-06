@@ -1,15 +1,17 @@
 <?php
-/**
- * Theme setup class.
+
+/** Centralized theme configuration class.
  *
- * @since 0.1.0
+ * Serves as a centralized data provider for theme options and CSS classes.
+ *
+ * @since 0.16.4
  */
 
 namespace BitskiWPTheme\theme;
 
-class ThemeSetup
+class Config
 {
-    /*
+    /**
      * Centralized array to manage theme options.
      * Key: option name, Value: option value
      * Usage: apply_filters('option-name', 'default-value')
@@ -64,8 +66,8 @@ class ThemeSetup
         // Add more option filters as needed
     ];
 
-    /*
-     * Centralized array to manage CSS classes for various theme components
+    /**
+     * Centralized array to manage CSS classes for various theme components.
      * Key: filter name, Value: array of default classes
      * Usage: apply_filters('filter-name', 'default-classes')
      */
@@ -79,94 +81,10 @@ class ThemeSetup
     ];
 
     /**
-     * Initialize theme setup
-     *
-     * Theme support features, textdomain loading,
-     * navigation menus registration, session start.
+     * Intentionally left empty.
+     * Config is a static data provider.
      */
     public function init(): void
     {
-        add_action('after_setup_theme', [$this, 'themeSupport']);
-        add_action('after_setup_theme', [$this, 'loadTextdomain']);
-        add_action('after_setup_theme', [$this, 'registerNavMenus']);
-
-        add_action('template_redirect', [$this, 'startSession']);
-    }
-
-    /**
-     * Add theme support features.
-     */
-    public function themeSupport(): void
-    {
-        // Core features
-        add_theme_support('title-tag');
-
-        // Content features
-        add_theme_support('post-thumbnails');
-        add_theme_support('menus');
-
-        // Block editor features
-        add_theme_support('wp-block-styles');
-        add_theme_support('editor-styles');
-
-        // Frontend features
-        add_theme_support(
-            'html5',
-            [
-                'caption',
-                'comment-form',
-                'comment-list',
-                'gallery',
-                'search-form'
-            ]
-        );
-    }
-
-    /**
-     * Load theme textdomain for translations.
-     */
-    public function loadTextdomain(): void
-    {
-        load_theme_textdomain('bitski-wp-theme', get_template_directory().'/languages');
-    }
-
-    /**
-     * Register theme navigation menus.
-     */
-    public function registerNavMenus(): void
-    {
-        register_nav_menus([
-            'main-menu'   => __('Main menu', 'bitski-wp-theme'),
-            'footer-menu' => __('Footer menu', 'bitski-wp-theme'),
-        ]);
-    }
-
-    /**
-     * Start session if its not already started and
-     * if current page is in the option array of pages using sessions.
-     */
-    public function startSession(): void
-    {
-        // Return early if session is already started.
-        if (session_id()) {
-            return;
-        }
-
-        // Security check if headers are already sent.
-        // Return early if so, no session can be started.
-        if (headers_sent($file, $line)) {
-            error_log("Session could not be started. Headers already sent in $file on line $line.");
-
-            return;
-        }
-
-        // Check if current page is in the option array of pages using sessions.
-        $pages_using_session_ids = apply_filters('bitski-wp-theme/option/pages/using-session/ids', []);
-        foreach ($pages_using_session_ids as $id) {
-            if (is_page($id)) {
-                session_start();
-                break;
-            }
-        }
     }
 }

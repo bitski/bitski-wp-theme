@@ -12,7 +12,7 @@ namespace BitskiWPTheme\content;
  *
  * @since 0.1.0
  */
-class CustomPostTypes
+class PostTypes
 {
     public function init()
     {

@@ -14,7 +14,7 @@ use WP_Query;
  *
  * @since 0.1.0
  */
-class ThemeHooks
+class Hooks
 {
     /**
      * Initialize theme hooks.
@@ -40,7 +40,7 @@ class ThemeHooks
      */
     protected function registerCssClassesHooks()
     {
-        foreach (ThemeSetup::$classes as $filter => $setupClasses) {
+        foreach (Config::$classes as $filter => $setupClasses) {
             add_filter($filter, function ($defaultClasses = '', $merge = true) use ($filter) {
                 // Returns classes as a space-separated string.
                 return $this->getClassesByFilter($filter, $defaultClasses, $merge);
@@ -64,8 +64,8 @@ class ThemeHooks
     {
         // Get setup classes if they're set and not empty.
         $setupClasses = [];
-        if (isset(ThemeSetup::$classes[$filter]) && ! empty(ThemeSetup::$classes[$filter])) {
-            $setupClasses = ThemeSetup::$classes[$filter];
+        if (isset(Config::$classes[$filter]) && ! empty(Config::$classes[$filter])) {
+            $setupClasses = Config::$classes[$filter];
         }
 
         // Ensure $defaultClasses is an array.
@@ -90,7 +90,7 @@ class ThemeHooks
      */
     protected function registerOptionHooks()
     {
-        foreach (ThemeSetup::$options as $filter => $setupOption) {
+        foreach (Config::$options as $filter => $setupOption) {
             add_filter($filter, function ($defaultOption = null) use ($filter) {
                 // Returns the option value or the default option if set.
                 return $this->getOptionByFilter($filter, $defaultOption);
@@ -123,8 +123,8 @@ class ThemeHooks
         }
 
         // Return setup option if it's set and not empty.
-        if (isset(ThemeSetup::$options[$filter]) && ThemeSetup::$options[$filter] !== '') {
-            $setupOption = ThemeSetup::$options[$filter];
+        if (isset(Config::$options[$filter]) && Config::$options[$filter] !== '') {
+            $setupOption = Config::$options[$filter];
 
             if (is_array($setupOption) || is_bool($setupOption)) {
                 return $setupOption;

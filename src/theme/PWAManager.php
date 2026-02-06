@@ -11,7 +11,7 @@
 
 namespace BitskiWPTheme\theme;
 
-class ThemePWAManager
+class PWAManager
 {
     /**
      * Initialize the PWA manager.

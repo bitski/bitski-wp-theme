@@ -12,7 +12,7 @@ namespace BitskiWPTheme\assets;
  *
  * @since 0.1.0
  */
-class AssetsManager
+class Manager
 {
     public function init(): void
     {

@@ -12,7 +12,7 @@ namespace BitskiWPTheme\theme;
  *
  * @since 0.1.0
  */
-class ThemeHelpers
+class Helpers
 {
     /**
      * Getter for SVG icon markup.
