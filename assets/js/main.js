@@ -2,8 +2,8 @@
  * main.js - custom theme interactions.
  *
  * Initializes custom UI behavior on DOMContentLoaded.
- * Import Bootstrap JS for additional components.
- * Import theme.js for core theme functionality.
+ * Imports Bootstrap JS for additional components.
+ * Imports theme.js for core theme functionality.
  *
  * @since 0.3.0
  */

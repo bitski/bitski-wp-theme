@@ -10,33 +10,33 @@
 
 const cacheName = 'bitski-wp-theme-v1'
 
-// Add resources to cache during installation.
+// Adds resources to cache during installation.
 const addResourcesToCache = async function (resources) {
   const cache = await caches.open(cacheName)
   await cache.addAll(resources)
 }
 
-// Implement cache-first strategy for fetch events.
+// Implements cache-first strategy for fetch events.
 const cacheFirst = async function ({ request }) {
   const cache = await caches.open(cacheName)
 
   const cacheKey = new URL(request.url).pathname // Ignoriere Query-Strings;
 
-  // First try to get the resource from the cache.
-  // If it's there, return it.
+  // First tries to get the resource from the cache.
+  // If it's there, returns it.
   const responseFromCache = await cache.match(cacheKey)
   if (responseFromCache) {
     return responseFromCache
   }
 
-  // Next try to get the resource from the network
+  // Next tries to get the resource from the network
   try {
-    // Clone the request. A request is a stream and
+    // Clones the request. A request is a stream and
     // can only be consumed once. Since we might need to
     // consume the request twice, we need to clone it.
     const responseFromNetwork = await fetch(request.clone())
 
-    // Cache the new responseFromNetwork for future requests.
+    // Caches the new responseFromNetwork for future requests.
     await cache.put(cacheKey, responseFromNetwork.clone())
 
     return responseFromNetwork
@@ -49,7 +49,7 @@ const cacheFirst = async function ({ request }) {
   }
 }
 
-// Install event - cache essential theme assets.
+// Install event - caches essential theme assets.
 self.addEventListener('install', function (event) {
   event.waitUntil(
     addResourcesToCache([
@@ -77,16 +77,16 @@ self.addEventListener('install', function (event) {
     ])
   )
 
-  // Force immediate update on install.
+  // Forces immediate update on install.
   self.skipWaiting()
 })
 
-// Activate event - activate new service worker.
+// Activate event - activates new service worker.
 self.addEventListener('activate', event => {
   event.waitUntil(self.clients.claim())
 })
 
-// Fetch event - use cache-first strategy.
+// Fetch event - uses cache-first strategy.
 self.addEventListener('fetch', function (event) {
   const url = new URL(event.request.url)
 

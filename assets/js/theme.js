@@ -100,12 +100,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Initialize theme.
+  // Initializes theme.
   const preferredTheme = getPreferredTheme()
   setTheme(preferredTheme)
   showActiveTheme(preferredTheme)
 
-  // Listen for system theme changes.
+  // Listens for system theme changes.
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
     const storedTheme = getStoredTheme()
     if (storedTheme !== 'light' && storedTheme !== 'dark') {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 
-  // Handle theme switcher clicks.
+  // Handles theme switcher clicks.
   document.querySelectorAll('[data-bs-theme-value]')
     .forEach(function (toggle) {
       toggle.addEventListener('click', function () {
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * [02] Search
    *
-   * Handle search bar toggler and input focus.
+   * Handles search bar toggler and input focus.
    * Closes search bar when clicking outside of it.
    */
   const searchBarToggler = document.querySelector('.search-bar-toggler')
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
       searchBarToggler.focus({ preventScroll: true })
     })
 
-    // Close search bar when clicking outside of it
+    // Closes search bar when clicking outside of it
     document.addEventListener('click', function (event) {
       if (!searchBar.contains(event.target) && !searchBarToggler.contains(event.target)) {
         // Get Bootstrap API Collapse instance
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * [03] Pagination
    *
-   * Update pagination link colors based on current color theme.
+   * Updates pagination link colors based on current color theme.
    * This ensures pagination links are visible in both light and dark modes.
    */
   const pagination = document.querySelector('.pagination')
@@ -178,10 +178,10 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     }
 
-    // Initialize pagination colors.
+    // Initializes pagination colors.
     updatePaginationColors()
 
-    // Observe changes to data-bs-theme attribute.
+    // Observes changes to data-bs-theme attribute.
     const observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         if (mutation.attributeName === 'data-bs-theme') {
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * [04] Load more
    *
-   * Handle "Load More" button functionality via WordPress REST API at archive pages.
+   * Handles "Load More" button functionality via WordPress REST API at archive pages.
    * Clicking it will fetch the next batch of posts and append it after the current list.
    */
   const bodyClassList = document.body.classList
@@ -206,9 +206,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let foundPosts = 0
     let spinnerDelay = 0
 
-    // Only proceed if button and container exist.
+    // Only proceeds if button and container exist.
     if (loadMoreButton && contentBody) {
-      // Initialize offset, foundPosts, spinnerDelay from data attribute, representing the value of the themes posts-per-page & spinner-delay options and the total number of posts found for the current (archive) query.
+      // Initializes offset, foundPosts, spinnerDelay from data attribute, representing the value of the themes posts-per-page & spinner-delay options and the total number of posts found for the current (archive) query.
       offset = parseInt(contentBody.dataset.postsPerPage) || 0
       foundPosts = parseInt(contentBody.dataset.foundPosts) || 0
       spinnerDelay = parseInt(contentBody.dataset.spinnerDelay) || 600
@@ -216,25 +216,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function handleLoadMore () {
-      // Set ARIA attributes for live region.
+      // Sets ARIA attributes for live region.
       contentBody.setAttribute('aria-live', 'polite')
       contentBody.setAttribute('aria-atomic', 'false')
 
-      // Prevent multiple clicks.
+      // Prevents multiple clicks.
       if (loadMoreButton.disabled) {
         return
       }
       loadMoreButton.disabled = true
 
-      // Set Buttons loading state.
+      // Sets Buttons loading state.
       const originalInnerHTML = loadMoreButton.innerHTML
       loadMoreButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Loading...'
       loadMoreButton.setAttribute('aria-busy', 'true')
       loadMoreButton.setAttribute('aria-disabled', 'true')
 
-      // Fetch posts from WordPress REST API.
+      // Fetches posts from WordPress REST API.
       //
-      // Set request parameters based on current offset and total number of posts found.
+      // Sets request parameters based on current offset and total number of posts found.
       const url = new URL('/wp-json/bitski-wp-theme/v1/posts/load-more', window.location.origin)
       url.searchParams.append('post_type', 'post')
       url.searchParams.append('offset', offset)
@@ -242,25 +242,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
       let result = null
 
-      // Fetch posts from WordPress REST API and append them to the content body.
+      // Fetches posts from WordPress REST API and append them to the content body.
       try {
-        // Fetch posts using url with parameters.
+        // Fetches posts using url with parameters.
         //
-        // Using the theme option, add a minimum delay to improve UX by preventing quick flickering of the button.
+        // Using the theme option, adds a minimum delay to improve UX by preventing quick flickering of the button.
         // Promise.all() ensures that both requests are executed concurrently.
         const responses = await Promise.all([
           fetch(url.toString()),
           new Promise(resolve => setTimeout(resolve, spinnerDelay))
         ])
 
-        // Retrieve fetch response from Promise.all array.
+        // Retrieves fetch response from Promise.all array.
         const response = responses[0]
 
         if (!response.ok) {
           throw new Error(`Response status: ${response.status}`)
         }
 
-        // Append posts to content body.
+        // Appends posts to content body.
         result = await response.json()
         if (result.posts_html && result.posts_html.length > 0) {
           contentBody.insertAdjacentHTML('beforeend', result.posts_html.join(''))
@@ -270,14 +270,14 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error(error.message)
       } finally {
         if (result && !result.has_more) {
-          // Reset ARIA attributes for live region.
+          // Resets ARIA attributes for live region.
           contentBody.removeAttribute('aria-live')
           contentBody.removeAttribute('aria-atomic')
 
-          // Hide the button if there are no more posts to load.
+          // Hides the button if there are no more posts to load.
           loadMoreButton.classList.add('d-none')
         } else {
-          // Reset button state.
+          // Resets button state.
           loadMoreButton.innerHTML = originalInnerHTML
           loadMoreButton.disabled = false
           loadMoreButton.removeAttribute('aria-busy')
