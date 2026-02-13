@@ -14,7 +14,7 @@ namespace BitskiWPTheme\theme;
 class PWAManager
 {
     /**
-     * Initialize the PWA manager.
+     * Initializes the PWA manager.
      */
     public function init(): void
     {
@@ -23,7 +23,7 @@ class PWAManager
     }
 
     /**
-     * Register the PWA manifest link in the head.
+     * Registers the PWA manifest link in the head.
      */
     public function registerPWAManifest(): void
     {
@@ -34,7 +34,7 @@ class PWAManager
     }
 
     /**
-     * Register the service worker script in the footer.
+     * Registers the service worker script in the footer.
      */
     public function registerServiceWorker(): void
     { ?>
@@ -66,7 +66,7 @@ class PWAManager
             }
           }
 
-          // Register the service worker when the page loads.
+          // Registers the service worker when the page loads.
           window.addEventListener('load', registerServiceWorker)
         </script>
         <?php

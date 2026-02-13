@@ -5,7 +5,7 @@
  * @since 0.5.25
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }

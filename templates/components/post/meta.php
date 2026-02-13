@@ -6,34 +6,34 @@
  * @since 0.6.16
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }
 
-// Get the context from the calling template.
+// Gets the context from the calling template.
 $context = $args['context'] ?? '';
 
-// Return early if no context is provided.
+// Returns early if no context is provided.
 if (empty($context)) {
     return;
 }
 
-// Get the meta data options, based on the context.
+// Gets the meta data options, based on the context.
 $display_author        = apply_filters('bitski-wp-theme/option/'.$context.'/meta/display-author', true);
 $display_date          = apply_filters('bitski-wp-theme/option/'.$context.'/meta/display-date', true);
 $display_date_modified = apply_filters('bitski-wp-theme/option/'.$context.'/meta/display-date-modified', true);
 
-// Return early if no meta data should be displayed.
+// Returns early if no meta data should be displayed.
 if ( ! $display_author && ! $display_date) {
     return;
 }
 
-// Get the author name.
+// Gets the author name.
 $author_ID   = get_post_field('post_author', get_the_ID());
 $author_name = get_the_author_meta('display_name', $author_ID);
 
-// Get the date values.
+// Gets the date values.
 $published_date_unix = get_the_date('U');
 $modified_date_unix  = get_the_modified_date('U');
 $published_date_iso  = get_the_date('c');

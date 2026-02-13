@@ -6,7 +6,7 @@
  * @since 0.6.14
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }
@@ -16,7 +16,7 @@ $aria_label_nav = __('Kategorienavigation des Beitrages', 'bitski-wp-theme');
 // Get the related categories.
 $categories = get_the_category();
 
-// Return early if there are no related categories.
+// Returns early if there are no related categories.
 if (empty($categories)) {
     return;
 } ?>

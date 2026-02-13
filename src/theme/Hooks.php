@@ -17,7 +17,7 @@ use WP_Query;
 class Hooks
 {
     /**
-     * Initialize theme hooks.
+     * Initializes theme hooks.
      * Registers all hooks.
      */
     public function init()
@@ -74,14 +74,14 @@ class Hooks
         }
 
         // If $merge parameter is set to true, merge setup classes with default classes.
-        // Return merged classes as a space-separated string.
+        // Returns merged classes as a space-separated string.
         if ($merge) {
             $merged_classes = array_filter(array_unique(array_merge($setupClasses, $defaultClasses)));
 
             return implode(' ', $merged_classes);
         }
 
-        // Return default classes only as a space-separated string.
+        // Returns default classes only as a space-separated string.
         return implode(' ', $defaultClasses);
     }
 
@@ -110,8 +110,8 @@ class Hooks
      */
     public function getOptionByFilter(string $filter, mixed $defaultOption = null): mixed
     {
-        // Return default option if it is explicitly set (not null).
-        // Return default option if it is boolean or integer,
+        // Returns default option if it is explicitly set (not null).
+        // Returns default option if it is boolean or integer,
         // or if it is set and and neither an empty string nor an empty array.
         if ($defaultOption !== null) {
             if (is_bool($defaultOption)
@@ -122,7 +122,7 @@ class Hooks
             }
         }
 
-        // Return setup option if it's set and not empty.
+        // Returns setup option if it's set and not empty.
         if (isset(Config::$options[$filter]) && Config::$options[$filter] !== '') {
             $setupOption = Config::$options[$filter];
 
@@ -133,7 +133,7 @@ class Hooks
             return (string)$setupOption;
         }
 
-        // Return default option as fallback.
+        // Returns default option as fallback.
         return $defaultOption;
     }
 
@@ -157,7 +157,7 @@ class Hooks
     }
 
     /**
-     * Override archive posts per page WordPress option with theme option.
+     * Overrides archive posts per page WordPress option with theme option.
      *
      * @param  WP_Query  $query
      *
@@ -166,17 +166,17 @@ class Hooks
      */
     public function overrideArchivePostsPerPage($query)
     {
-        // Return early if on admin page.
+        // Returns early if on admin page.
         if (is_admin()) {
             return;
         }
 
-        // Return early if not main query or not archive or home page.
+        // Returns early if not main query or not archive or home page.
         if ( ! $query->is_main_query() || ! (is_archive() || is_home())) {
             return;
         }
 
-        // Set theme option for posts per page.
+        // Sets theme option for posts per page.
         $posts_per_page = apply_filters('bitski-wp-theme/option/archive/posts-per-page', null);
         $query->set('posts_per_page', $posts_per_page);
     }

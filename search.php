@@ -6,12 +6,12 @@
  * @since 0.5.18
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }
 
-// Redirect if search is disabled.
+// Redirects if search is disabled.
 if ( ! apply_filters('bitski-wp-theme/option/header/display-search', true)) {
     wp_redirect(home_url());
     exit;

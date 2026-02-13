@@ -63,7 +63,7 @@ class Config
         'bitski-wp-theme/option/pwa/load'                              => false,
         'bitski-wp-theme/option/pwa/theme-color'                       => '#ffffff',
 
-        //
+        // Schema options
         'bitski-wp-theme/option/schema/load'                           => true,
 
         // Add more option filters as needed

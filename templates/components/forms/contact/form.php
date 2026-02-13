@@ -8,7 +8,7 @@
  * @since 0.8.1
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }
@@ -16,7 +16,7 @@ if ( ! defined('ABSPATH')) {
 $is_submitted = false;
 $is_valid     = true;
 
-// Check for flash messages and display them if available.
+// Checks for flash messages and display them if available.
 if ( ! empty($_SESSION['flash_messages'])) {
     $is_submitted   = true;
     $flash_messages = $_SESSION['flash_messages'];
@@ -25,7 +25,7 @@ if ( ! empty($_SESSION['flash_messages'])) {
         $flash_message_type = $flash_message['type'];
         $flash_message_text = $flash_message['text'];
 
-        // Set the form validation status based on the flash message type.
+        // Sets the form validation status based on the flash message type.
         if ($flash_message_type === 'danger') {
             $is_valid = false;
         } ?>
@@ -39,7 +39,7 @@ if ( ! empty($_SESSION['flash_messages'])) {
     unset($_SESSION['flash_messages']);
 }
 
-// Display the contact form only if it hasn't been submitted yet or if the form is invalid.
+// Displays the contact form only if it hasn't been submitted yet or if the form is invalid.
 if ( ! $is_submitted || $is_valid === false) { ?>
     <form method="post" class="contact-form" action="<?php
     echo esc_url(get_permalink()); ?>">

@@ -32,7 +32,7 @@ class Helpers
         $width = ! empty($args['width']) ? (int)$args['width'] : 16;
         $height = ! empty($args['height']) ? (int)$args['height'] : 16;
 
-        // Return SVG element with <use> referencing the icon.
+        // Returns SVG element with <use> referencing the icon.
         return '<svg class="'.esc_attr(
                 $class
             ).'" width="'.$width.'" height="'.$height.'" aria-hidden="true" focusable="false" role="img">'

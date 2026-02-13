@@ -14,6 +14,9 @@ namespace BitskiWPTheme\assets;
  */
 class Manager
 {
+    /**
+     * Initializes the theme assets manager.
+     */
     public function init(): void
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets'], 0);
@@ -21,7 +24,7 @@ class Manager
     }
 
     /**
-     * Enqueue theme assets.
+     * Enqueues theme assets.
      *
      * @since 0.1.0
      */
@@ -52,7 +55,7 @@ class Manager
 
         // Scripts
         //
-        // Enqueue the main theme script as an ES6 JavaScript module.
+        // Enqueues the main theme script as an ES6 JavaScript module.
         // This will load main.js with the correct type="module" attribute,
         // enabling native module imports within main.js (e.g., importing theme.js, bootstrap.bundle.min.js).
         // Requires WordPress 6.5 or higher for native wp_enqueue_script_module() support.
@@ -65,7 +68,7 @@ class Manager
     }
 
     /**
-     * Enqueue block editor assets.
+     * Enqueues block editor assets.
      *
      * @since 0.10.1
      */

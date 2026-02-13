@@ -14,7 +14,7 @@ use WP_REST_Response;
 class LoadMore
 {
     /**
-     * Initialize "Load More" functionality.
+     * Initializes "Load More" functionality.
      */
     public function init(): void
     {
@@ -23,7 +23,7 @@ class LoadMore
     }
 
     /**
-     * Register REST API routes.
+     * Registers REST API routes.
      */
     public function registerLoadMoreRestRoutes(): void
     {
@@ -45,7 +45,7 @@ class LoadMore
     }
 
     /**
-     * Handle GET requests to retrieve posts.
+     * Handles GET requests to retrieve posts.
      *
      * @param  WP_REST_Request  $request
      *
@@ -56,7 +56,7 @@ class LoadMore
         $posts_per_load_more = apply_filters('bitski-wp-theme/option/archive/load-more/posts-per-load-more', null);
         $posts_per_page      = apply_filters('bitski-wp-theme/option/archive/posts-per-page', null);
 
-        // Get request parameters.
+        // Gets request parameters.
         $post_type   = (string)$request->get_param('post_type') ?: 'post';
         $offset      = (int)($request->get_param('offset') ?: 0);
         $found_posts = (int)($request->get_param('found_posts') ?: 0);
@@ -76,7 +76,7 @@ class LoadMore
             while ($custom_query->have_posts()) {
                 $custom_query->the_post();
 
-                // Put a wrapper around the card in order to apply the Bootstrap grid.
+                // Puts a wrapper around the card in order to apply the Bootstrap grid.
                 ob_start(); ?>
                 <div class="col-12<?php
                 if ($found_posts > 1 && $posts_per_page > 1) { ?> col-lg-6<?php

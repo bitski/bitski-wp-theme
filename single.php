@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }
@@ -57,7 +57,7 @@ echo esc_attr(
     get_template_part('templates/components/post/navigation');
     $post_navigation_content = ob_get_clean();
 
-    // Only render the content footer if there is content to display.
+    // Only renders the content footer if there is content to display.
     if ( ! empty(trim($post_navigation_content))) { ?>
         <footer class="content-footer">
             <?php

@@ -6,18 +6,18 @@
  * @since 0.6.11
  */
 
-// Exit if accessed directly.
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
     exit;
 }
 
 $aria_label_nav = __('Beitragsnavigation', 'bitski-wp-theme');
 
-// Get the adjacent posts.
+// Gets the adjacent posts.
 $prev_post = get_previous_post();
 $next_post = get_next_post();
 
-// Return early if there is no adjacent post.
+// Returns early if there is no adjacent post.
 if ( ! $prev_post && ! $next_post) {
     return;
 } ?>

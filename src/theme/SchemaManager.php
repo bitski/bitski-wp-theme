@@ -10,7 +10,7 @@ namespace BitskiWPTheme\theme;
 class SchemaManager
 {
     /**
-     * Initialize the Schema Manager.
+     * Initializes the Schema Manager.
      */
     public function init(): void
     {
@@ -24,11 +24,11 @@ class SchemaManager
     {
         $schemas = [];
 
-        // Core schemas.
+        // Core schemas
         $schemas[] = $this->getWebsiteSchema();
         $schemas[] = $this->getEntitySchema();
 
-        // Conditional schemas.
+        // Conditional schemas
         if (is_singular()) {
             $schemas[] = $this->getSingularSchema();
         }
@@ -37,15 +37,15 @@ class SchemaManager
             $schemas[] = $this->getArchiveSchema();
         }
 
-        // Remove empty schemas.
+        // Removes empty schemas.
         $schemas = array_filter($schemas);
 
-        // Return early if no schemas are found.
+        // Returns early if no schemas are found.
         if (empty($schemas)) {
             return;
         }
 
-        // Print schemas.
+        // Prints schemas
         echo "\n<!-- Schema.org JSON-LD -->\n";
         foreach ($schemas as $schema) {
             echo '<script type="application/ld+json">' .
@@ -54,21 +54,33 @@ class SchemaManager
         }
     }
 
+    /**
+     * Gets the website schema.
+     */
     protected function getWebsiteSchema(): array
     {
         return [];
     }
 
+    /**
+     * Gets the entity schema.
+     */
     protected function getEntitySchema(): array
     {
         return [];
     }
 
+    /**
+     * Gets the singular schema.
+     */
     protected function getSingularSchema(): array
     {
         return [];
     }
 
+    /**
+     * Gets the archive schema.
+     */
     protected function getArchiveSchema(): array
     {
         return [];

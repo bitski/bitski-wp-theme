@@ -1,7 +1,8 @@
 <?php
 
+// Exits if accessed directly.
 if ( ! defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit;
 }
 
 /**
@@ -50,7 +51,7 @@ $conditional_class_map = [
 ];
 
 /**
- * Instantiate and initialize core and feature classes unconditionally.
+ * Instantiates and initializes core and feature classes unconditionally.
  */
 foreach ($bootstrap_classes as $class) {
     try {
@@ -64,7 +65,7 @@ foreach ($bootstrap_classes as $class) {
 }
 
 /**
- * Instantiate and initialize conditional classes based on theme option filters.
+ * Instantiates and initializes conditional classes based on theme option filters.
  */
 foreach ($conditional_class_map as $filter => $class) {
     if (apply_filters($filter, null)) {

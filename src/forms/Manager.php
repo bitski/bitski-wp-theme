@@ -15,7 +15,7 @@ namespace BitskiWPTheme\content;
 
 class Manager
 {
-    /*
+    /**
      * Sanitized form data storage.
      *
      * @since 0.8.12
@@ -23,7 +23,7 @@ class Manager
     protected array $sanitized_form_data = [];
 
     /**
-     * Initialize form manager.
+     * Initializes form manager.
      * Registers hooks and initializes form processing actions.
      */
     public function init(): void
@@ -33,7 +33,7 @@ class Manager
     }
 
     /**
-     * Set form contact load time in the session.
+     * Sets form contact load time in the session.
      * Returns early if the current request is not a GET request or not for the contact page.
      * Sets the form contact load time in the session.
      *
@@ -42,7 +42,7 @@ class Manager
      */
     public function setFormContactLoadTime(): void
     {
-        // Return early if not a GET request or not on the contact page.
+        // Returns early if not a GET request or not on the contact page.
         if ($_SERVER['REQUEST_METHOD'] !== 'GET' || ! is_page('kontakt')) {
             return;
         }
@@ -51,7 +51,7 @@ class Manager
     }
 
     /**
-     * Process form submission for the contact page.
+     * Processes form submission for the contact page.
      * Returns early if the current request is not a POST request or not for the contact page.
      * Redirects back to the contact page if the form was submitted less than 5 seconds ago.
      * Verifies the nonce for the form submission.
@@ -62,14 +62,14 @@ class Manager
      */
     public function processFormContact(): void
     {
-        // Return early if not a POST request (no form submission) or not on the contact page.
+        // Returns early if not a POST request (no form submission) or not on the contact page.
         if (empty($_POST) || ! is_page('kontakt')) {
             return;
         }
 
         // Anti-spam: Time-based check.
         // To protect against bots.
-        // If the form was submitted less than 5 seconds ago, redirect back to the contact page.
+        // If the form was submitted less than 5 seconds ago, redirects back to the contact page.
         $forms_antispam_delay = apply_filters('bitski-wp-theme/option/forms/general/antispam-delay', null);
 
         if (isset($_SESSION['form_contact_load_time']) &&
@@ -90,7 +90,7 @@ class Manager
 
         // Honeypot field check.
         // To protect against bots.
-        // If the hidden field 'contact_phone' is filled, treat it as spam.
+        // If the hidden field 'contact_phone' is filled, treats it as spam.
         if ( ! empty($_POST['contact_phone'])) {
             $this->setFlashMessages(
                 __(
@@ -100,12 +100,12 @@ class Manager
                 'danger'
             );
 
-            // Redirect back to the contact page.
+            // Redirects back to the contact page.
             wp_redirect(get_permalink());
             exit;
         }
 
-        // Verify nonce.
+        // Verifies nonce.
         // To protect against CSRF attacks.
         if ( ! isset($_POST['contact_form_nonce']) || ! wp_verify_nonce(
                 $_POST['contact_form_nonce'],
@@ -119,29 +119,29 @@ class Manager
                 'danger'
             );
 
-            // Redirect back to the contact page.
+            // Redirects back to the contact page.
             wp_redirect(get_permalink());
             exit;
         }
 
-        // Sanitize form data.
+        // Sanitizes form data.
         // To prevent XSS attacks.
         $this->sanitizeFormContact();
 
-        // Validate form data.
-        // If validation fails, redirect back to the contact page.
+        // Validates form data.
+        // If validation fails, redirects back to the contact page.
         if ( ! $this->validateFormContact()) {
             wp_redirect(get_permalink());
             exit;
         }
 
         // The form is valid.
-        // Proceed with form submission here (e.g., send email, save to database).
+        // Proceeds with form submission here (e.g., send email, save to database).
         //
-        // Send email using the sendFormContactEmail() method.
-        // Unset form contact load time from the session.
-        // Set success or error flash message based on the result of the email sending.
-        // Redirect back to the contact page.
+        // Sends email using the sendFormContactEmail() method.
+        // Unsets form contact load time from the session.
+        // Sets success or error flash message based on the result of the email sending.
+        // Redirects back to the contact page.
         if ($this->sendFormContactEmail()) {
             $this->setFlashMessages(
                 __('Danke, Ihre Nachricht wurde erfolgreich versendet.', 'bitski-wp-theme'),
@@ -164,7 +164,7 @@ class Manager
     }
 
     /**
-     * Set a flash message in the session.
+     * Sets a flash message in the session.
      *
      * @param  string  $message  The message to display.
      * @param  string  $type  The type of message (success, danger, warning).
@@ -182,7 +182,7 @@ class Manager
     }
 
     /**
-     * Sanitize form data for the contact page.
+     * Sanitizes form data for the contact page.
      * Sanitizes input fields using WordPress sanitization functions.
      *
      * @since 0.8.12
@@ -201,7 +201,7 @@ class Manager
     }
 
     /**
-     * Validate form data for the contact page.
+     * Validates form data for the contact page.
      * Checks for required fields and validates email format.
      *
      * @return bool Returns true if the form is valid, false otherwise.
@@ -221,7 +221,7 @@ class Manager
             $this->sanitized_form_data['contact_message']
         ) : '';
 
-        // Check for required fields, set flash message if any field is empty or invalid
+        // Checks for required fields, set flash message if any field is empty or invalid
         if ($name === '') {
             $this->setFlashMessages(__('Bitte geben Sie einen Namen ein.', 'bitski-wp-theme'), 'danger');
             $is_valid = false;
@@ -239,7 +239,7 @@ class Manager
     }
 
     /**
-     * Send an email with the form data.
+     * Sends an email with the form data.
      * Uses WordPress' wp_mail function to send the email.
      *
      * @since 0.8.15

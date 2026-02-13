@@ -9,10 +9,8 @@ namespace BitskiWPTheme\theme;
 
 class Setup
 {
-
-
     /**
-     * Initialize theme setup
+     * Initializes theme setup
      *
      * Theme support features, textdomain loading,
      * navigation menus registration, session start.
@@ -27,7 +25,7 @@ class Setup
     }
 
     /**
-     * Add theme support features.
+     * Adds theme support features.
      */
     public function themeSupport(): void
     {
@@ -56,7 +54,7 @@ class Setup
     }
 
     /**
-     * Load theme textdomain for translations.
+     * Loads theme textdomain for translations.
      */
     public function loadTextdomain(): void
     {
@@ -64,7 +62,7 @@ class Setup
     }
 
     /**
-     * Register theme navigation menus.
+     * Registers theme navigation menus.
      */
     public function registerNavMenus(): void
     {
@@ -75,25 +73,25 @@ class Setup
     }
 
     /**
-     * Start session if its not already started and
+     * Starts session if its not already started and
      * if current page is in the option array of pages using sessions.
      */
     public function startSession(): void
     {
-        // Return early if session is already started.
+        // Returns early if session is already started.
         if (session_id()) {
             return;
         }
 
         // Security check if headers are already sent.
-        // Return early if so, no session can be started.
+        // Returns early if so, no session can be started.
         if (headers_sent($file, $line)) {
             error_log("Session could not be started. Headers already sent in $file on line $line.");
 
             return;
         }
 
-        // Check if current page is in the option array of pages using sessions.
+        // Checks if current page is in the option array of pages using sessions.
         $pages_using_session_ids = apply_filters('bitski-wp-theme/option/pages/using-session/ids', []);
         foreach ($pages_using_session_ids as $id) {
             if (is_page($id)) {
