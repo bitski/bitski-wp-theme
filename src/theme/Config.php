@@ -65,6 +65,8 @@ class Config
 
         // Schema options
         'bitski-wp-theme/option/schema/load'                           => true,
+        'bitski-wp-theme/option/schema/entity/type'                    => 'Organization', // 'Organization' || 'Person'
+        'bitski-wp-theme/option/schema/entity/logo-path'               => 'assets/img/bitski-wp-theme-logo_50x50.svg'
 
         // Add more option filters as needed
     ];
