@@ -5,7 +5,7 @@
  * @since 0.11.0
  */
 
-namespace BitskiWPTheme\content;
+namespace BitskiWPTheme\rest;
 
 use WP_Query;
 use WP_REST_Request;
