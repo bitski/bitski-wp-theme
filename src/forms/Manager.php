@@ -11,7 +11,7 @@
  * @since 0.8.0
  */
 
-namespace BitskiWPTheme\content;
+namespace BitskiWPTheme\forms;
 
 class Manager
 {

@@ -44,7 +44,7 @@ $bootstrap_classes = [
  * @var array $conditional_class_map
  */
 $conditional_class_map = [
-    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\content\Manager::class,
+    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\forms\Manager::class,
     'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\rest\LoadMore::class,
     'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\PWAManager::class,
     'bitski-wp-theme/option/schema/load'        => \BitskiWPTheme\theme\SchemaManager::class,
