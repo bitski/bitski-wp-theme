@@ -2,6 +2,7 @@
 /assets/css/
 /assets/scss/vendors/
 !/assets/scss/vendors/bootstrap/_bootstrap-configuration*.scss
+/assets/js/main.min.js
 
 # Composer dependencies
 /vendor/

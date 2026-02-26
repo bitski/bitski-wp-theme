@@ -21,6 +21,7 @@ class Config
 
         // Loading options
         'bitski-wp-theme/option/load-fontawesome'                      => true,
+        'bitski-wp-theme/option/load-emojis'                           => false,
         'bitski-wp-theme/option/load-bootstrap-icons-sprite'           => false,
 
         // Header options

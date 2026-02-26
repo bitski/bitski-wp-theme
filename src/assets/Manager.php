@@ -32,6 +32,10 @@ class Manager
     {
         $theme_version = wp_get_theme()->get('Version');
         $theme_uri     = get_template_directory_uri();
+        $theme_dir     = get_template_directory();
+
+        // Uses minified main.js if it exists, otherwise main.js.
+        $theme_main_script = file_exists($theme_dir.'/assets/js/main.min.js') ? 'main.min.js' : 'main.js';
 
         // CSS
         //
@@ -61,7 +65,7 @@ class Manager
         // Requires WordPress 6.5 or higher for native wp_enqueue_script_module() support.
         wp_enqueue_script_module(
             'bitski-wp-theme-main-script',
-            $theme_uri.'/assets/js/main.js',
+            $theme_uri.'/assets/js/'.$theme_main_script,
             [],
             $theme_version
         );

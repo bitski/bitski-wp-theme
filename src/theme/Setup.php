@@ -20,6 +20,9 @@ class Setup
         add_action('after_setup_theme', [$this, 'themeSupport']);
         add_action('after_setup_theme', [$this, 'loadTextdomain']);
         add_action('after_setup_theme', [$this, 'registerNavMenus']);
+        if (apply_filters('bitski-wp-theme/option/load-emojis', null)) {
+            add_action('after_setup_theme', [$this, 'disableEmojis']);
+        }
 
         add_action('template_redirect', [$this, 'startSession']);
     }
@@ -70,6 +73,35 @@ class Setup
             'main-menu'   => __('Main menu', 'bitski-wp-theme'),
             'footer-menu' => __('Footer menu', 'bitski-wp-theme'),
         ]);
+    }
+
+    /**
+     * Disables WordPress emojis.
+     * Removes emoji scripts from the frontend, backend, email + rss outputs, TinyMCE editor.
+     *
+     * @since 0.18.0
+     */
+    public function disableEmojis(): void
+    {
+        // Frontend: removes script.
+        remove_action('wp_head', 'print_emoji_detection_script', 7);
+
+        // Backend: removes script.
+        remove_action('admin_print_scripts', 'print_emoji_detection_script');
+
+        // Feeds + E-Mails: removes emojis from output.
+        remove_filter('the_content_feed', 'wp_staticize_emoji');
+        remove_filter('comment_text_rss', 'wp_staticize_emoji');
+        remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+
+        // TinyMCE-Editor: removes wpemoji plugin from TinyMCE.
+        add_filter('tiny_mce_plugins', function ($plugins) {
+            if (is_array($plugins)) {
+                return array_diff($plugins, ['wpemoji']);
+            } else {
+                return [];
+            }
+        });
     }
 
     /**
