@@ -29,9 +29,9 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
  * @var array $bootstrap_classes
  */
 $bootstrap_classes = [
-    \BitskiWPTheme\theme\Setup::class,
     \BitskiWPTheme\theme\Config::class,
     \BitskiWPTheme\theme\Hooks::class,
+    \BitskiWPTheme\theme\Setup::class,
     \BitskiWPTheme\assets\Manager::class,
 ];
 
