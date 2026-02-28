@@ -13,14 +13,14 @@ class Setup
      * Initializes theme setup
      *
      * Theme support features, textdomain loading,
-     * navigation menus registration, session start.
+     * navigation menus registration, session start and emoji disabling.
      */
     public function init(): void
     {
         add_action('after_setup_theme', [$this, 'themeSupport']);
         add_action('after_setup_theme', [$this, 'loadTextdomain']);
         add_action('after_setup_theme', [$this, 'registerNavMenus']);
-        if (apply_filters('bitski-wp-theme/option/load-emojis', null)) {
+        if ( ! apply_filters('bitski-wp-theme/option/load-emojis', null)) {
             add_action('after_setup_theme', [$this, 'disableEmojis']);
         }
 
@@ -95,12 +95,12 @@ class Setup
         remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 
         // TinyMCE-Editor: removes wpemoji plugin from TinyMCE.
-        add_filter('tiny_mce_plugins', function ($plugins) {
+        add_filter('tiny_mce_plugins', function ($plugins): array {
             if (is_array($plugins)) {
                 return array_diff($plugins, ['wpemoji']);
-            } else {
-                return [];
             }
+
+            return [];
         });
     }
 
