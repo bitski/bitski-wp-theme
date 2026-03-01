@@ -15,7 +15,7 @@ class Hooks
      * Initializes theme hooks.
      * Registers all hooks.
      */
-    public function init()
+    public function init(): void
     {
         $this->registerBaseHooks();         // Base hooks, support.
         $this->registerCssClassesHooks();   // CSS classes hooks.
@@ -26,14 +26,14 @@ class Hooks
     /**
      * Registers base hooks.
      */
-    protected function registerBaseHooks()
+    protected function registerBaseHooks(): void
     {
     }
 
     /**
      * Registers hooks for CSS classes.
      */
-    protected function registerCssClassesHooks()
+    protected function registerCssClassesHooks(): void
     {
         foreach (Config::$classes as $filter => $setupClasses) {
             add_filter($filter, function ($defaultClasses = '', $merge = true) use ($filter) {
@@ -68,7 +68,7 @@ class Hooks
             $defaultClasses = [];
         }
 
-        // If $merge parameter is set to true, merge setup classes with default classes.
+        // If the $merge parameter is set to true, merge setup classes with default classes.
         // Returns merged classes as a space-separated string.
         if ($merge) {
             $merged_classes = array_filter(array_unique(array_merge($setupClasses, $defaultClasses)));
@@ -83,7 +83,7 @@ class Hooks
     /**
      * Registers hooks for theme options.
      */
-    protected function registerOptionHooks()
+    protected function registerOptionHooks(): void
     {
         foreach (Config::$options as $filter => $setupOption) {
             add_filter($filter, function ($defaultOption = null) use ($filter) {
@@ -99,15 +99,15 @@ class Hooks
      * Otherwise, checks global ThemeSetup options.
      *
      * @param  string  $filter
-     * @param  mixed  $defaultOption  (default: null, for fallback to global setup option)
+     * @param  mixed  $defaultOption  (default: null, for a fallback to global setup option)
      *
      * @return mixed
      */
     public function getOptionByFilter(string $filter, mixed $defaultOption = null): mixed
     {
-        // Returns default option if it is explicitly set (not null).
-        // Returns default option if it is boolean or integer,
-        // or if it is set and and neither an empty string nor an empty array.
+        // Returns a default option if it is explicitly set (not null).
+        // Returns a default option if it is boolean or integer,
+        // or if it is set and neither an empty string nor an empty array.
         if ($defaultOption !== null) {
             if (is_bool($defaultOption)
                 || is_int($defaultOption)
@@ -117,7 +117,7 @@ class Hooks
             }
         }
 
-        // Returns setup option if it's set and not empty.
+        // Returns a setup option if it's set and not empty.
         if (isset(Config::$options[$filter]) && Config::$options[$filter] !== '') {
             $setupOption = Config::$options[$filter];
 
@@ -128,50 +128,49 @@ class Hooks
             return (string)$setupOption;
         }
 
-        // Returns default option as fallback.
+        // Returns a default option as a fallback.
         return $defaultOption;
     }
 
     /**
      * Registers hooks for functionalities.
      */
-    protected function registerFunctionalHooks()
+    protected function registerFunctionalHooks(): void
     {
-        // Archive hooks
+        // Archive hooks.
         // Archive query override - ignore WordPress backend option.
         add_action('pre_get_posts', [$this, 'overrideArchivePostsPerPage']);
 
-        // Header hooks
+        // Header hooks.
         // (To be inhabited)
 
-        // Page hooks
+        // Page hooks.
         // (To be inhabited)
 
-        // Footer hooks
-        //add_action( 'wp_footer', [ $this, 'outputSvgSprite' ], 20 );
+        // Footer hooks.
+        //add_action('wp_footer', [ $this, 'outputSvgSprite' ], 20 );
     }
 
     /**
-     * Overrides archive posts per page WordPress option with theme option.
+     * Overrides an archive posts per page WordPress option with a theme option.
      *
      * @param  WP_Query  $query
      *
      * @since 0.1.0
-     *
      */
-    public function overrideArchivePostsPerPage($query)
+    public function overrideArchivePostsPerPage(WP_Query $query): void
     {
-        // Returns early if on admin page.
+        // Returns early if on the admin page.
         if (is_admin()) {
             return;
         }
 
-        // Returns early if not main query or not archive or home page.
+        // Returns early if not the main query or not archive or home page.
         if ( ! $query->is_main_query() || ! (is_archive() || is_home())) {
             return;
         }
 
-        // Sets theme option for posts per page.
+        // Sets a theme option for posts per page.
         $posts_per_page = apply_filters('bitski-wp-theme/option/archive/posts-per-page', null);
         $query->set('posts_per_page', $posts_per_page);
     }
