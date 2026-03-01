@@ -7,11 +7,6 @@
 
 namespace BitskiWPTheme\assets;
 
-/**
- * Manages theme assets.
- *
- * @since 0.1.0
- */
 class Manager
 {
     /**

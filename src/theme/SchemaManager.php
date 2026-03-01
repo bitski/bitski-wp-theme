@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme Schema Manager.
+ * Theme schema manager.
  *
  * @since 0.17.0
  */
@@ -10,7 +10,7 @@ namespace BitskiWPTheme\theme;
 class SchemaManager
 {
     /**
-     * Initializes the Schema Manager.
+     * Initializes the schema manager.
      */
     public function init(): void
     {
@@ -24,11 +24,11 @@ class SchemaManager
     {
         $schemas = [];
 
-        // Core schemas
+        // Core schemas.
         $schemas[] = $this->getWebsiteSchema();
         $schemas[] = $this->getEntitySchema();
 
-        // Conditional schemas
+        // Conditional schemas.
         if (is_singular()) {
             $schemas[] = $this->getSingularSchema();
         }
@@ -45,7 +45,7 @@ class SchemaManager
             return;
         }
 
-        // Prints schemas
+        // Prints schemas.
         echo "\n<!-- Schema.org JSON-LD -->\n";
         foreach ($schemas as $schema) {
             echo '<script type="application/ld+json">' .

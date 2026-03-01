@@ -9,11 +9,6 @@ namespace BitskiWPTheme\theme;
 
 use WP_Query;
 
-/**
- * Manages theme hooks.
- *
- * @since 0.1.0
- */
 class Hooks
 {
     /**

@@ -7,11 +7,6 @@
 
 namespace BitskiWPTheme\theme;
 
-/**
- * Manages theme helpers.
- *
- * @since 0.1.0
- */
 class Helpers
 {
     /**

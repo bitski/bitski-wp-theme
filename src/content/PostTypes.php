@@ -7,11 +7,6 @@
 
 namespace BitskiWPTheme\content;
 
-/**
- * Manages custom post types.
- *
- * @since 0.1.0
- */
 class PostTypes
 {
     public function init()
