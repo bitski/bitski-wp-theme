@@ -2,7 +2,7 @@
 
 Modern WordPress starter theme integrating Bootstrap 5.3, a 7-1 SCSS architecture and PHP OOP principles for high-performance development.
 
-**Classic + Block-based Hybrid Theme** | **v0.19.1** | **GPL v3+**
+**Classic + Block-based Hybrid Theme** | **v0.19.2** | **GPL v3+**
 
 ## ✨ Features
 - Bootstrap 5.3 integration + 7-1 SCSS architecture + Asset Manager (Critical CSS ready)  
@@ -21,6 +21,27 @@ composer install
 ```
 
 Then activate the theme under **Appearance → Themes**.
+
+## 📋 Requirements
+
+### Server
+- PHP 8.1+ (getestet bis PHP 8.4)
+- WordPress 6.5+ (Full Site Editing ready) 
+- MySQL 5.7+ / MariaDB 10.4+
+
+### Development
+- Composer 2.7+
+- Node.js 18+ / 20 LTS  
+- npm 9+ oder yarn 1.22+
+- sass, esbuild
+- PHPCS 3.8+ (phpcs.xml inklusive)
+
+## 🔨 Build Commands
+- `composer install` — PSR-4 autoloader
+- `sass assets/scss/main.scss:assets/css/main.css --style=compressed` — Production CSS
+- `esbuild assets/js/main.js --bundle --minify --format=esm --target=es2020 --sourcemap --outfile=assets/js/main.min.js` — Production JS
+- `sass assets/scss/main.scss:assets/css/main.css --watch` — SCSS Development
+- `esbuild assets/js/main.js --bundle --format=esm --target=es2020 --sourcemap --outfile=assets/js/main.js --watch` — JS Development
 
 ## 🛠️ Development
 **SCSS (7-1):** `assets/scss/main.scss`  
