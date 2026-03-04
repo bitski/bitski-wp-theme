@@ -2,7 +2,7 @@
 
 Modern WordPress starter theme integrating Bootstrap 5.3, a 7-1 SCSS architecture and PHP OOP principles for high-performance development.
 
-Classic theme | Block editor ready | v0.19.3 | GPL v3+
+Classic theme | Block editor ready | v0.19.4 | GPL v3+
 
 ## ✨ Features
 
@@ -60,13 +60,14 @@ vendor/bin/phpcs
 - Node.js 18+ / 20 LTS  
 - npm 9+ / yarn 1.22+
 - sass, esbuild
-- PHPCS 3.8+ (phpcs.xml inklusive)
+- PHPCS 3.8+ (phpcs.xml inklusive, PSR-12)
 
 ## 📁 Structure
 
 ### Entry points
 
-SCSS (7-1): `assets/scss/main.scss`  
+SCSS (7-1): `assets/scss/main.scss`
+JS (ESM): `assets/js/main.js`
 PHP: `src/` (PSR-4) → `src/theme/` (Config → Hooks → Setup → PWA → Schema)
 
 ### Directory structure
