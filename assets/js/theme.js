@@ -5,47 +5,51 @@
  *
  * @since 0.5.11
  */
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   /**
    * [01] Color theme switcher
    */
-  function getStoredTheme () {
-    return localStorage.getItem('theme')
+  function getStoredTheme() {
+    return localStorage.getItem('theme');
   }
 
-  function setStoredTheme (theme) {
-    return localStorage.setItem('theme', theme)
+  function setStoredTheme(theme) {
+    return localStorage.setItem('theme', theme);
   }
 
-  function getPreferredTheme () {
-    const storedTheme = getStoredTheme()
+  function getPreferredTheme() {
+    const storedTheme = getStoredTheme();
     if (storedTheme) {
-      return storedTheme
+      return storedTheme;
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
   }
 
-  function setTheme (theme) {
-    let appliedTheme = theme
+  function setTheme(theme) {
+    let appliedTheme = theme;
     if (appliedTheme === 'auto') {
-      appliedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      appliedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
     }
-    document.documentElement.setAttribute('data-bs-theme', appliedTheme)
-    setLogos(appliedTheme)
+    document.documentElement.setAttribute('data-bs-theme', appliedTheme);
+    setLogos(appliedTheme);
   }
 
-  function setLogos (theme) {
-    const logosLight = document.querySelectorAll('.logo-light')
-    const logosDark = document.querySelectorAll('.logo-dark')
+  function setLogos(theme) {
+    const logosLight = document.querySelectorAll('.logo-light');
+    const logosDark = document.querySelectorAll('.logo-dark');
 
     if (logosLight.length > 0 && logosDark.length > 0) {
-      logosLight.forEach(function (logo) {
-        logo.classList.toggle('d-none', theme === 'dark')
-      })
-      logosDark.forEach(function (logo) {
-        logo.classList.toggle('d-none', theme === 'light')
-      })
+      logosLight.forEach(function(logo) {
+        logo.classList.toggle('d-none', theme === 'dark');
+      });
+      logosDark.forEach(function(logo) {
+        logo.classList.toggle('d-none', theme === 'light');
+      });
     }
   }
 
@@ -56,74 +60,79 @@ document.addEventListener('DOMContentLoaded', function () {
    * @param {boolean} [focus=false] - Determines whether to focus the theme switcher control after updating the theme.
    * @return {void} Does not return a value.
    */
-  function showActiveTheme (theme, focus = false) {
-    const themeSwitcher = document.querySelector('#color-theme-switcher')
+  function showActiveTheme(theme, focus = false) {
+    const themeSwitcher = document.querySelector('#color-theme-switcher');
 
     if (!themeSwitcher) {
-      return
+      return;
     }
 
-    const activeThemeIcon = themeSwitcher.querySelector('.icon-active-theme')
-    const activeButton = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+    const activeThemeIcon = themeSwitcher.querySelector('.icon-active-theme');
+    const activeButton = document.querySelector(
+        `[data-bs-theme-value="${theme}"]`);
 
     // Handle active button state.
     if (activeButton) {
-      const activeButtonIconClasses = activeButton.querySelector('i').className
+      const activeButtonIconClasses = activeButton.querySelector('i').className;
 
-      document.querySelectorAll('[data-bs-theme-value]').forEach(function (element) {
-        element.classList.remove('active')
-        element.setAttribute('aria-pressed', 'false')
-      })
+      document.querySelectorAll('[data-bs-theme-value]').
+          forEach(function(element) {
+            element.classList.remove('active');
+            element.setAttribute('aria-pressed', 'false');
+          });
 
-      activeButton.classList.add('active')
-      activeButton.setAttribute('aria-pressed', 'true')
-      activeThemeIcon.classList.forEach(function (className) {
+      activeButton.classList.add('active');
+      activeButton.setAttribute('aria-pressed', 'true');
+      activeThemeIcon.classList.forEach(function(className) {
         if (className.startsWith('fa-')) {
-          activeThemeIcon.classList.remove(className)
+          activeThemeIcon.classList.remove(className);
         }
-      })
-      activeThemeIcon.className += (activeThemeIcon.className ? ' ' : '') + activeButtonIconClasses
+      });
+      activeThemeIcon.className += (activeThemeIcon.className ? ' ' : '') +
+          activeButtonIconClasses;
     }
 
     // Update theme switcher aria-label.
-    const themeSwitcherHiddenText = themeSwitcher.querySelector('.visually-hidden')
+    const themeSwitcherHiddenText = themeSwitcher.querySelector(
+        '.visually-hidden');
     if (themeSwitcherHiddenText) {
       const base = (themeSwitcherHiddenText.textContent.trim())
-        || ((themeSwitcher.getAttribute('aria-label') || '').replace(/\s*\(.*\)\s*$/, ''))
-        || 'Toggle color theme'
-      themeSwitcher.setAttribute('aria-label', `${base} (${theme})`)
+          || ((themeSwitcher.getAttribute('aria-label') || '').replace(
+              /\s*\(.*\)\s*$/, ''))
+          || 'Toggle color theme';
+      themeSwitcher.setAttribute('aria-label', `${base} (${theme})`);
     }
 
     // Focus the theme switcher button for better accessibility.
     if (focus) {
-      themeSwitcher.focus()
+      themeSwitcher.focus();
     }
   }
 
   // Initializes theme.
-  const preferredTheme = getPreferredTheme()
-  setTheme(preferredTheme)
-  showActiveTheme(preferredTheme)
+  const preferredTheme = getPreferredTheme();
+  setTheme(preferredTheme);
+  showActiveTheme(preferredTheme);
 
   // Listens for system theme changes.
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-    const storedTheme = getStoredTheme()
-    if (storedTheme !== 'light' && storedTheme !== 'dark') {
-      setTheme(getPreferredTheme())
-      showActiveTheme(getPreferredTheme())
-    }
-  })
+  window.matchMedia('(prefers-color-scheme: dark)').
+      addEventListener('change', function() {
+        const storedTheme = getStoredTheme();
+        if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          setTheme(getPreferredTheme());
+          showActiveTheme(getPreferredTheme());
+        }
+      });
 
   // Handles theme switcher clicks.
-  document.querySelectorAll('[data-bs-theme-value]')
-    .forEach(function (toggle) {
-      toggle.addEventListener('click', function () {
-        const theme = toggle.getAttribute('data-bs-theme-value')
-        setStoredTheme(theme)
-        setTheme(theme)
-        showActiveTheme(theme, true)
-      })
-    })
+  document.querySelectorAll('[data-bs-theme-value]').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      const theme = toggle.getAttribute('data-bs-theme-value');
+      setStoredTheme(theme);
+      setTheme(theme);
+      showActiveTheme(theme, true);
+    });
+  });
 
   /**
    * [02] Search
@@ -131,30 +140,31 @@ document.addEventListener('DOMContentLoaded', function () {
    * Handles search bar toggler and input focus.
    * Closes search bar when clicking outside of it.
    */
-  const searchBarToggler = document.querySelector('.search-bar-toggler')
-  const searchBar = document.querySelector('.search-bar')
-  const searchBarInput = document.querySelector('.search-bar-input')
+  const searchBarToggler = document.querySelector('.search-bar-toggler');
+  const searchBar = document.querySelector('.search-bar');
+  const searchBarInput = document.querySelector('.search-bar-input');
 
   if (searchBarToggler && searchBar && searchBarInput) {
-    searchBar.addEventListener('shown.bs.collapse', function () {
-      searchBarInput.focus({ preventScroll: true })
-    })
+    searchBar.addEventListener('shown.bs.collapse', function() {
+      searchBarInput.focus({preventScroll: true});
+    });
 
-    searchBar.addEventListener('hidden.bs.collapse', function () {
-      searchBarToggler.focus({ preventScroll: true })
-    })
+    searchBar.addEventListener('hidden.bs.collapse', function() {
+      searchBarToggler.focus({preventScroll: true});
+    });
 
     // Closes search bar when clicking outside of it
-    document.addEventListener('click', function (event) {
-      if (!searchBar.contains(event.target) && !searchBarToggler.contains(event.target)) {
+    document.addEventListener('click', function(event) {
+      if (!searchBar.contains(event.target) &&
+          !searchBarToggler.contains(event.target)) {
         // Get Bootstrap API Collapse instance
-        const bsCollapse = bootstrap.Collapse.getInstance(searchBar)
+        const bsCollapse = bootstrap.Collapse.getInstance(searchBar);
 
         if (bsCollapse && searchBar.classList.contains('show')) {
-          bsCollapse.hide()
+          bsCollapse.hide();
         }
       }
-    })
+    });
   }
 
   /**
@@ -163,33 +173,34 @@ document.addEventListener('DOMContentLoaded', function () {
    * Updates pagination link colors based on current color theme.
    * This ensures pagination links are visible in both light and dark modes.
    */
-  const pagination = document.querySelector('.pagination')
+  const pagination = document.querySelector('.pagination');
   if (pagination) {
-    const updatePaginationColors = function () {
-      const theme = document.documentElement.getAttribute('data-bs-theme')
-      document.querySelectorAll('.pagination li:not(.active) .page-link').forEach(function (link) {
-        if (theme === 'dark') {
-          link.classList.remove('text-dark')
-          link.classList.add('text-light')
-        } else {
-          link.classList.remove('text-light')
-          link.classList.add('text-dark')
-        }
-      })
-    }
+    const updatePaginationColors = function() {
+      const theme = document.documentElement.getAttribute('data-bs-theme');
+      document.querySelectorAll('.pagination li:not(.active) .page-link').
+          forEach(function(link) {
+            if (theme === 'dark') {
+              link.classList.remove('text-dark');
+              link.classList.add('text-light');
+            } else {
+              link.classList.remove('text-light');
+              link.classList.add('text-dark');
+            }
+          });
+    };
 
     // Initializes pagination colors.
-    updatePaginationColors()
+    updatePaginationColors();
 
     // Observes changes to data-bs-theme attribute.
-    const observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
         if (mutation.attributeName === 'data-bs-theme') {
-          updatePaginationColors()
+          updatePaginationColors();
         }
-      })
-    })
-    observer.observe(document.documentElement, { attributes: true })
+      });
+    });
+    observer.observe(document.documentElement, {attributes: true});
   }
 
   /**
@@ -198,49 +209,50 @@ document.addEventListener('DOMContentLoaded', function () {
    * Handles "Load More" button functionality via WordPress REST API at archive pages.
    * Clicking it will fetch the next batch of posts and append it after the current list.
    */
-  const bodyClassList = document.body.classList
+  const bodyClassList = document.body.classList;
   if (bodyClassList.contains('archive') || bodyClassList.contains('blog')) {
-    const contentBody = document.querySelector('.content-body')
-    const loadMoreButton = document.querySelector('.load-more')
-    let offset = 0
-    let foundPosts = 0
-    let spinnerDelay = 0
+    const contentBody = document.querySelector('.content-body');
+    const loadMoreButton = document.querySelector('.load-more');
+    let offset = 0;
+    let foundPosts = 0;
+    let spinnerDelay = 0;
 
     // Only proceeds if button and container exist.
     if (loadMoreButton && contentBody) {
       // Initializes offset, foundPosts, spinnerDelay from data attribute, representing the value of the themes posts-per-page & spinner-delay options and the total number of posts found for the current (archive) query.
-      offset = parseInt(contentBody.dataset.postsPerPage) || 0
-      foundPosts = parseInt(contentBody.dataset.foundPosts) || 0
-      spinnerDelay = parseInt(contentBody.dataset.spinnerDelay) || 600
-      loadMoreButton.addEventListener('click', handleLoadMore)
+      offset = parseInt(contentBody.dataset.postsPerPage) || 0;
+      foundPosts = parseInt(contentBody.dataset.foundPosts) || 0;
+      spinnerDelay = parseInt(contentBody.dataset.spinnerDelay) || 600;
+      loadMoreButton.addEventListener('click', handleLoadMore);
     }
 
-    async function handleLoadMore () {
+    async function handleLoadMore() {
       // Sets ARIA attributes for live region.
-      contentBody.setAttribute('aria-live', 'polite')
-      contentBody.setAttribute('aria-atomic', 'false')
+      contentBody.setAttribute('aria-live', 'polite');
+      contentBody.setAttribute('aria-atomic', 'false');
 
       // Prevents multiple clicks.
       if (loadMoreButton.disabled) {
-        return
+        return;
       }
-      loadMoreButton.disabled = true
+      loadMoreButton.disabled = true;
 
       // Sets Buttons loading state.
-      const originalInnerHTML = loadMoreButton.innerHTML
-      loadMoreButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Loading...'
-      loadMoreButton.setAttribute('aria-busy', 'true')
-      loadMoreButton.setAttribute('aria-disabled', 'true')
+      const originalInnerHTML = loadMoreButton.innerHTML;
+      loadMoreButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Loading...';
+      loadMoreButton.setAttribute('aria-busy', 'true');
+      loadMoreButton.setAttribute('aria-disabled', 'true');
 
       // Fetches posts from WordPress REST API.
       //
       // Sets request parameters based on current offset and total number of posts found.
-      const url = new URL('/wp-json/bitski-wp-theme/v1/posts/load-more', window.location.origin)
-      url.searchParams.append('post_type', 'post')
-      url.searchParams.append('offset', offset)
-      url.searchParams.append('found_posts', foundPosts)
+      const url = new URL('/wp-json/bitski-wp-theme/v1/posts/load-more',
+          window.location.origin);
+      url.searchParams.append('post_type', 'post');
+      url.searchParams.append('offset', offset);
+      url.searchParams.append('found_posts', foundPosts);
 
-      let result = null
+      let result = null;
 
       // Fetches posts from WordPress REST API and append them to the content body.
       try {
@@ -250,40 +262,41 @@ document.addEventListener('DOMContentLoaded', function () {
         // Promise.all() ensures that both requests are executed concurrently.
         const responses = await Promise.all([
           fetch(url.toString()),
-          new Promise(resolve => setTimeout(resolve, spinnerDelay))
-        ])
+          new Promise(resolve => setTimeout(resolve, spinnerDelay)),
+        ]);
 
         // Retrieves fetch response from Promise.all array.
-        const response = responses[0]
+        const response = responses[0];
 
         if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`)
+          throw new Error(`Response status: ${response.status}`);
         }
 
         // Appends posts to content body.
-        result = await response.json()
+        result = await response.json();
         if (result.posts_html && result.posts_html.length > 0) {
-          contentBody.insertAdjacentHTML('beforeend', result.posts_html.join(''))
-          offset = result.offset
+          contentBody.insertAdjacentHTML('beforeend',
+              result.posts_html.join(''));
+          offset = result.offset;
         }
       } catch (error) {
-        console.error(error.message)
+        console.error(error.message);
       } finally {
         if (result && !result.has_more) {
           // Resets ARIA attributes for live region.
-          contentBody.removeAttribute('aria-live')
-          contentBody.removeAttribute('aria-atomic')
+          contentBody.removeAttribute('aria-live');
+          contentBody.removeAttribute('aria-atomic');
 
           // Hides the button if there are no more posts to load.
-          loadMoreButton.classList.add('d-none')
+          loadMoreButton.classList.add('d-none');
         } else {
           // Resets button state.
-          loadMoreButton.innerHTML = originalInnerHTML
-          loadMoreButton.disabled = false
-          loadMoreButton.removeAttribute('aria-busy')
-          loadMoreButton.removeAttribute('aria-disabled')
+          loadMoreButton.innerHTML = originalInnerHTML;
+          loadMoreButton.disabled = false;
+          loadMoreButton.removeAttribute('aria-busy');
+          loadMoreButton.removeAttribute('aria-disabled');
         }
       }
     }
   }
-})
+});
