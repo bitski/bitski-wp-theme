@@ -15,7 +15,7 @@ Classic theme | Block editor ready | v0.19.4 | GPL v3+
 
 ## 🚀 Quick start
 
-### Clone & install
+### Clone and install
 
 ```bash
 cd wp-content/themes

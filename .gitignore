@@ -1,8 +1,19 @@
+# OS and editor Files
+.DS_Store
+Thumbs.db
+
 # Assets
 /assets/css/
 /assets/scss/vendors/
 !/assets/scss/vendors/bootstrap/_bootstrap-configuration*.scss
 /assets/js/main.min.js
 
-# Composer dependencies
+# Composer
 /vendor/
+composer.lock
+
+# Development tools
+phpcs-report*.txt
+
+# Logs and debug files
+debug.log
