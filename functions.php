@@ -1,4 +1,9 @@
 <?php
+/**
+ * Theme: bitski‑wp‑theme
+ * Author: Peter Eckerle
+ * Copyright (c) 2025–2026
+ */
 
 // Exits if accessed directly.
 if (! defined('ABSPATH')) {
