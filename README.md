@@ -2,7 +2,7 @@
 
 Modern WordPress starter theme integrating Bootstrap 5.3, a 7-1 SCSS architecture and PHP OOP principles for high-performance development.
 
-Classic theme | Block editor ready | v0.19.4 | GPL v3+
+Classic theme | Block editor ready | v1.0.0 | GPL v3+
 
 ## ✨ Features
 
