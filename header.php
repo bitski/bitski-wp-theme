@@ -57,13 +57,13 @@ echo apply_filters('bitski-wp-theme/class/header', ['text-dark'], false); ?>">
             echo esc_url(home_url()); ?>">
                 <img class="logo logo-light"
                      src="<?php
-                     echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_30x30.svg"
+                     echo get_stylesheet_directory_uri(); ?>/assets/img/logo-30x30.svg"
                      alt="<?php
                      echo esc_attr(get_bloginfo('name')) ?> Logo" width="30" height="30"
                      loading="lazy">
                 <img class="logo logo-dark"
                      src="<?php
-                     echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_30x30.svg"
+                     echo get_stylesheet_directory_uri(); ?>/assets/img/logo-dark-30x30.svg"
                      alt="<?php
                      echo esc_attr(get_bloginfo('name')) ?> Logo" width="30" height="30"
                      loading="lazy">

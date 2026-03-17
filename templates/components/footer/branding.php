@@ -23,12 +23,12 @@ if ( ! defined('ABSPATH')) {
                    aria-label="<?php
                    echo esc_attr__('Home', 'bitski-wp-theme'); ?>">
                     <img src="<?php
-                    echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo_50x50.svg"
+                    echo get_stylesheet_directory_uri(); ?>/assets/img/logo-50x50.svg"
                          alt="<?php
                          bloginfo('name'); ?> Logo" class="logo logo-light d-inline-block align-middle"
                          loading="lazy">
                     <img src="<?php
-                    echo get_stylesheet_directory_uri(); ?>/assets/img/bitski-wp-theme-logo-dark_50x50.svg"
+                    echo get_stylesheet_directory_uri(); ?>/assets/img/logo-dark-50x50.svg"
                          alt="<?php
                          bloginfo('name'); ?> Logo" class="logo logo-dark d-inline-block align-middle"
                          loading="lazy">

@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Phase 11: 11.3–11.7
+- Theme setup script (`setup.sh`) (planned): rebranding for theme name and strings
+
+## [1.0.2] - 2026-03-17
+
+### Changed
+
+- Renamed brand-specific logo files to generic `logo(-dark)-[30|50]x[30|50].svg` names
+- Updated all logo file references throughout theme files
+- Improves starter theme rebranding workflow for developers
 
 ## [1.0.1] - 2026-03-06
 

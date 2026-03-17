@@ -63,10 +63,10 @@ self.addEventListener('install', function(event) {
         '/wp-content/themes/bitski-wp-theme/assets/js/lib/bootstrap.bundle.min.js',
 
         // Theme images.
-        '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo_30x30.svg',
-        '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo_50x50.svg',
-        '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo-dark_30x30.svg',
-        '/wp-content/themes/bitski-wp-theme/assets/img/bitski-wp-theme-logo-dark_50x50.svg',
+        '/wp-content/themes/bitski-wp-theme/assets/img/logo-30x30.svg',
+        '/wp-content/themes/bitski-wp-theme/assets/img/logo-50x50.svg',
+        '/wp-content/themes/bitski-wp-theme/assets/img/logo-dark-30x30.svg',
+        '/wp-content/themes/bitski-wp-theme/assets/img/logo-dark-50x50.svg',
 
         // Theme fonts.
         // Bootstrap/SCSS/Custom WOFF2s are already cached dynamically via fetch handler.
