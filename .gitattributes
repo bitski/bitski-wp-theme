@@ -1,0 +1,17 @@
+# Enforces LF line endings for all text files in this WordPress theme
+# to ensure cross-platform consistency.
+* text eol=lf
+
+# Binary assets (no EOL normalization)
+*.woff2 binary
+*.svg  binary
+*.ico  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.mo   binary
+
+# Keep .pot/.po as text
+*.po   text eol=lf
+*.pot  text eol=lf
