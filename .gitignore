@@ -1,19 +1,23 @@
-# OS and editor files
+# OS and IDE/editor
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
 
 # Assets
 /assets/css/
 /assets/scss/vendors/
 !/assets/scss/vendors/bootstrap/_bootstrap-configuration*.scss
-/assets/js/main.min.js
+/assets/js/*.min.js
 
 # Composer
 /vendor/
 composer.lock
 
-# Development tools
+# Logs and reports
+*.log
 phpcs-report*.txt
 
-# Logs and debug files
-debug.log
+# Environment
+.env
+!.env.example
