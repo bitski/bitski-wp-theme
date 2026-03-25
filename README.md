@@ -61,7 +61,7 @@ vendor/bin/phpcs
 
 ### Server
 
-- PHP 8.1+ (getestet bis PHP 8.4)
+- PHP 8.1+ (tested up to PHP 8.4)
 - WordPress 6.5+ (Full Site Editing ready)
 - MySQL 5.7+ / MariaDB 10.4+
 
