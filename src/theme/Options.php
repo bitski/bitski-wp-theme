@@ -109,13 +109,7 @@ class Options
 
         // Returns a config option if it's set and not empty.
         if (isset(Config::$options[$filter]) && Config::$options[$filter] !== '') {
-            $configOption = Config::$options[$filter];
-
-            if (is_array($configOption) || is_bool($configOption)) {
-                return $configOption;
-            }
-
-            return (string)$configOption;
+            return Config::$options[$filter];
         }
 
         // Returns a default option as a fallback.
