@@ -30,8 +30,9 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
  */
 $bootstrap_classes = [
     \BitskiWPTheme\theme\Config::class,
-    \BitskiWPTheme\theme\Hooks::class,
+    \BitskiWPTheme\theme\Options::class,
     \BitskiWPTheme\theme\Setup::class,
+    \BitskiWPTheme\theme\Hooks::class,
     \BitskiWPTheme\assets\Manager::class,
 ];
 
