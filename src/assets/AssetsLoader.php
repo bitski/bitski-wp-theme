@@ -1,16 +1,16 @@
 <?php
 /**
- * Manages theme assets.
+ * Theme assets loader.
  *
  * @since 0.1.0
  */
 
 namespace BitskiWPTheme\assets;
 
-class Manager
+class AssetsLoader
 {
     /**
-     * Initializes the theme assets manager.
+     * Initializes assets loader.
      */
     public function init(): void
     {

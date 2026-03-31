@@ -1,6 +1,6 @@
 <?php
 /**
- * Manages theme forms.
+ * Theme form handler.
  *
  * Handles form submission and validation for the contact page.
  * Sanitizes form data using WordPress sanitization functions.
@@ -13,7 +13,7 @@
 
 namespace BitskiWPTheme\forms;
 
-class Manager
+class FormHandler
 {
     /**
      * Sanitized form data storage.
@@ -23,7 +23,7 @@ class Manager
     protected array $sanitized_form_data = [];
 
     /**
-     * Initializes form manager.
+     * Initializes form handler.
      * Registers hooks and initializes form processing actions.
      */
     public function init(): void

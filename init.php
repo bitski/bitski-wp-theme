@@ -33,7 +33,7 @@ $bootstrap_classes = [
     \BitskiWPTheme\theme\Options::class,
     \BitskiWPTheme\theme\Setup::class,
     \BitskiWPTheme\theme\Hooks::class,
-    \BitskiWPTheme\assets\Manager::class,
+    \BitskiWPTheme\assets\AssetsLoader::class,
 ];
 
 /**
@@ -45,10 +45,10 @@ $bootstrap_classes = [
  * @var array $conditional_class_map
  */
 $conditional_class_map = [
-    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\forms\Manager::class,
-    'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\rest\LoadMore::class,
-    'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\PWAManager::class,
-    'bitski-wp-theme/option/schema/load'        => \BitskiWPTheme\theme\SchemaManager::class,
+    'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\forms\FormHandler::class,
+    'bitski-wp-theme/option/archive/load-more'  => \BitskiWPTheme\rest\LoadMoreHandler::class,
+    'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\PWA::class,
+    'bitski-wp-theme/option/schema/load'        => \BitskiWPTheme\theme\Schema::class,
 ];
 
 /**

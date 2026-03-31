@@ -1,5 +1,7 @@
 <?php
 /**
+ * Theme "Load More" handler.
+ *
  * Manages "Load More" functionality for content loading.
  *
  * @since 0.11.0
@@ -11,10 +13,10 @@ use WP_Query;
 use WP_REST_Request;
 use WP_REST_Response;
 
-class LoadMore
+class LoadMoreHandler
 {
     /**
-     * Initializes "Load More" functionality.
+     * Initializes "Load More" handler.
      */
     public function init(): void
     {

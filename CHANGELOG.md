@@ -10,6 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phase 11: 11.3–11.7
 - Theme setup script (`setup.sh`) (planned): interactive rebranding stub `bin/setup.sh`
 
+## [1.0.3] - 2026-03-31
+
+### Changed
+
+- Refactor theme class names for consistency:
+  - `src/theme/PWAManager.php` → `src/theme/PWA.php`
+  - `src/theme/SchemaManager.php` → `src/theme/Schema.php`
+  - `src/assets/Manager.php` → `src/assets/AssetsLoader.php`
+  - `src/forms/FormManager.php` → `src/forms/FormHandler.php`
+  - `src/rest/LoadMoreManager.php` → `src/rest/LoadMoreHandler.php`
+- Improves internal codebase consistency and naming clarity without changing public API or behavior.
+
+## [1.0.2] - 2026-03-17
+
+### Changed
+
+- Renamed brand-specific logo files to generic `logo(-dark)-[30|50]x[30|50].svg` names
+- Updated all logo file references throughout theme files
+- Improves starter theme rebranding workflow for developers
+
+
 ## [1.0.2] - 2026-03-17
 
 ### Changed

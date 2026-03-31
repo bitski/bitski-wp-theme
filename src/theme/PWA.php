@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme PWA manager - webserver independent.
+ * Theme PWA class - webserver independent.
  * Handles Progressive Web App (PWA) features for the theme.
  * Registers the PWA manifest and service worker for offline support and assets caching.
  *
@@ -11,10 +11,10 @@
 
 namespace BitskiWPTheme\theme;
 
-class PWAManager
+class PWA
 {
     /**
-     * Initializes the PWA manager.
+     * Initializes the PWA class.
      */
     public function init(): void
     {

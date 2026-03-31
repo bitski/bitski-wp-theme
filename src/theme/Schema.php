@@ -1,16 +1,16 @@
 <?php
 /**
- * Theme schema manager.
+ * Theme schema class.
  *
  * @since 0.17.0
  */
 
 namespace BitskiWPTheme\theme;
 
-class SchemaManager
+class Schema
 {
     /**
-     * Initializes the schema manager.
+     * Initializes the schema class.
      */
     public function init(): void
     {
