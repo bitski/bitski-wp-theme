@@ -16,14 +16,14 @@ class Options
      */
     public function init(): void
     {
-        $this->registerCssClassesFilters();   // CSS classes options filters.
+        $this->registerCssClassFilters();   // CSS classes options filters.
         $this->registerOptionFilters();       // Theme options filters.
     }
 
     /**
      * Registers CSS classes options filters.
      */
-    protected function registerCssClassesFilters(): void
+    protected function registerCssClassFilters(): void
     {
         foreach (Config::$classes as $filter => $configClasses) {
             add_filter($filter, function ($defaultClasses = '', $merge = true) use ($filter) {
@@ -35,8 +35,7 @@ class Options
 
     /**
      * Getter for CSS classes by filter name.
-     * Returns a space-separated string of classes.
-     * Merges config classes with default classes if $merge is true.
+     * Returns a space-separated string, merging config and default classes if $merge is true.
      * Otherwise, returns default classes only.
      *
      * @param  string  $filter
@@ -85,13 +84,14 @@ class Options
 
     /**
      * Getter for theme options by filter name.
+     *
      * Returns the default option if it is explicitly set (not null) and valid.
      * Otherwise, checks global Config options.
      *
      * @param  string  $filter
-     * @param  mixed  $defaultOption  (default: null, for a fallback to global config option)
+     * @param  mixed|null  $defaultOption  (default: null, for a fallback to global config option)
      *
-     * @return mixed
+     * @return mixed The filtered option value.
      */
     public function getOptionByFilter(string $filter, mixed $defaultOption = null): mixed
     {
@@ -114,5 +114,22 @@ class Options
 
         // Returns a default option as a fallback.
         return $defaultOption;
+    }
+
+    /**
+     * Getter for theme options by filter name.
+     *
+     * This method relies on `apply_filters()`, defined in getOptionByFilter().
+     * Calls `apply_filters()` to fetch the filtered option, allowing for overrides via hooks.
+     *
+     * @param  string  $filter
+     * @param  mixed|null  $defaultOption
+     *
+     * @return mixed The filtered option value.
+     * @since 1.0.3
+     */
+    public static function get(string $filter, mixed $defaultOption = null): mixed
+    {
+        return apply_filters($filter, $defaultOption);
     }
 }

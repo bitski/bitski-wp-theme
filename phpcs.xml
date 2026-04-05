@@ -2,7 +2,7 @@
 <ruleset name="bitski-wp-theme">
     <description>PSR-12 coding standards for bitski-wp-theme</description>
 
-    <!-- Globale Argumente -->
+    <!-- Global arguments -->
     <arguments>
         <arg name="encoding" value="utf-8"/>
         <arg name="tab-width" value="4"/>
@@ -11,10 +11,10 @@
         <arg name="parallel" value="4"/>
     </arguments>
 
-    <!-- Dateien zum Checken -->
+    <!-- Files to check -->
     <file>.</file>
 
-    <!-- WordPress Standards -->
+    <!-- PSR-12 standards -->
     <rule ref="PSR12"/>
 
     <exclude-pattern>vendor/*</exclude-pattern>
