@@ -17,34 +17,34 @@ class Options
     public function init(): void
     {
         $this->registerCssClassFilters();   // CSS classes options filters.
-        $this->registerOptionFilters();       // Theme options filters.
+        $this->registerOptionFilters();     // Theme options filters.
     }
 
     /**
-     * Registers CSS classes options filters.
+     * Registers CSS class options filters.
      */
     protected function registerCssClassFilters(): void
     {
         foreach (Config::$classes as $filter => $configClasses) {
-            add_filter($filter, function ($defaultClasses = '', $merge = true) use ($filter) {
+            add_filter($filter, function ($localClasses = '', $merge = true) use ($filter) {
                 // Returns classes as a space-separated string.
-                return $this->getClassesByFilter($filter, $defaultClasses, $merge);
+                return $this->getClassesByFilter($filter, $localClasses, $merge);
             }, 10, 2);
         }
     }
 
     /**
      * Getter for CSS classes by filter name.
-     * Returns a space-separated string, merging config and default classes if $merge is true.
-     * Otherwise, returns default classes only.
+     * Returns a space-separated string, merging config and local classes if $merge is true.
+     * Otherwise, returns local classes only.
      *
      * @param  string  $filter
-     * @param  array  $defaultClasses
+     * @param  array  $localClasses
      * @param  bool  $merge
      *
      * @return string
      */
-    public function getClassesByFilter(string $filter, array $defaultClasses = [], bool $merge = true): string
+    public function getClassesByFilter(string $filter, array $localClasses = [], bool $merge = true): string
     {
         // Get config classes if they're set and not empty.
         $configClasses = [];
@@ -52,21 +52,21 @@ class Options
             $configClasses = Config::$classes[$filter];
         }
 
-        // Ensure $defaultClasses is an array.
-        if ( ! is_array($defaultClasses)) {
-            $defaultClasses = [];
+        // Ensure $localClasses is an array.
+        if ( ! is_array($localClasses)) {
+            $localClasses = [];
         }
 
-        // If the $merge parameter is set to true, merge config classes with default classes.
+        // If the $merge parameter is set to true, merge config classes with local classes.
         // Returns merged classes as a space-separated string.
         if ($merge) {
-            $merged_classes = array_filter(array_unique(array_merge($configClasses, $defaultClasses)));
+            $merged_classes = array_filter(array_unique(array_merge($configClasses, $localClasses)));
 
             return implode(' ', $merged_classes);
         }
 
-        // Returns default classes only as a space-separated string.
-        return implode(' ', $defaultClasses);
+        // Returns local classes only as a space-separated string.
+        return implode(' ', $localClasses);
     }
 
     /**
@@ -75,9 +75,9 @@ class Options
     protected function registerOptionFilters(): void
     {
         foreach (Config::$options as $filter => $configOption) {
-            add_filter($filter, function ($defaultOption = null) use ($filter) {
-                // Returns the option value or the default option if set.
-                return $this->getOptionByFilter($filter, $defaultOption);
+            add_filter($filter, function ($localOverride = null) use ($filter) {
+                // Returns the config option value or the local option if set.
+                return $this->getOptionByFilter($filter, $localOverride);
             });
         }
     }
@@ -85,25 +85,25 @@ class Options
     /**
      * Getter for theme options by filter name.
      *
-     * Returns the default option if it is explicitly set (not null) and valid.
+     * Returns the local option if it is explicitly set (not null) and valid.
      * Otherwise, checks global Config options.
      *
      * @param  string  $filter
-     * @param  mixed|null  $defaultOption  (default: null, for a fallback to global config option)
+     * @param  mixed|null  $localOverride  (default: null, for a fallback to global config option)
      *
      * @return mixed The filtered option value.
      */
-    public function getOptionByFilter(string $filter, mixed $defaultOption = null): mixed
+    public function getOptionByFilter(string $filter, mixed $localOverride = null): mixed
     {
-        // Returns a default option if it is explicitly set (not null).
-        // Returns a default option if it is boolean or integer,
+        // Returns a local option if it is explicitly set (not null).
+        // Returns a local option if it is boolean or integer,
         // or if it is set and neither an empty string nor an empty array.
-        if ($defaultOption !== null) {
-            if (is_bool($defaultOption)
-                || is_int($defaultOption)
-                || ($defaultOption !== ''
-                    && ! (is_array($defaultOption) && empty($defaultOption)))) {
-                return $defaultOption;
+        if ($localOverride !== null) {
+            if (is_bool($localOverride)
+                || is_int($localOverride)
+                || ($localOverride !== ''
+                    && ! (is_array($localOverride) && empty($localOverride)))) {
+                return $localOverride;
             }
         }
 
@@ -112,8 +112,8 @@ class Options
             return Config::$options[$filter];
         }
 
-        // Returns a default option as a fallback.
-        return $defaultOption;
+        // Returns a local option as a fallback.
+        return $localOverride;
     }
 
     /**
@@ -123,13 +123,13 @@ class Options
      * Calls `apply_filters()` to fetch the filtered option, allowing for overrides via hooks.
      *
      * @param  string  $filter
-     * @param  mixed|null  $defaultOption
+     * @param  mixed|null  $localOverride
      *
      * @return mixed The filtered option value.
      * @since 1.0.3
      */
-    public static function get(string $filter, mixed $defaultOption = null): mixed
+    public static function get(string $filter, mixed $localOverride = null): mixed
     {
-        return apply_filters($filter, $defaultOption);
+        return apply_filters($filter, $localOverride);
     }
 }
