@@ -2,7 +2,9 @@
 
 /** Centralized theme configuration class.
  *
- * Serves as a centralized data provider for theme options and CSS classes.
+ * Provides global theme options and CSS class mappings.
+ * Use `Options::get()` within theme classes,
+ * or `apply_filters()` within templates to retrieve values.
  *
  * @since 0.16.4
  */
@@ -12,12 +14,17 @@ namespace BitskiWPTheme\theme;
 class Config
 {
     /**
-     * Centralized array to manage theme options.
-     * Key: option name, Value: option value
-     * Usage: apply_filters('option-name', 'default-value')
-     */
+     * Global theme options.
+     *
+     * Key: option name / filter name
+     * Value: global option value
+     *
+     * Usage:
+     * - Theme core: Options::get('option-name', 'local-override-value')
+     * - Templates: apply_filters('option-name', 'local-override-value')
+ */
     public static array $options = [
-        // Example: 'option-name' => 'default-value'
+        // Example: 'option-name/filter-name' => 'global-value'
 
         // Loading options
         'bitski-wp-theme/option/load-fontawesome'                      => true,
@@ -73,9 +80,12 @@ class Config
     ];
 
     /**
-     * Centralized array to manage CSS classes for various theme components.
-     * Key: filter name, Value: array of default classes
-     * Usage: apply_filters('filter-name', 'default-classes')
+     * Global CSS class mappings.
+     *
+     * Key: filter name
+     * Value: array of global CSS classes
+     *
+     * Usage: apply_filters('filter-name', ['local-class'])
      */
     public static array $classes = [
         // Example: 'filter-name' => [ 'class1', 'class2' ]
@@ -88,6 +98,7 @@ class Config
 
     /**
      * Intentionally left empty.
+     *
      * Config is a static data provider.
      */
     public function init(): void
