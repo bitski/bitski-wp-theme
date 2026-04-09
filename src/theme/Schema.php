@@ -79,8 +79,8 @@ class Schema
      */
     protected function getEntitySchema(): array
     {
-        $entityType = apply_filters('bitski-wp-theme/option/schema/entity/type', null);
-        $logoUrl    = get_theme_file_uri(apply_filters('bitski-wp-theme/option/schema/entity/logo-path', null));
+        $entityType = Options::get('bitski-wp-theme/option/schema/entity/type');
+        $logoUrl    = get_theme_file_uri(Options::get('bitski-wp-theme/option/schema/entity/logo-path'));
 
         // Sets default entity type to Organization.
         if ($entityType !== 'Person') {

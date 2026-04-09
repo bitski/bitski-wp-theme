@@ -13,6 +13,8 @@
 
 namespace BitskiWPTheme\forms;
 
+use BitskiWPTheme\theme\Options;
+
 class FormHandler
 {
     /**
@@ -70,7 +72,7 @@ class FormHandler
         // Anti-spam: Time-based check.
         // To protect against bots.
         // If the form was submitted less than 5 seconds ago, redirects back to the contact page.
-        $forms_antispam_delay = apply_filters('bitski-wp-theme/option/forms/general/antispam-delay', null);
+        $forms_antispam_delay = Options::get('bitski-wp-theme/option/forms/general/antispam-delay');
 
         if (isset($_SESSION['form_contact_load_time']) &&
             (time() - $_SESSION['form_contact_load_time']) < $forms_antispam_delay) {
@@ -246,12 +248,12 @@ class FormHandler
      */
     protected function sendFormContactEmail(): bool
     {
-        $to         = apply_filters(
+        $to         = Options::get(
             'bitski-wp-theme/option/forms/contact/recipient-email',
             get_option('admin_email')
         );
-        $from_email = apply_filters('bitski-wp-theme/option/forms/contact/from-email', get_option('admin_email'));
-        $from_name  = apply_filters('bitski-wp-theme/option/forms/contact/from-name', get_bloginfo('name'));
+        $from_email = Options::get('bitski-wp-theme/option/forms/contact/from-email', get_option('admin_email'));
+        $from_name  = Options::get('bitski-wp-theme/option/forms/contact/from-name', get_bloginfo('name'));
         $subject    = sprintf(
             __('Neue Kontaktanfrage von %s', 'bitski-wp-theme'),
             $this->sanitized_form_data['contact_name']

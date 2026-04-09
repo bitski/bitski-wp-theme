@@ -66,7 +66,7 @@ class Hooks
         }
 
         // Sets a theme option for posts per page.
-        $posts_per_page = apply_filters('bitski-wp-theme/option/archive/posts-per-page', null);
+        $posts_per_page = Options::get('bitski-wp-theme/option/archive/posts-per-page');
         $query->set('posts_per_page', $posts_per_page);
     }
 
@@ -77,7 +77,7 @@ class Hooks
      */
     public function outputSvgSprite(): void
     {
-        if (apply_filters('bitski-wp-theme/option/load-bootstrap-icons-sprite', true)) {
+        if (Options::get('bitski-wp-theme/option/load-bootstrap-icons-sprite')) {
             $spritePath = get_template_directory().'/assets/svg/bootstrap-icons.svg';
             if (file_exists($spritePath)) {
                 echo file_get_contents($spritePath);

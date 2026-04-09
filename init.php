@@ -69,7 +69,7 @@ foreach ($bootstrap_classes as $class) {
  * Instantiates and initializes conditional classes based on theme option filters.
  */
 foreach ($conditional_class_map as $filter => $class) {
-    if (apply_filters($filter, null)) {
+    if (\BitskiWPTheme\theme\Options::get($filter)) {
         try {
             $instance = new $class();
             if (method_exists($instance, 'init')) {

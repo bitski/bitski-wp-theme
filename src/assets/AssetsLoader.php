@@ -7,6 +7,8 @@
 
 namespace BitskiWPTheme\assets;
 
+use BitskiWPTheme\theme\Options;
+
 class AssetsLoader
 {
     /**
@@ -43,7 +45,7 @@ class AssetsLoader
         );
 
         // Fontawesome
-        if (apply_filters('bitski-wp-theme/option/load-fontawesome', true)) {
+        if (Options::get('bitski-wp-theme/option/load-fontawesome')) {
             wp_enqueue_style(
                 'fontawesome',
                 $theme_uri.'/assets/fonts/fontawesome/css/all.min.css',

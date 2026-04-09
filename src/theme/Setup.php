@@ -20,7 +20,7 @@ class Setup
         add_action('after_setup_theme', [$this, 'themeSupport']);
         add_action('after_setup_theme', [$this, 'loadTextdomain']);
         add_action('after_setup_theme', [$this, 'registerNavMenus']);
-        if ( ! apply_filters('bitski-wp-theme/option/load-emojis', null)) {
+        if ( ! Options::get('bitski-wp-theme/option/load-emojis')) {
             add_action('after_setup_theme', [$this, 'disableEmojis']);
         }
 
@@ -124,7 +124,7 @@ class Setup
         }
 
         // Checks if current page is in the option array of pages using sessions.
-        $pages_using_session_ids = apply_filters('bitski-wp-theme/option/pages/using-session/ids', []);
+        $pages_using_session_ids = Options::get('bitski-wp-theme/option/pages/using-session/ids');
         foreach ($pages_using_session_ids as $id) {
             if (is_page($id)) {
                 session_start();
