@@ -26,6 +26,15 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
  *
  * Core and feature classes that are initialized unconditionally.
  *
+ * Note: The order of the classes in this array determines the initialization order.
+ * Classes earlier in the array will be initialized first.
+ * Initialization order:
+ * - Config         → base configuration
+ * - Options        → depends on Config
+ * - Setup          → registers core WordPress features
+ * - Hooks          → attaches runtime hooks
+ * - AssetsLoader   → loads theme assets
+ *
  * @var array $bootstrap_classes
  */
 $bootstrap_classes = [
@@ -68,8 +77,8 @@ foreach ($bootstrap_classes as $class) {
 /**
  * Instantiates and initializes conditional classes based on theme option filters.
  */
-foreach ($conditional_class_map as $filter => $class) {
-    if (\BitskiWPTheme\theme\Options::get($filter)) {
+foreach ($conditional_class_map as $option_key => $class) {
+    if ((bool)\BitskiWPTheme\theme\Options::get($option_key)) {
         try {
             $instance = new $class();
             if (method_exists($instance, 'init')) {
