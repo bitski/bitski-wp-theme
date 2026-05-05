@@ -2,7 +2,11 @@
 /**
  * Theme REST API gateway.
  *
- * Registers and handles REST API routes.
+ * Registers REST API routes for the theme.
+ *
+ * Routes are registered conditionally based on the theme config options.
+ * Each route is registered with a callback function that handles the request.
+ * The callback function is responsible for fetching and returning the data needed for the route.
  *
  * @since 1.0.3
  */
@@ -29,21 +33,24 @@ class Api
      */
     public function registerRestRoutes(): void
     {
-        register_rest_route('bitski-wp-theme/v1', '/posts/load-more', [
-            'methods'             => 'GET',
-            'callback'            => [$this, 'getPostsByType'],
-            'permission_callback' => '__return_true',
-            'args'                => [
-                'offset'    => [
-                    'type'    => 'integer',
-                    'default' => 0
-                ],
-                'post_type' => [
-                    'type'    => 'string',
-                    'default' => 'post'
-                ]
-            ]
-        ]);
+        // Registers the 'load-more' REST route if the feature is enabled in config options.
+        if (Options::get('bitski-wp-theme/option/archive/load-more')) {
+            register_rest_route('bitski-wp-theme/v1', '/posts/load-more', [
+                    'methods'             => 'GET',
+                    'callback'            => [$this, 'getPostsByType'],
+                    'permission_callback' => '__return_true',
+                    'args'                => [
+                            'offset'    => [
+                                    'type'    => 'integer',
+                                    'default' => 0
+                            ],
+                            'post_type' => [
+                                    'type'    => 'string',
+                                    'default' => 'post'
+                            ]
+                    ]
+            ]);
+        }
         // Add additional endpoints here as needed.
     }
 
@@ -68,11 +75,11 @@ class Api
         $found_posts = (int)($request->get_param('found_posts') ?: 0);
 
         $args = [
-            'post_type'           => $post_type,
-            'post_status'         => 'publish',
-            'ignore_sticky_posts' => true,
-            'posts_per_page'      => $posts_per_load_more,
-            'offset'              => $offset,
+                'post_type'           => $post_type,
+                'post_status'         => 'publish',
+                'ignore_sticky_posts' => true,
+                'posts_per_page'      => $posts_per_load_more,
+                'offset'              => $offset,
         ];
 
         $custom_query = new WP_Query($args);
@@ -98,9 +105,9 @@ class Api
 
         // Returns HTML, updated offset, and has_more flag in REST response.
         return new WP_REST_Response([
-            'posts_html' => $posts_html,
-            'offset'     => $offset + count($posts_html),
-            'has_more'   => $offset + count($posts_html) < $found_posts,
+                'posts_html' => $posts_html,
+                'offset'     => $offset + count($posts_html),
+                'has_more'   => $offset + count($posts_html) < $found_posts,
         ]);
     }
 }

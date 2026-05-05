@@ -67,6 +67,9 @@ class Config
         'bitski-wp-theme/option/forms/contact/from-email'              => 'info@example.com',
         'bitski-wp-theme/option/forms/contact/from-name'               => 'Website Kontakt',
 
+        // REST API options
+        'bitski-wp-theme/option/rest/api/load'                         => true,
+
         // Progressive web app (PWA) options
         'bitski-wp-theme/option/pwa/load'                              => false,
         'bitski-wp-theme/option/pwa/theme-color'                       => '#ffffff',
