@@ -31,12 +31,12 @@ class AssetsLoader
         $theme_uri     = get_template_directory_uri();
         $theme_dir     = get_template_directory();
 
-        // Uses minified main.js if it exists, otherwise main.js.
+        // Determines main JS file, prefers minified version if available.
         $theme_main_script = file_exists($theme_dir.'/assets/js/main.min.js') ? 'main.min.js' : 'main.js';
 
         // CSS
         //
-        // Theme main style
+        // Main theme CSS
         wp_enqueue_style(
             'bitski-wp-theme-style',
             $theme_uri.'/assets/css/main.css',
@@ -44,7 +44,7 @@ class AssetsLoader
             $theme_version
         );
 
-        // Fontawesome
+        // Optional Fontawesome
         if (Options::get('bitski-wp-theme/option/load-fontawesome')) {
             wp_enqueue_style(
                 'fontawesome',
@@ -56,15 +56,27 @@ class AssetsLoader
 
         // Scripts
         //
-        // Enqueues the main theme script as an ES6 JavaScript module.
-        // This will load main.js with the correct type="module" attribute,
-        // enabling native module imports within main.js (e.g., importing theme.js, bootstrap.bundle.min.js).
+        // Bootstrap JS
+        // Classic bundle for Data-API features.
+        // Loads Bootstrap first so Data-API features are available globally.
+        wp_enqueue_script(
+            'bitski-wp-theme-bootstrap-script',
+            $theme_uri.'/assets/js/lib/bootstrap.bundle.min.js',
+            [],
+            'v5.3.8',
+            true
+        );
+
+        // Main theme JS (ESM module)
         // Requires WordPress 6.5 or higher for native wp_enqueue_script_module() support.
         wp_enqueue_script_module(
             'bitski-wp-theme-main-script',
             $theme_uri.'/assets/js/'.$theme_main_script,
             [],
-            $theme_version
+            $theme_version,
+            [
+                'in_footer' => true,
+            ]
         );
     }
 
