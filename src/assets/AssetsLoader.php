@@ -27,28 +27,28 @@ class AssetsLoader
      */
     public function enqueueAssets(): void
     {
-        $theme_version = wp_get_theme()->get('Version');
-        $theme_uri     = get_template_directory_uri();
-        $theme_dir     = get_template_directory();
+        $themeVersion = wp_get_theme()->get('Version');
+        $themeUri     = get_template_directory_uri();
+        $themeDir     = get_template_directory();
 
         // Determines main JS file, prefers minified version if available.
-        $theme_main_script = file_exists($theme_dir.'/assets/js/main.min.js') ? 'main.min.js' : 'main.js';
+        $themeMainScript = file_exists($themeDir . '/assets/js/main.min.js') ? 'main.min.js' : 'main.js';
 
         // CSS
         //
         // Main theme CSS
         wp_enqueue_style(
             'bitski-wp-theme-style',
-            $theme_uri.'/assets/css/main.css',
+            $themeUri . '/assets/css/main.css',
             [],
-            $theme_version
+            $themeVersion
         );
 
         // Optional Fontawesome
         if (Options::get('bitski-wp-theme/option/load-fontawesome')) {
             wp_enqueue_style(
                 'fontawesome',
-                $theme_uri.'/assets/fonts/fontawesome/css/all.min.css',
+                $themeUri . '/assets/fonts/fontawesome/css/all.min.css',
                 [],
                 '7.0.1'
             );
@@ -61,7 +61,7 @@ class AssetsLoader
         // Loads Bootstrap first so Data-API features are available globally.
         wp_enqueue_script(
             'bitski-wp-theme-bootstrap-script',
-            $theme_uri.'/assets/js/lib/bootstrap.bundle.min.js',
+            $themeUri . '/assets/js/lib/bootstrap.bundle.min.js',
             [],
             'v5.3.8',
             true
@@ -71,9 +71,9 @@ class AssetsLoader
         // Requires WordPress 6.5 or higher for native wp_enqueue_script_module() support.
         wp_enqueue_script_module(
             'bitski-wp-theme-main-script',
-            $theme_uri.'/assets/js/'.$theme_main_script,
+            $themeUri . '/assets/js/' . $themeMainScript,
             [],
-            $theme_version,
+            $themeVersion,
             [
                 'in_footer' => true,
             ]
@@ -87,17 +87,17 @@ class AssetsLoader
      */
     public function enqueueBlockEditorAssets(): void
     {
-        $theme_version = wp_get_theme()->get('Version');
-        $theme_uri     = get_template_directory_uri();
+        $themeVersion = wp_get_theme()->get('Version');
+        $themeUri     = get_template_directory_uri();
 
         // CSS
         //
         // Block editor style
         wp_enqueue_style(
             'bitski-wp-theme-block-editor-style',
-            $theme_uri.'/assets/css/editor.css',
+            $themeUri . '/assets/css/editor.css',
             [],
-            $theme_version
+            $themeVersion
         );
     }
 }
