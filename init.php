@@ -15,10 +15,10 @@ if ( ! defined('ABSPATH')) {
  *
  * @since 0.2.0
  */
-if (file_exists(__DIR__.'/vendor/autoload.php')) {
-    require_once __DIR__.'/vendor/autoload.php';
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require_once __DIR__ . '/vendor/autoload.php';
 } else {
-    error_log('Autoloader not found: '.__DIR__.'/vendor/autoload.php');
+    error_log('Autoloader not found: ' . __DIR__ . '/vendor/autoload.php');
 }
 
 /**
@@ -35,9 +35,9 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
  * - Hooks          → attaches runtime hooks
  * - AssetsLoader   → loads theme assets
  *
- * @var array $bootstrap_classes
+ * @var array $bootstrapClasses
  */
-$bootstrap_classes = [
+$bootstrapClasses = [
     \BitskiWPTheme\theme\Config::class,
     \BitskiWPTheme\theme\Options::class,
     \BitskiWPTheme\theme\Setup::class,
@@ -51,9 +51,9 @@ $bootstrap_classes = [
  * Each entry maps a filter name to the class that should be instantiated.
  * Filter keys enable/disable optional theme features via theme options.
  *
- * @var array $conditional_class_map
+ * @var array $conditionalClassMap
  */
-$conditional_class_map = [
+$conditionalClassMap = [
     'bitski-wp-theme/option/forms/general/load' => \BitskiWPTheme\forms\FormHandler::class,
     'bitski-wp-theme/option/rest/api/load'      => \BitskiWPTheme\rest\Api::class,
     'bitski-wp-theme/option/pwa/load'           => \BitskiWPTheme\theme\PWA::class,
@@ -63,29 +63,29 @@ $conditional_class_map = [
 /**
  * Instantiates and initializes core and feature classes unconditionally.
  */
-foreach ($bootstrap_classes as $class) {
+foreach ($bootstrapClasses as $class) {
     try {
         $instance = new $class();
         if (method_exists($instance, 'init')) {
             $instance->init();
         }
     } catch (\Throwable $error) {
-        error_log($class.' Error: '.$error->getMessage());
+        error_log($class . ' Error: ' . $error->getMessage());
     }
 }
 
 /**
  * Instantiates and initializes conditional classes based on theme option filters.
  */
-foreach ($conditional_class_map as $option_key => $class) {
-    if (\BitskiWPTheme\theme\Options::get($option_key)) {
+foreach ($conditionalClassMap as $optionKey => $class) {
+    if (\BitskiWPTheme\theme\Options::get($optionKey)) {
         try {
             $instance = new $class();
             if (method_exists($instance, 'init')) {
                 $instance->init();
             }
         } catch (\Throwable $error) {
-            error_log($class.' Error: '.$error->getMessage());
+            error_log($class . ' Error: ' . $error->getMessage());
         }
     }
 }

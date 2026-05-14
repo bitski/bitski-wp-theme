@@ -22,7 +22,7 @@ class FormHandler
      *
      * @since 0.8.12
      */
-    protected array $sanitized_form_data = [];
+    protected array $sanitizedFormData = [];
 
     /**
      * Initializes form handler.
@@ -72,17 +72,17 @@ class FormHandler
         // Anti-spam: Time-based check.
         // To protect against bots.
         // If the form was submitted less than 5 seconds ago, redirects back to the contact page.
-        $forms_antispam_delay = Options::get('bitski-wp-theme/option/forms/general/antispam-delay');
+        $formsAntispamDelay = Options::get('bitski-wp-theme/option/forms/general/antispam-delay');
 
         if (isset($_SESSION['form_contact_load_time']) &&
-            (time() - $_SESSION['form_contact_load_time']) < $forms_antispam_delay) {
+            (time() - $_SESSION['form_contact_load_time']) < $formsAntispamDelay) {
             $this->setFlashMessages(
                 sprintf(
                     __(
                         'Fehler: Bitte warten Sie %s Sekunden, bevor Sie das Formular erneut senden.',
                         'bitski-wp-theme'
                     ),
-                    $forms_antispam_delay
+                    $formsAntispamDelay
                 ),
                 'danger'
             );
@@ -192,13 +192,13 @@ class FormHandler
     protected function sanitizeFormContact(): void
     {
         if (isset($_POST['contact_name'])) {
-            $this->sanitized_form_data['contact_name'] = sanitize_text_field($_POST['contact_name']);
+            $this->sanitizedFormData['contact_name'] = sanitize_text_field($_POST['contact_name']);
         }
         if (isset($_POST['contact_email'])) {
-            $this->sanitized_form_data['contact_email'] = sanitize_email($_POST['contact_email']);
+            $this->sanitizedFormData['contact_email'] = sanitize_email($_POST['contact_email']);
         }
         if (isset($_POST['contact_message'])) {
-            $this->sanitized_form_data['contact_message'] = sanitize_textarea_field($_POST['contact_message']);
+            $this->sanitizedFormData['contact_message'] = sanitize_textarea_field($_POST['contact_message']);
         }
     }
 
@@ -211,33 +211,33 @@ class FormHandler
      */
     protected function validateFormContact(): bool
     {
-        $is_valid = true;
+        $isValid = true;
 
-        $name    = isset($this->sanitized_form_data['contact_name']) ? trim(
-            $this->sanitized_form_data['contact_name']
+        $name    = isset($this->sanitizedFormData['contact_name']) ? trim(
+            $this->sanitizedFormData['contact_name']
         ) : '';
-        $email   = isset($this->sanitized_form_data['contact_email']) ? trim(
-            $this->sanitized_form_data['contact_email']
+        $email   = isset($this->sanitizedFormData['contact_email']) ? trim(
+            $this->sanitizedFormData['contact_email']
         ) : '';
-        $message = isset($this->sanitized_form_data['contact_message']) ? trim(
-            $this->sanitized_form_data['contact_message']
+        $message = isset($this->sanitizedFormData['contact_message']) ? trim(
+            $this->sanitizedFormData['contact_message']
         ) : '';
 
         // Checks for required fields, set flash message if any field is empty or invalid
         if ($name === '') {
             $this->setFlashMessages(__('Bitte geben Sie einen Namen ein.', 'bitski-wp-theme'), 'danger');
-            $is_valid = false;
+            $isValid = false;
         }
         if ($email === '' || ! is_email($email)) {
             $this->setFlashMessages(__('Bitte geben Sie eine E-Mail-Adresse ein.', 'bitski-wp-theme'), 'danger');
-            $is_valid = false;
+            $isValid = false;
         }
         if ($message === '') {
             $this->setFlashMessages(__('Bitte geben Sie eine Nachricht ein.', 'bitski-wp-theme'), 'danger');
-            $is_valid = false;
+            $isValid = false;
         }
 
-        return $is_valid;
+        return $isValid;
     }
 
     /**
@@ -248,26 +248,26 @@ class FormHandler
      */
     protected function sendFormContactEmail(): bool
     {
-        $to         = Options::get(
+        $to        = Options::get(
             'bitski-wp-theme/option/forms/contact/recipient-email',
             get_option('admin_email')
         );
-        $from_email = Options::get('bitski-wp-theme/option/forms/contact/from-email', get_option('admin_email'));
-        $from_name  = Options::get('bitski-wp-theme/option/forms/contact/from-name', get_bloginfo('name'));
-        $subject    = sprintf(
+        $fromEmail = Options::get('bitski-wp-theme/option/forms/contact/from-email', get_option('admin_email'));
+        $fromName  = Options::get('bitski-wp-theme/option/forms/contact/from-name', get_bloginfo('name'));
+        $subject   = sprintf(
             __('Neue Kontaktanfrage von %s', 'bitski-wp-theme'),
-            $this->sanitized_form_data['contact_name']
+            $this->sanitizedFormData['contact_name']
         );
-        $message    = sprintf(
+        $message   = sprintf(
             __("Name: %s\nE-Mail: %s\n\nNachricht:\n%s", 'bitski-wp-theme'),
-            $this->sanitized_form_data['contact_name'],
-            $this->sanitized_form_data['contact_email'],
-            $this->sanitized_form_data['contact_message']
+            $this->sanitizedFormData['contact_name'],
+            $this->sanitizedFormData['contact_email'],
+            $this->sanitizedFormData['contact_message']
         );
-        $headers    = [
+        $headers   = [
             'Content-Type: text/plain; charset=UTF-8',
-            sprintf('From: %s <%s>', $from_name, $from_email),
-            'Reply-To: '.$this->sanitized_form_data['contact_email']
+            sprintf('From: %s <%s>', $fromName, $fromEmail),
+            'Reply-To: ' . $this->sanitizedFormData['contact_email']
         ];
 
         return wp_mail($to, $subject, $message, $headers);

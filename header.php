@@ -126,6 +126,6 @@ echo apply_filters('bitski-wp-theme/class/header', ['text-dark'], false); ?>">
                 <?php
                 get_template_part('templates/components/search/form'); ?>            </div>
         </div>
-    <?php
+        <?php
     } ?>
 </header>

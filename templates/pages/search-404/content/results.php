@@ -11,8 +11,8 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$found_posts    = $wp_query->found_posts;
-$posts_per_page = get_option('posts_per_page');
+$foundPosts   = $wp_query->found_posts;
+$postsPerPage = get_option('posts_per_page');
 ?>
 
 <!-- Content body: search results list -->
@@ -26,11 +26,11 @@ $posts_per_page = get_option('posts_per_page');
                             _n(
                                     '%d Treffer gefunden',
                                     '%d Treffer gefunden',
-                                    $found_posts,
+                                    $foundPosts,
                                     'bitski-wp-theme'
                             )
                     ),
-                    $found_posts
+                    $foundPosts
             );
             ?>
         </h2>
@@ -43,14 +43,14 @@ $posts_per_page = get_option('posts_per_page');
         while (have_posts()) {
             the_post(); ?>
             <div class="col-12<?php
-            if ($found_posts > 1 && $posts_per_page > 1) { ?>
+            if ($foundPosts > 1 && $postsPerPage > 1) { ?>
                     col-lg-6
                 <?php
             } ?>">
                 <?php
                 get_template_part('templates/components/post/card'); ?>
             </div>
-        <?php
+            <?php
         } ?>
     </div>
     <?php

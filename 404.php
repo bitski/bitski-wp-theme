@@ -21,7 +21,7 @@ echo apply_filters('bitski-wp-theme/class/container', ['container-xl'], true); ?
         <h1 class="entry-title"><?php
             printf(
                     esc_html__('404 – Fehler bei Aufruf der Seite: %s', 'bitski-wp-theme'),
-                    '<span class="text-body-secondary">'.esc_html('/'.$wp->request).'</span>'
+                    '<span class="text-body-secondary">' . esc_html('/' . $wp->request) . '</span>'
             ) ?></h1>
     </header>
 

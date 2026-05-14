@@ -27,7 +27,7 @@ echo apply_filters('bitski-wp-theme/class/container', ['container-xl'], true); ?
         <h1 class="entry-title"><?php
             printf(
                     esc_html__('Suchergebnisse für: %s', 'bitski-wp-theme'),
-                    '<span class="text-body-secondary">'.get_search_query().'</span>'
+                    '<span class="text-body-secondary">' . get_search_query() . '</span>'
             ) ?></h1>
     </header>
 

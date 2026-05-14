@@ -13,34 +13,34 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$is_submitted = false;
-$is_valid     = true;
+$isSubmitted = false;
+$isValid     = true;
 
 // Checks for flash messages and display them if available.
 if ( ! empty($_SESSION['flash_messages'])) {
-    $is_submitted   = true;
-    $flash_messages = $_SESSION['flash_messages'];
+    $isSubmitted   = true;
+    $flashMessages = $_SESSION['flash_messages'];
 
-    foreach ($flash_messages as $flash_message) {
-        $flash_message_type = $flash_message['type'];
-        $flash_message_text = $flash_message['text'];
+    foreach ($flashMessages as $flashMessage) {
+        $flashMessageType = $flashMessage['type'];
+        $flashMessageText = $flashMessage['text'];
 
         // Sets the form validation status based on the flash message type.
-        if ($flash_message_type === 'danger') {
-            $is_valid = false;
+        if ($flashMessageType === 'danger') {
+            $isValid = false;
         } ?>
         <div class="alert alert-<?php
-        echo esc_attr($flash_message_type); ?>" role="alert">
+        echo esc_attr($flashMessageType); ?>" role="alert">
             <?php
-            echo esc_html__($flash_message_text, 'bitski-wp-theme'); ?>
+            echo esc_html__($flashMessageText, 'bitski-wp-theme'); ?>
         </div>
-    <?php
+        <?php
     }
     unset($_SESSION['flash_messages']);
 }
 
 // Displays the contact form only if it hasn't been submitted yet or if the form is invalid.
-if ( ! $is_submitted || $is_valid === false) { ?>
+if ( ! $isSubmitted || $isValid === false) { ?>
     <form method="post" class="contact-form" action="<?php
     echo esc_url(get_permalink()); ?>">
         <?php
@@ -130,5 +130,5 @@ if ( ! $is_submitted || $is_valid === false) { ?>
             echo esc_html__('Nachricht senden', 'bitski-wp-theme'); ?>
         </button>
     </form>
-<?php
+    <?php
 }

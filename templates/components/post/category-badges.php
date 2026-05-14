@@ -11,7 +11,7 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$aria_label_nav = __('Kategorienavigation des Beitrages', 'bitski-wp-theme');
+$ariaLabelNav = __('Kategorienavigation des Beitrages', 'bitski-wp-theme');
 
 // Get the related categories.
 $categories = get_the_category();
@@ -23,11 +23,11 @@ if (empty($categories)) {
 
 <!-- Category badges -->
 <nav class="category-badges" aria-label="<?php
-echo esc_attr__($aria_label_nav, 'bitski-wp-theme'); ?>">
+echo esc_attr__($ariaLabelNav, 'bitski-wp-theme'); ?>">
     <ul class="list-unstyled d-flex flex-wrap gap-2"><?php
-        $category_names = [];
+        $categoryNames = [];
         foreach ($categories as $category) {
-            $category_names[] = $category->name; ?>
+            $categoryNames[] = $category->name; ?>
             <li class="">
                 <a href="<?php
                 echo esc_url(get_category_link($category->term_id)); ?>"
@@ -36,7 +36,7 @@ echo esc_attr__($aria_label_nav, 'bitski-wp-theme'); ?>">
                         echo esc_html($category->name); ?></span>
                 </a>
             </li>
-        <?php
+            <?php
         } ?>
     </ul>
 </nav>

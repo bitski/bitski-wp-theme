@@ -22,7 +22,7 @@ class Config
      * Usage:
      * - Theme core: Options::get('option-name', 'local-override-value')
      * - Templates: apply_filters('option-name', 'local-override-value')
- */
+     */
     public static array $options = [
         // Example: 'option-name/filter-name' => 'global-value'
 

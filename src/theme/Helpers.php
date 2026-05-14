@@ -21,17 +21,17 @@ class Helpers
      */
     public static function getSvgIcon(string $iconName, array $args = []): string
     {
-        $class = 'icon icon-'.esc_attr($iconName).(! empty($args['class']) ? ' '.esc_attr($args['class']) : '');
+        $class = 'icon icon-' . esc_attr($iconName) . (! empty($args['class']) ? ' ' . esc_attr($args['class']) : '');
 
         // Fixed default size to 16x16, can be overridden via args.
-        $width = ! empty($args['width']) ? (int)$args['width'] : 16;
+        $width  = ! empty($args['width']) ? (int)$args['width'] : 16;
         $height = ! empty($args['height']) ? (int)$args['height'] : 16;
 
         // Returns SVG element with <use> referencing the icon.
-        return '<svg class="'.esc_attr(
+        return '<svg class="' . esc_attr(
                 $class
-            ).'" width="'.$width.'" height="'.$height.'" aria-hidden="true" focusable="false" role="img">'
-               .'<use href="#icon-'.esc_attr($iconName).'"></use>'
-               .'</svg>';
+            ) . '" width="' . $width . '" height="' . $height . '" aria-hidden="true" focusable="false" role="img">'
+               . '<use href="#icon-' . esc_attr($iconName) . '"></use>'
+               . '</svg>';
     }
 }

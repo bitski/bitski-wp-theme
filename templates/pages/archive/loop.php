@@ -12,46 +12,46 @@ if ( ! defined('ABSPATH')) {
 }
 
 if (have_posts()) {
-    $found_posts    = $wp_query->found_posts;
-    $posts_per_page = apply_filters('bitski-wp-theme/option/archive/posts-per-page', null);
-    $has_load_more  = (bool)apply_filters('bitski-wp-theme/option/archive/load-more', null);
-    if ($has_load_more) {
-        $spinner_delay = (int)apply_filters('bitski-wp-theme/option/archive/load-more/spinner-delay', null);
+    $foundPosts   = $wp_query->found_posts;
+    $postsPerPage = apply_filters('bitski-wp-theme/option/archive/posts-per-page', null);
+    $hasLoadMore  = (bool)apply_filters('bitski-wp-theme/option/archive/load-more', null);
+    if ($hasLoadMore) {
+        $spinnerDelay = (int)apply_filters('bitski-wp-theme/option/archive/load-more/spinner-delay', null);
     }
     ?>
     <!-- Content body: post list -->
     <section class="content-body row g-4<?php
-    if ($has_load_more || paginate_links()) {
+    if ($hasLoadMore || paginate_links()) {
         echo ' mb-4';
     } ?>"
              data-posts-per-page="<?php
-             echo esc_attr($posts_per_page); ?>"
+             echo esc_attr($postsPerPage); ?>"
              data-found-posts="<?php
-             echo esc_attr($found_posts); ?>"
+             echo esc_attr($foundPosts); ?>"
             <?php
-            if ($has_load_more) { ?>
+            if ($hasLoadMore) { ?>
                 data-spinner-delay="<?php
-                echo esc_attr($spinner_delay); ?>"
-            <?php
+                echo esc_attr($spinnerDelay); ?>"
+                <?php
             } ?>>
         <?php
         while (have_posts()) {
             the_post(); ?>
             <div class="col-12<?php
-            if ($found_posts > 1 && $posts_per_page > 1) { ?>
+            if ($foundPosts > 1 && $postsPerPage > 1) { ?>
                     col-lg-6
                 <?php
             } ?>">
                 <?php
                 get_template_part('templates/components/post/card'); ?>
             </div>
-        <?php
+            <?php
         } ?>
     </section>
     <?php
-    if ( ! $has_load_more) {
+    if ( ! $hasLoadMore) {
         get_template_part('templates/components/pagination');
-    } elseif ($found_posts > $posts_per_page) {
+    } elseif ($foundPosts > $postsPerPage) {
         get_template_part('templates/components/load-more/button');
     }
 } else { ?>
@@ -74,5 +74,5 @@ if (have_posts()) {
             get_template_part('templates/components/search/form', null, ['class' => 'mb-4']); ?>
         </div>
     </section>
-<?php
+    <?php
 } ?>

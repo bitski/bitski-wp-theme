@@ -19,14 +19,14 @@ if ( ! defined('ABSPATH')) {
         the_ID(); ?>" class="position-relative">
             <?php
             if (has_post_thumbnail()) {
-                $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
+                $thumbnailUrl = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
                 <header class="post-header">
                     <img class="img-fluid rounded mb-3" src="<?php
-                    echo esc_url($thumbnail_url); ?>"
+                    echo esc_url($thumbnailUrl); ?>"
                          alt="<?php
                          the_title_attribute(); ?>" loading="lazy">
                 </header>
-            <?php
+                <?php
             } ?>
             <div class="post-content">
                 <?php

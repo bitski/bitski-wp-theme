@@ -10,11 +10,11 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$display_labels = apply_filters('bitski-wp-theme/option/footer/contacts/display-labels', true);
-$tel            = apply_filters('bitski-wp-theme/option/footer/contacts/tel', '+1234567890');
-$mail           = apply_filters('bitski-wp-theme/option/footer/contacts/mail', 'info@example.com');
+$displayLabels = apply_filters('bitski-wp-theme/option/footer/contacts/display-labels', true);
+$tel           = apply_filters('bitski-wp-theme/option/footer/contacts/tel', '+1234567890');
+$mail          = apply_filters('bitski-wp-theme/option/footer/contacts/mail', 'info@example.com');
 
-$tel_href = preg_replace('/[^0-9+]/', '', $tel);
+$telHref = preg_replace('/[^0-9+]/', '', $tel);
 ?>
 
 <ul class="contacts list-unstyled mb-0 d-flex gap-2"
@@ -26,19 +26,19 @@ $tel_href = preg_replace('/[^0-9+]/', '', $tel);
         <li>
             <a class="tel-link nav-link px-1 py-1 py-md-0"
                href="tel:<?php
-               echo esc_attr($tel_href); ?>">
+               echo esc_attr($telHref); ?>">
                 <i class="fa-solid fa-phone" aria-hidden="true"></i>
                 <?php
-                if ($display_labels) { ?>
+                if ($displayLabels) { ?>
                     <span><?php
                         echo esc_html($tel); ?></span>
-                <?php
+                    <?php
                 } ?>
                 <span class="visually-hidden"><?php
                     echo esc_html($tel); ?></span>
             </a>
         </li>
-    <?php
+        <?php
     }
     if ( ! empty($mail)) { ?>
         <li>
@@ -47,15 +47,15 @@ $tel_href = preg_replace('/[^0-9+]/', '', $tel);
                echo esc_attr(antispambot($mail)); ?>">
                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 <?php
-                if ($display_labels) { ?>
+                if ($displayLabels) { ?>
                     <span><?php
                         echo esc_html(antispambot($mail)); ?></span>
-                <?php
+                    <?php
                 } ?>
                 <span class="visually-hidden"><?php
                     echo esc_html(antispambot($mail)); ?></span>
             </a>
         </li>
-    <?php
+        <?php
     } ?>
 </ul>

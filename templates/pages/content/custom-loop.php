@@ -11,7 +11,7 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$post_type = 'post';
+$postType = 'post';
 if (get_query_var('paged')) {
     $paged = get_query_var('paged');
 } elseif (get_query_var('page')) {
@@ -21,35 +21,35 @@ if (get_query_var('paged')) {
 }
 
 $args = [
-        'post_type'      => $post_type,
+        'post_type'      => $postType,
         'posts_per_page' => 1,
         'paged'          => $paged,
 ];
 
-$custom_query = new WP_Query($args);
+$customQuery = new WP_Query($args);
 
-if ($custom_query->have_posts()) {
-    $found_posts    = $custom_query->found_posts;
-    $max_num_pages  = $custom_query->max_num_pages;
-    $posts_per_page = $args['posts_per_page'];
+if ($customQuery->have_posts()) {
+    $foundPosts   = $customQuery->found_posts;
+    $maxNumPages  = $customQuery->max_num_pages;
+    $postsPerPage = $args['posts_per_page'];
     ?>
     <!-- Content body: post list -->
     <section class="content-body row g-4<?php
-    if ($max_num_pages > 1) {
+    if ($maxNumPages > 1) {
         echo ' mb-4';
     } ?>">
         <?php
-        while ($custom_query->have_posts()) {
-            $custom_query->the_post(); ?>
+        while ($customQuery->have_posts()) {
+            $customQuery->the_post(); ?>
             <div class="col-12<?php
-            if ($found_posts > 1 && $posts_per_page > 1) { ?>
+            if ($foundPosts > 1 && $postsPerPage > 1) { ?>
             col-lg-6
         <?php
             } ?>">
                 <?php
                 get_template_part('templates/components/post/card'); ?>
             </div>
-        <?php
+            <?php
         }
         wp_reset_postdata(); ?>
     </section>
@@ -58,7 +58,7 @@ if ($custom_query->have_posts()) {
             'templates/components/pagination',
             null,
             [
-                    'total'   => $max_num_pages,
+                    'total'   => $maxNumPages,
                     'current' => $paged,
             ]
     );

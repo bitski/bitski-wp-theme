@@ -25,7 +25,8 @@ class Hooks
      * Registers base hooks.
      */
     protected function registerBaseHooks(): void
-    {}
+    {
+    }
 
     /**
      * Registers functional hooks.
@@ -66,8 +67,8 @@ class Hooks
         }
 
         // Sets a theme option for posts per page.
-        $posts_per_page = Options::get('bitski-wp-theme/option/archive/posts-per-page');
-        $query->set('posts_per_page', $posts_per_page);
+        $postsPerPage = Options::get('bitski-wp-theme/option/archive/posts-per-page');
+        $query->set('posts_per_page', $postsPerPage);
     }
 
     /**
@@ -78,7 +79,7 @@ class Hooks
     public function outputSvgSprite(): void
     {
         if (Options::get('bitski-wp-theme/option/load-bootstrap-icons-sprite')) {
-            $spritePath = get_template_directory().'/assets/svg/bootstrap-icons.svg';
+            $spritePath = get_template_directory() . '/assets/svg/bootstrap-icons.svg';
             if (file_exists($spritePath)) {
                 echo file_get_contents($spritePath);
             }

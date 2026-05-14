@@ -32,12 +32,12 @@ echo esc_attr(
         get_template_part('templates/components/post/meta', null, ['context' => 'single']); ?>
         <?php
         if (has_post_thumbnail()) {
-            $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
+            $thumbnailUrl = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
             <img class="post-thumbnail img-fluid rounded mb-3" src="<?php
-            echo esc_url($thumbnail_url); ?>"
+            echo esc_url($thumbnailUrl); ?>"
                  alt="<?php
                  the_title_attribute(); ?>" loading="lazy">
-        <?php
+            <?php
         } ?>
     </header>
 
@@ -55,15 +55,15 @@ echo esc_attr(
     <?php
     ob_start();
     get_template_part('templates/components/post/navigation');
-    $post_navigation_content = ob_get_clean();
+    $postNavigationContent = ob_get_clean();
 
     // Only renders the content footer if there is content to display.
-    if ( ! empty(trim($post_navigation_content))) { ?>
+    if ( ! empty(trim($postNavigationContent))) { ?>
         <footer class="content-footer">
             <?php
-            echo $post_navigation_content; ?>
+            echo $postNavigationContent; ?>
         </footer>
-    <?php
+        <?php
     } ?>
 </main>
 

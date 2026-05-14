@@ -48,7 +48,7 @@ if ( ! defined('ABSPATH')) {
                     <?php
                     get_template_part('templates/components/socials'); ?>
                 </div>
-            <?php
+                <?php
             } ?>
         </div>
     </div>

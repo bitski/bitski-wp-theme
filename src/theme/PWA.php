@@ -27,10 +27,10 @@ class PWA
      */
     public function registerPWAManifest(): void
     {
-        $manifestUrl = get_template_directory_uri().'/manifest.json';
+        $manifestUrl = get_template_directory_uri() . '/manifest.json';
         $themeColor  = '#0d6efd';
-        echo '<link rel="manifest" href="'.esc_url($manifestUrl).'">';
-        echo '<meta name="theme-color" content="'.esc_attr($themeColor).'">';
+        echo '<link rel="manifest" href="' . esc_url($manifestUrl) . '">';
+        echo '<meta name="theme-color" content="' . esc_attr($themeColor) . '">';
     }
 
     /**
@@ -39,35 +39,35 @@ class PWA
     public function registerServiceWorker(): void
     { ?>
         <script>
-          const registerServiceWorker = async function () {
+          const registerServiceWorker = async function() {
             if ('serviceWorker' in navigator) {
               try {
-                const themeUri = '<?php echo esc_url(get_template_directory_uri()); ?>'
+                const themeUri = '<?php echo esc_url(get_template_directory_uri()); ?>';
                 const registration = await navigator.serviceWorker.register(
-                  `${themeUri}/sw.js`,
-                  {
-                    scope: `${themeUri}/`,
-                  }
-                )
+                    `${themeUri}/sw.js`,
+                    {
+                      scope: `${themeUri}/`,
+                    },
+                );
 
-                <?php if (WP_DEBUG) { ?>
-                    console.log('Service worker registered with scope:', registration.scope)
-                    if (registration.installing) {
-                      console.log('Service worker installing')
-                    } else if (registration.waiting) {
-                      console.log('Service worker installed')
-                    } else if (registration.active) {
-                      console.log('Service worker active')
-                    }
-                <?php } ?>
+                  <?php if (WP_DEBUG) { ?>
+                console.log('Service worker registered with scope:', registration.scope);
+                if (registration.installing) {
+                  console.log('Service worker installing');
+                } else if (registration.waiting) {
+                  console.log('Service worker installed');
+                } else if (registration.active) {
+                  console.log('Service worker active');
+                }
+                  <?php } ?>
               } catch (error) {
-                console.error(`Registration failed with ${error}`)
+                console.error(`Registration failed with ${error}`);
               }
             }
-          }
+          };
 
           // Registers the service worker when the page loads.
-          window.addEventListener('load', registerServiceWorker)
+          window.addEventListener('load', registerServiceWorker);
         </script>
         <?php
     }

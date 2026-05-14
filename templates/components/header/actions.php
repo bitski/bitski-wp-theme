@@ -24,7 +24,7 @@ if ( ! defined('ABSPATH')) {
                 echo esc_attr__('Toggle search bar', 'bitski-wp-theme'); ?>">
             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         </button>
-    <?php
+        <?php
     } ?>
 
     <!-- Login link -->

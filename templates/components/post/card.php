@@ -16,12 +16,12 @@ if ( ! defined('ABSPATH')) {
 the_ID(); ?>" class="position-relative card h-100">
     <?php
     if (has_post_thumbnail()) {
-        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
+        $thumbnailUrl = get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>
         <img class="card-img-top" src="<?php
-        echo esc_url($thumbnail_url); ?>"
+        echo esc_url($thumbnailUrl); ?>"
              alt="<?php
              the_title_attribute(); ?>" loading="lazy">
-    <?php
+        <?php
     } ?>
     <div class="card-body">
         <header class="post-header">

@@ -10,12 +10,12 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$template             = $args['template'] ?? '';
-$display_labels       = apply_filters('bitski-wp-theme/option/header/display-socials-labels', true);
-$class_display_labels = '';
+$template           = $args['template'] ?? '';
+$displayLabels      = apply_filters('bitski-wp-theme/option/header/display-socials-labels', true);
+$classDisplayLabels = '';
 
-if ($template === 'header' && $display_labels) {
-    $class_display_labels = 'd-lg-none';
+if ($template === 'header' && $displayLabels) {
+    $classDisplayLabels = 'd-lg-none';
 }
 ?>
 
@@ -28,11 +28,11 @@ if ($template === 'header' && $display_labels) {
            href="https://github.com/#">
             <i class="fa-brands fa-github" aria-hidden="true"></i>
             <?php
-            if ($display_labels) { ?>
+            if ($displayLabels) { ?>
                 <span class="<?php
-                echo $class_display_labels; ?>"><?php
+                echo $classDisplayLabels; ?>"><?php
                     echo esc_html__('GitHub', 'bitski-wp-theme'); ?></span>
-            <?php
+                <?php
             } ?>
             <span class="visually-hidden"><?php
                 echo esc_html__('GitHub', 'bitski-wp-theme'); ?></span>
@@ -43,11 +43,11 @@ if ($template === 'header' && $display_labels) {
            href="https://twitter.com/#">
             <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
             <?php
-            if ($display_labels) { ?>
+            if ($displayLabels) { ?>
                 <span class="<?php
-                echo $class_display_labels; ?>"><?php
+                echo $classDisplayLabels; ?>"><?php
                     echo esc_html__('x.com', 'bitski-wp-theme'); ?></span>
-            <?php
+                <?php
             } ?>
             <span class="visually-hidden"><?php
                 echo esc_html__('x.com', 'bitski-wp-theme'); ?></span>
@@ -58,11 +58,11 @@ if ($template === 'header' && $display_labels) {
            href="https://instagram.com/#">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             <?php
-            if ($display_labels) { ?>
+            if ($displayLabels) { ?>
                 <span class="<?php
-                echo $class_display_labels; ?>"><?php
+                echo $classDisplayLabels; ?>"><?php
                     echo esc_html__('Instagram', 'bitski-wp-theme'); ?></span>
-            <?php
+                <?php
             } ?>
             <span class="visually-hidden"><?php
                 echo esc_html__('Instagram', 'bitski-wp-theme'); ?></span>

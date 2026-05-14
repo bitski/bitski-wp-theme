@@ -61,7 +61,7 @@ class Setup
      */
     public function loadTextdomain(): void
     {
-        load_theme_textdomain('bitski-wp-theme', get_template_directory().'/languages');
+        load_theme_textdomain('bitski-wp-theme', get_template_directory() . '/languages');
     }
 
     /**
@@ -70,7 +70,7 @@ class Setup
     public function registerNavMenus(): void
     {
         register_nav_menus([
-            'main-menu'   => __('Main menu', 'bitski-wp-theme'),
+            'main-menu' => __('Main menu', 'bitski-wp-theme'),
             'footer-menu' => __('Footer menu', 'bitski-wp-theme'),
         ]);
     }
@@ -124,8 +124,8 @@ class Setup
         }
 
         // Checks if current page is in the option array of pages using sessions.
-        $pages_using_session_ids = Options::get('bitski-wp-theme/option/pages/using-session/ids');
-        foreach ($pages_using_session_ids as $id) {
+        $pagesUsingSessionIds = Options::get('bitski-wp-theme/option/pages/using-session/ids');
+        foreach ($pagesUsingSessionIds as $id) {
             if (is_page($id)) {
                 session_start();
                 break;

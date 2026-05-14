@@ -66,48 +66,48 @@ class Api
     public function getPostsByType(WP_REST_Request $request): WP_REST_Response
     {
         // Loads theme config options for pagination.
-        $posts_per_load_more = Options::get('bitski-wp-theme/option/archive/load-more/posts-per-load-more');
-        $posts_per_page      = Options::get('bitski-wp-theme/option/archive/posts-per-page');
+        $postsPerLoadMore = Options::get('bitski-wp-theme/option/archive/load-more/posts-per-load-more');
+        $postsPerPage     = Options::get('bitski-wp-theme/option/archive/posts-per-page');
 
         // Extracts request parameters with defaults..
-        $post_type   = (string)$request->get_param('post_type') ?: 'post';
-        $offset      = (int)($request->get_param('offset') ?: 0);
-        $found_posts = (int)($request->get_param('found_posts') ?: 0);
+        $postType   = (string)$request->get_param('post_type') ?: 'post';
+        $offset     = (int)($request->get_param('offset') ?: 0);
+        $foundPosts = (int)($request->get_param('found_posts') ?: 0);
 
         $args = [
-                'post_type'           => $post_type,
+                'post_type'           => $postType,
                 'post_status'         => 'publish',
                 'ignore_sticky_posts' => true,
-                'posts_per_page'      => $posts_per_load_more,
+                'posts_per_page'      => $postsPerLoadMore,
                 'offset'              => $offset,
         ];
 
-        $custom_query = new WP_Query($args);
-        $posts_html   = [];
+        $customQuery = new WP_Query($args);
+        $postsHtml   = [];
 
-        if ($custom_query->have_posts()) {
-            while ($custom_query->have_posts()) {
-                $custom_query->the_post();
+        if ($customQuery->have_posts()) {
+            while ($customQuery->have_posts()) {
+                $customQuery->the_post();
 
                 // Puts a wrapper around the card in order to apply the Bootstrap grid.
                 ob_start(); ?>
                 <div class="col-12<?php
-                if ($found_posts > 1 && $posts_per_page > 1) { ?> col-lg-6<?php
+                if ($foundPosts > 1 && $postsPerPage > 1) { ?> col-lg-6<?php
                 } ?>">
                     <?php
                     get_template_part('templates/components/post/card'); ?>
                 </div>
                 <?php
-                $posts_html[] = ob_get_clean();
+                $postsHtml[] = ob_get_clean();
             }
             wp_reset_postdata();
         }
 
         // Returns HTML, updated offset, and has_more flag in REST response.
         return new WP_REST_Response([
-                'posts_html' => $posts_html,
-                'offset'     => $offset + count($posts_html),
-                'has_more'   => $offset + count($posts_html) < $found_posts,
+                'posts_html' => $postsHtml,
+                'offset'     => $offset + count($postsHtml),
+                'has_more'   => $offset + count($postsHtml) < $foundPosts,
         ]);
     }
 }

@@ -11,45 +11,45 @@ if ( ! defined('ABSPATH')) {
     exit;
 }
 
-$aria_label_nav = __('Beitragsnavigation', 'bitski-wp-theme');
+$ariaLabelNav = __('Beitragsnavigation', 'bitski-wp-theme');
 
 // Gets the adjacent posts.
-$prev_post = get_previous_post();
-$next_post = get_next_post();
+$prevPost = get_previous_post();
+$nextPost = get_next_post();
 
 // Returns early if there is no adjacent post.
-if ( ! $prev_post && ! $next_post) {
+if ( ! $prevPost && ! $nextPost) {
     return;
 } ?>
 
 <!-- Post navigation -->
 <nav class="post-navigation" aria-label="<?php
-echo esc_attr__($aria_label_nav, 'bitski-wp-theme'); ?>">
+echo esc_attr__($ariaLabelNav, 'bitski-wp-theme'); ?>">
     <ul class="pagination mb-0">
         <?php
-        if ($prev_post) { ?>
+        if ($prevPost) { ?>
             <li class="page-item">
                 <a class="page-link text-light" href="<?php
-                echo esc_url(get_permalink($prev_post->ID)); ?>"
+                echo esc_url(get_permalink($prevPost->ID)); ?>"
                    rel="prev">
                     <i class="fa-solid fa-angles-left fa-xs" aria-hidden="true"></i>
                     <span><?php
-                        echo esc_html($prev_post->post_title); ?></span>
+                        echo esc_html($prevPost->post_title); ?></span>
                 </a>
             </li>
-        <?php
+            <?php
         }
-        if ($next_post) { ?>
+        if ($nextPost) { ?>
             <li class="page-item">
                 <a class="page-link text-light" href="<?php
-                echo esc_url(get_permalink($next_post->ID)); ?>"
+                echo esc_url(get_permalink($nextPost->ID)); ?>"
                    rel="next">
                     <span><?php
-                        echo esc_html($next_post->post_title); ?></span>
+                        echo esc_html($nextPost->post_title); ?></span>
                     <i class="fa-solid fa-angles-right fa-xs" aria-hidden="true"></i>
                 </a>
             </li>
-        <?php
+            <?php
         } ?>
     </ul>
 </nav>
