@@ -38,7 +38,7 @@ class AssetsLoader
         //
         // Main theme CSS
         wp_enqueue_style(
-            'bitski-wp-theme-style',
+            'bitski-wp-theme-frontend-style',
             $themeUri . '/assets/css/main.min.css',
             [],
             $themeVersion
@@ -70,7 +70,7 @@ class AssetsLoader
         // Main theme JS (ESM module)
         // Requires WordPress 6.5 or higher for native wp_enqueue_script_module() support.
         wp_enqueue_script_module(
-            'bitski-wp-theme-main-script',
+            'bitski-wp-theme-frontend-script',
             $themeUri . '/assets/js/' . $themeMainScript,
             [],
             $themeVersion,
