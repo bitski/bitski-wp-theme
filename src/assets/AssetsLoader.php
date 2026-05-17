@@ -16,16 +16,16 @@ class AssetsLoader
      */
     public function init(): void
     {
-        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets'], 0);
-        add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockEditorAssets'], 0);
+        add_action('wp_enqueue_scripts', [$this, 'enqueueFrontendAssets']);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockEditorAssets']);
     }
 
     /**
-     * Enqueues theme assets.
+     * Enqueues theme frontend assets.
      *
      * @since 0.1.0
      */
-    public function enqueueAssets(): void
+    public function enqueueFrontendAssets(): void
     {
         $themeVersion = wp_get_theme()->get('Version');
         $themeUri     = get_template_directory_uri();
@@ -39,7 +39,7 @@ class AssetsLoader
         // Main theme CSS
         wp_enqueue_style(
             'bitski-wp-theme-style',
-            $themeUri . '/assets/css/main.css',
+            $themeUri . '/assets/css/main.min.css',
             [],
             $themeVersion
         );
